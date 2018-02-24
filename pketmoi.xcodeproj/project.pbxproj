@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E389038203DDDB900105CE8 /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E389037203DDDB900105CE8 /* EventController.swift */; };
+		6E38903A203DE61D00105CE8 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E389039203DE61D00105CE8 /* EventTableViewController.swift */; };
+		6E38903C203DF0D800105CE8 /* PkTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38903B203DF0D800105CE8 /* PkTabBarController.swift */; };
+		6E38903D203DF0D800105CE8 /* PkTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38903B203DF0D800105CE8 /* PkTabBarController.swift */; };
+		6E3890452041CA6900105CE8 /* TypeEventPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3890442041CA6900105CE8 /* TypeEventPickerViewController.swift */; };
+		6E3890472041D02900105CE8 /* TriggerEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3890462041D02800105CE8 /* TriggerEventViewController.swift */; };
+		6E463B022041D9EB00F7332F /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E463B012041D9EB00F7332F /* Patient.swift */; };
+		6E463B052041E3AC00F7332F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E463B042041E3AC00F7332F /* Event.swift */; };
+		6E463B072041E4A100F7332F /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E463B062041E4A100F7332F /* Trigger.swift */; };
 		6E5BA19B2032DD6500703328 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BA19A2032DD6500703328 /* AppDelegate.swift */; };
 		6E5BA19D2032DD6500703328 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BA19C2032DD6500703328 /* ViewController.swift */; };
 		6E5BA1A02032DD6500703328 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E5BA19E2032DD6500703328 /* Main.storyboard */; };
@@ -14,7 +23,11 @@
 		6E5BA1A52032DD6500703328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E5BA1A42032DD6500703328 /* Assets.xcassets */; };
 		6E5BA1A82032DD6500703328 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E5BA1A62032DD6500703328 /* LaunchScreen.storyboard */; };
 		6E5BA1B32032DD6500703328 /* pketmoiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BA1B22032DD6500703328 /* pketmoiTests.swift */; };
-		6E5BA1C3203C80A000703328 /* Personne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BA1C2203C80A000703328 /* Personne.swift */; };
+		6E5BA1C3203C80A000703328 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BA1C2203C80A000703328 /* Person.swift */; };
+		6E5BA1C5203C898400703328 /* BottomMenuCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BA1C4203C898400703328 /* BottomMenuCollectionView.swift */; };
+		6E8B9187203DCA6E00B11989 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8B9186203DCA6E00B11989 /* HomeController.swift */; };
+		6EA83A9A20421CAF00AA68CF /* databaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA83A9920421CAF00AA68CF /* databaseFactory.swift */; };
+		6EA83A9C2042231F00AA68CF /* TypeEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA83A9B2042231F00AA68CF /* TypeEventController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E389037203DDDB900105CE8 /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
+		6E389039203DE61D00105CE8 /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
+		6E38903B203DF0D800105CE8 /* PkTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PkTabBarController.swift; sourceTree = "<group>"; };
+		6E3890442041CA6900105CE8 /* TypeEventPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeEventPickerViewController.swift; sourceTree = "<group>"; };
+		6E3890462041D02800105CE8 /* TriggerEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerEventViewController.swift; sourceTree = "<group>"; };
+		6E463B012041D9EB00F7332F /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
+		6E463B042041E3AC00F7332F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		6E463B062041E4A100F7332F /* Trigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
 		6E5BA1972032DD6500703328 /* pketmoi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pketmoi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E5BA19A2032DD6500703328 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E5BA19C2032DD6500703328 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,7 +60,11 @@
 		6E5BA1AE2032DD6500703328 /* pketmoiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pketmoiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E5BA1B22032DD6500703328 /* pketmoiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pketmoiTests.swift; sourceTree = "<group>"; };
 		6E5BA1B42032DD6500703328 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E5BA1C2203C80A000703328 /* Personne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Personne.swift; sourceTree = "<group>"; };
+		6E5BA1C2203C80A000703328 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		6E5BA1C4203C898400703328 /* BottomMenuCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuCollectionView.swift; sourceTree = "<group>"; };
+		6E8B9186203DCA6E00B11989 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		6EA83A9920421CAF00AA68CF /* databaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = databaseFactory.swift; sourceTree = "<group>"; };
+		6EA83A9B2042231F00AA68CF /* TypeEventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeEventController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E463B032041DE0000F7332F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				6EA83A9920421CAF00AA68CF /* databaseFactory.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		6E5BA18E2032DD6500703328 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +114,7 @@
 		6E5BA1992032DD6500703328 /* pketmoi */ = {
 			isa = PBXGroup;
 			children = (
+				6E463B032041DE0000F7332F /* Data */,
 				6E5BA1C1203C7D2300703328 /* Views */,
 				6E5BA1C0203C7D0400703328 /* Controllers */,
 				6E5BA1BF203C7CE300703328 /* Models */,
@@ -107,7 +141,10 @@
 		6E5BA1BF203C7CE300703328 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6E5BA1C2203C80A000703328 /* Personne.swift */,
+				6E5BA1C2203C80A000703328 /* Person.swift */,
+				6E463B012041D9EB00F7332F /* Patient.swift */,
+				6E463B042041E3AC00F7332F /* Event.swift */,
+				6E463B062041E4A100F7332F /* Trigger.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -115,6 +152,13 @@
 		6E5BA1C0203C7D0400703328 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6E8B9186203DCA6E00B11989 /* HomeController.swift */,
+				6E389037203DDDB900105CE8 /* EventController.swift */,
+				6E389039203DE61D00105CE8 /* EventTableViewController.swift */,
+				6E38903B203DF0D800105CE8 /* PkTabBarController.swift */,
+				6E3890442041CA6900105CE8 /* TypeEventPickerViewController.swift */,
+				6E3890462041D02800105CE8 /* TriggerEventViewController.swift */,
+				6EA83A9B2042231F00AA68CF /* TypeEventController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -122,6 +166,7 @@
 		6E5BA1C1203C7D2300703328 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6E5BA1C4203C898400703328 /* BottomMenuCollectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -229,10 +274,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E5BA1C5203C898400703328 /* BottomMenuCollectionView.swift in Sources */,
 				6E5BA19D2032DD6500703328 /* ViewController.swift in Sources */,
+				6E38903A203DE61D00105CE8 /* EventTableViewController.swift in Sources */,
+				6E463B022041D9EB00F7332F /* Patient.swift in Sources */,
+				6E3890452041CA6900105CE8 /* TypeEventPickerViewController.swift in Sources */,
+				6E3890472041D02900105CE8 /* TriggerEventViewController.swift in Sources */,
+				6E8B9187203DCA6E00B11989 /* HomeController.swift in Sources */,
+				6E38903C203DF0D800105CE8 /* PkTabBarController.swift in Sources */,
+				6EA83A9A20421CAF00AA68CF /* databaseFactory.swift in Sources */,
 				6E5BA19B2032DD6500703328 /* AppDelegate.swift in Sources */,
 				6E5BA1A32032DD6500703328 /* pketmoi.xcdatamodeld in Sources */,
-				6E5BA1C3203C80A000703328 /* Personne.swift in Sources */,
+				6E389038203DDDB900105CE8 /* EventController.swift in Sources */,
+				6EA83A9C2042231F00AA68CF /* TypeEventController.swift in Sources */,
+				6E463B052041E3AC00F7332F /* Event.swift in Sources */,
+				6E463B072041E4A100F7332F /* Trigger.swift in Sources */,
+				6E5BA1C3203C80A000703328 /* Person.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E38903D203DF0D800105CE8 /* PkTabBarController.swift in Sources */,
 				6E5BA1B32032DD6500703328 /* pketmoiTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
