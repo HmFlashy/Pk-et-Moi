@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E0F6E4B204311D4005D4744 /* EventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0F6E4A204311D4005D4744 /* EventExtension.swift */; };
 		6E389038203DDDB900105CE8 /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E389037203DDDB900105CE8 /* EventController.swift */; };
 		6E38903A203DE61D00105CE8 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E389039203DE61D00105CE8 /* EventTableViewController.swift */; };
 		6E38903C203DF0D800105CE8 /* PkTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38903B203DF0D800105CE8 /* PkTabBarController.swift */; };
@@ -14,7 +15,6 @@
 		6E3890452041CA6900105CE8 /* TypeEventPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3890442041CA6900105CE8 /* TypeEventPickerViewController.swift */; };
 		6E3890472041D02900105CE8 /* TriggerEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3890462041D02800105CE8 /* TriggerEventViewController.swift */; };
 		6E463B022041D9EB00F7332F /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E463B012041D9EB00F7332F /* Patient.swift */; };
-		6E463B052041E3AC00F7332F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E463B042041E3AC00F7332F /* Event.swift */; };
 		6E463B072041E4A100F7332F /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E463B062041E4A100F7332F /* Trigger.swift */; };
 		6E5BA19B2032DD6500703328 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BA19A2032DD6500703328 /* AppDelegate.swift */; };
 		6E5BA19D2032DD6500703328 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BA19C2032DD6500703328 /* ViewController.swift */; };
@@ -41,13 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E0F6E4A204311D4005D4744 /* EventExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventExtension.swift; sourceTree = "<group>"; };
 		6E389037203DDDB900105CE8 /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
 		6E389039203DE61D00105CE8 /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		6E38903B203DF0D800105CE8 /* PkTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PkTabBarController.swift; sourceTree = "<group>"; };
 		6E3890442041CA6900105CE8 /* TypeEventPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeEventPickerViewController.swift; sourceTree = "<group>"; };
 		6E3890462041D02800105CE8 /* TriggerEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerEventViewController.swift; sourceTree = "<group>"; };
 		6E463B012041D9EB00F7332F /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
-		6E463B042041E3AC00F7332F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		6E463B062041E4A100F7332F /* Trigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
 		6E5BA1972032DD6500703328 /* pketmoi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pketmoi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E5BA19A2032DD6500703328 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -141,9 +141,9 @@
 		6E5BA1BF203C7CE300703328 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6E0F6E4A204311D4005D4744 /* EventExtension.swift */,
 				6E5BA1C2203C80A000703328 /* Person.swift */,
 				6E463B012041D9EB00F7332F /* Patient.swift */,
-				6E463B042041E3AC00F7332F /* Event.swift */,
 				6E463B062041E4A100F7332F /* Trigger.swift */,
 			);
 			path = Models;
@@ -280,6 +280,7 @@
 				6E463B022041D9EB00F7332F /* Patient.swift in Sources */,
 				6E3890452041CA6900105CE8 /* TypeEventPickerViewController.swift in Sources */,
 				6E3890472041D02900105CE8 /* TriggerEventViewController.swift in Sources */,
+				6E0F6E4B204311D4005D4744 /* EventExtension.swift in Sources */,
 				6E8B9187203DCA6E00B11989 /* HomeController.swift in Sources */,
 				6E38903C203DF0D800105CE8 /* PkTabBarController.swift in Sources */,
 				6EA83A9A20421CAF00AA68CF /* databaseFactory.swift in Sources */,
@@ -287,7 +288,6 @@
 				6E5BA1A32032DD6500703328 /* pketmoi.xcdatamodeld in Sources */,
 				6E389038203DDDB900105CE8 /* EventController.swift in Sources */,
 				6EA83A9C2042231F00AA68CF /* TypeEventController.swift in Sources */,
-				6E463B052041E3AC00F7332F /* Event.swift in Sources */,
 				6E463B072041E4A100F7332F /* Trigger.swift in Sources */,
 				6E5BA1C3203C80A000703328 /* Person.swift in Sources */,
 			);
