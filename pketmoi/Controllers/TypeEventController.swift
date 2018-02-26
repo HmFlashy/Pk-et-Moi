@@ -23,10 +23,10 @@ class TypeEventController: UIViewController {
     
     @IBAction func addTypeEvent(_ sender: Any) {
         let typeEventName: String? = typeEventTextArea.text
-        var event = Event.createEvent(moc: self.persistentContainer.viewContext, name: typeEventName!)
+        let typeEvent = TypeEvent.createEvent(name: typeEventName!)
         
         typeEventTextArea.text = ""
-        typeEventtest.text = "\(typeEventName) inserted !"
+        typeEventtest.text = "\(typeEvent.name!) inserted !"
     }
 }
 

@@ -12,20 +12,18 @@ class TriggerEventViewController: UIViewController {
     
     @IBOutlet weak var typeEventPickerView: TypeEventPickerViewController!
     
-    let persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        var Events: [Event] = []
+        var TypeEvents: [TypeEvent] = []
         do {
-            Events  =  try Event.getAllEvents(moc: persistentContainer.viewContext)
+            TypeEvents  =  try TypeEvent.getAllEvents()
         } catch {
             print("Error getting the events")
         }
         
         var names : [String] = []
-        for event in Events {
-            names.append(event.name!)
+        for typeEvent in TypeEvents {
+            names.append(typeEvent.name!)
         }
         
         typeEventPickerView.typeEvents = names
