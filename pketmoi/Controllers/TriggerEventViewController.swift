@@ -7,25 +7,33 @@
 //
 
 import UIKit
+import CoreData
 
-class TriggerEventViewController: UIViewController {
+class TriggerEventViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var typeEventPickerView: TypeEventPickerViewController!
     
+    @IBOutlet weak var dataPicker: UIDatePicker!
+    
+    @IBOutlet weak var descriptionTextArea: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        var TypeEvents: [TypeEvent] = []
+    }
+    
+    @IBAction func addTriggerEvent(_ sender: Any) {
+        var event: Event = Event(context: CoreDataManager.context)
+        event.belongsTo = typeEventPickerView.selectedTypeEvent
+        print(event.belongsTo?.name)
+        print(dataPicker.date)
+        event.date = dataPicker.date
+        event.eventDescription = descriptionTextArea.text
         do {
-            TypeEvents  =  try TypeEvent.getAllEvents()
+            try CoreDataManager.context.save()
         } catch {
-            print("Error getting the events")
+            print("Erreur")
         }
         
-        var names : [String] = []
-        for typeEvent in TypeEvents {
-            names.append(typeEvent.name!)
-        }
         
-        typeEventPickerView.typeEvents = names
     }
 }

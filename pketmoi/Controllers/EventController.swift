@@ -17,6 +17,8 @@ class EventController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString)
+
         buttonTriggerEvent.layer.cornerRadius = 8
         buttonAddEvent.layer.cornerRadius = 8
         // Do any additional setup after loading the view, typically from a nib.

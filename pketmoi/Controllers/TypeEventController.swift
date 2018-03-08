@@ -7,26 +7,32 @@
 //
 
 import UIKit
-import SQLite3
+import CoreData
 
 class TypeEventController: UIViewController {
     
     
     @IBOutlet weak var typeEventTextArea: UITextField!
-    @IBOutlet weak var typeEventtest: UILabel!
     
-    let persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
-    
+    @IBOutlet weak var typeEventTableView: TypeEventTableViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
     }
     
     @IBAction func addTypeEvent(_ sender: Any) {
-        let typeEventName: String? = typeEventTextArea.text
-        let typeEvent = TypeEvent.createEvent(name: typeEventName!)
-        
+        guard typeEventTextArea.text != nil else {
+            return
+        }
+        let typeEventName: String = typeEventTextArea.text!
+        let typeEvent: TypeEvent = TypeEvent.createEvent(name: typeEventName)
         typeEventTextArea.text = ""
-        typeEventtest.text = "\(typeEvent.name!) inserted !"
+        
     }
+    
+    
+    
+
 }
 

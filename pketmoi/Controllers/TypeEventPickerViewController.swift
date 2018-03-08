@@ -7,17 +7,32 @@
 //
 
 import UIKit
+import CoreData
 
-class TypeEventPickerViewController: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
+class TypeEventPickerViewController: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource, NSFetchedResultsControllerDelegate {
     
-    var typeEvents: [String]!
+    var selectedTypeEvent: TypeEvent?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.delegate = self
         self.dataSource = self
+        do {
+            try self.typeEventFetched.performFetch()
+        } catch {
+            print("Problem")
+        }
+        let typeEvents = typeEventFetched.fetchedObjects
+        selectedTypeEvent = typeEvents?[0]
     }
     
+    fileprivate lazy var typeEventFetched: NSFetchedResultsController<TypeEvent> = {
+        let request: NSFetchRequest<TypeEvent> = TypeEvent.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(TypeEvent.name), ascending: true)]
+        let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultController.delegate = self
+        return fetchedResultController
+    }()
     
     // UIPickerViewDataSource required protocol
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -25,13 +40,22 @@ class TypeEventPickerViewController: UIPickerView, UIPickerViewDelegate, UIPicke
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        guard let typeEvents = typeEventFetched.fetchedObjects else { return 0 }
         return typeEvents.count
     }
     
     // UIPickerViewDelegate optional protocol
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return typeEvents[row]
+        guard let typeEvents = typeEventFetched.fetchedObjects else { return ""}
+        return typeEvents[row].name
     }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        guard let typeEvents = typeEventFetched.fetchedObjects else { return }
+        selectedTypeEvent = typeEvents[row]
+    }
+    
+    
     
     
 }
