@@ -20,6 +20,7 @@
 		6E3893DD204D55820052DCD6 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3893DC204D55820052DCD6 /* EventTableViewCell.swift */; };
 		6E3893DF204D55820052DCD6 /* EventTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3893DE204D55820052DCD6 /* EventTableView.swift */; };
 		6E3893E1204D55820052DCD6 /* EventPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3893E0204D55820052DCD6 /* EventPresenter.swift */; };
+		6E455C3220534770009343C1 /* ShowEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E455C3120534770009343C1 /* ShowEventViewController.swift */; };
 		6E463B022041D9EB00F7332F /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E463B012041D9EB00F7332F /* Patient.swift */; };
 		6E463B072041E4A100F7332F /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E463B062041E4A100F7332F /* Trigger.swift */; };
 		6E5BA19B2032DD6500703328 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BA19A2032DD6500703328 /* AppDelegate.swift */; };
@@ -58,6 +59,7 @@
 		6E3893DC204D55820052DCD6 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		6E3893DE204D55820052DCD6 /* EventTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableView.swift; sourceTree = "<group>"; };
 		6E3893E0204D55820052DCD6 /* EventPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPresenter.swift; sourceTree = "<group>"; };
+		6E455C3120534770009343C1 /* ShowEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventViewController.swift; sourceTree = "<group>"; };
 		6E463B012041D9EB00F7332F /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		6E463B062041E4A100F7332F /* Trigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
 		6E5BA1972032DD6500703328 /* pketmoi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pketmoi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +192,7 @@
 				6EA83A9B2042231F00AA68CF /* TypeEventController.swift */,
 				6E3893DA204B02A80052DCD6 /* TriggerEventViewController.swift */,
 				6E3893DE204D55820052DCD6 /* EventTableView.swift */,
+				6E455C3120534770009343C1 /* ShowEventViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				6E463B022041D9EB00F7332F /* Patient.swift in Sources */,
 				6E3893DF204D55820052DCD6 /* EventTableView.swift in Sources */,
 				6E3890452041CA6900105CE8 /* TypeEventPickerViewController.swift in Sources */,
+				6E455C3220534770009343C1 /* ShowEventViewController.swift in Sources */,
 				6E0F6E4B204311D4005D4744 /* TypeEventExtension.swift in Sources */,
 				6E8B9187203DCA6E00B11989 /* HomeController.swift in Sources */,
 				6E3893E1204D55820052DCD6 /* EventPresenter.swift in Sources */,
