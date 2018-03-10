@@ -28,8 +28,8 @@ class ShowEventViewController: UIViewController {
             dateFormatter.locale = Locale(identifier: "fr_FR")
             dateFormatter.dateFormat = "dd/MM/YYYY hh:mm"
             dateEvent.text = dateFormatter.string(from: aevent.date!)
-            typeEvent.text = aevent.belongsTo?.name
-            descriptionEvent.text = aevent.eventDescription
+            typeEvent.text = aevent.typeEvent?.name
+            descriptionEvent.text = aevent.itemDescription
         }
     }
     

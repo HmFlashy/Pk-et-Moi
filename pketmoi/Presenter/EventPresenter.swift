@@ -25,7 +25,7 @@ class EventPresenter: NSObject {
                 } else {
                     self.date = "unknown"
                 }
-                if let tename = event.belongsTo?.name {
+                if let tename = event.typeEvent?.name {
                     self.typeEventName = tename
                 } else {
                     self.typeEventName = "unknown"

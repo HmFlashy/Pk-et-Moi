@@ -24,11 +24,12 @@ class TriggerEventViewController: UIViewController, NSFetchedResultsControllerDe
     
     @IBAction func addTriggerEvent(_ sender: Any) {
         let event: Event = Event(context: CoreDataManager.context)
-        event.belongsTo = typeEventPickerView.selectedTypeEvent
+        event.typeEvent = typeEventPickerView.selectedTypeEvent
         event.date = dataPicker.date
-        event.eventDescription = descriptionTextArea.text
+        event.itemDescription = descriptionTextArea.text
         do {
             try CoreDataManager.context.save()
+            navigationController?.popViewController(animated: true)
         } catch {
             print("Erreur")
         }
