@@ -32,6 +32,7 @@ class EventController: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // TO DO : A enlever
         print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString)
         eventTableView.dataSource = self
         eventTableView.delegate = self
@@ -108,7 +109,6 @@ class EventController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("mdr")
         if segue.identifier == self.segueShowEvent{
             if let indexPath = self.eventTableView.indexPathForSelectedRow{
                 let showEventViewController = segue.destination as! ShowEventViewController

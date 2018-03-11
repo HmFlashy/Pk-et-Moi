@@ -21,7 +21,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="AnG-Zw-vjU"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Planning" id="Ljr-7N-Ogl"/>
+                    <tabBarItem key="tabBarItem" title="Planning" image="icons8-calendrier-filled-25" id="Ljr-7N-Ogl"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DDD-RM-tR7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -37,7 +37,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="YIf-Og-cPO"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Mes données" id="Wjb-mW-jor"/>
+                    <tabBarItem key="tabBarItem" title="Mes données" image="icons8-personne-age-filled-25" id="Wjb-mW-jor"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVk-p3-saS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -53,7 +53,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ObI-5D-BQ3"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Synthèses" id="q4g-5c-ne2"/>
+                    <tabBarItem key="tabBarItem" title="Synthèses" image="icons8-document-filled-25" id="q4g-5c-ne2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NJW-v7-OJr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -63,7 +63,7 @@
         <scene sceneID="6fX-tb-Qff">
             <objects>
                 <navigationController id="gt8-OG-KSB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Accueil" id="Tb0-lJ-RLt"/>
+                    <tabBarItem key="tabBarItem" title="Accueil" image="icons8-accueil-filled-25" id="Tb0-lJ-RLt"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eVi-1H-RcA">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -79,18 +79,46 @@
         <!--Activités-->
         <scene sceneID="g03-vJ-epB">
             <objects>
-                <viewController id="HQe-0a-f1E" sceneMemberID="viewController">
+                <viewController id="HQe-0a-f1E" customClass="ActivityController" customModule="pketmoi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1hU-Ha-oYG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="748"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r2f-eG-JoC">
+                                <rect key="frame" x="36" y="100" width="342" height="492"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="f9Z-6w-VgN">
+                                        <rect key="frame" x="0.0" y="28" width="342" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="f9Z-6w-VgN" id="KNl-Lt-7yy">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6Z-Ru-3a7">
+                                <rect key="frame" x="56" y="623" width="303" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Ajouter un type d'activité"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Auu-j3-6mx"/>
                     </view>
                     <navigationItem key="navigationItem" title="Activités" id="OWR-cD-vQg"/>
+                    <connections>
+                        <outlet property="activityTableView" destination="r2f-eG-JoC" id="5MS-CN-8BO"/>
+                        <outlet property="addActivityButton" destination="q6Z-Ru-3a7" id="6Zr-o2-1Rg"/>
+                        <outlet property="buttonAddActivity" destination="q6Z-Ru-3a7" id="bsI-mr-7k6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cgP-8T-BdG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2028" y="-1467"/>
+            <point key="canvasLocation" x="2027.5362318840582" y="-1467.3913043478262"/>
         </scene>
         <!--Médecins-->
         <scene sceneID="jtt-DD-xl2">
@@ -181,7 +209,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="DDd-aN-QIV"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Acceuil" id="Iyn-2z-x2p"/>
+                    <tabBarItem key="tabBarItem" title="Acceuil" image="icons8-accueil-filled-25" id="Iyn-2z-x2p"/>
                     <navigationItem key="navigationItem" id="Vxz-e4-vu2"/>
                     <connections>
                         <outlet property="buttonProgramActivity" destination="nmb-rX-iyY" id="gFZ-fr-Uxa"/>
@@ -246,6 +274,7 @@
                                                     <inset key="contentEdgeInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                                                     <connections>
                                                         <action selector="openEventInformation:" destination="8sz-Y1-3tZ" eventType="touchUpInside" id="1e1-te-gTl"/>
+                                                        <action selector="showSegue:" destination="Plq-7e-RlI" eventType="touchUpInside" id="k92-6Z-Mjy"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="libelle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFK-fX-eya">
@@ -434,10 +463,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Nom de ce type d'évènement" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5hr-Nw-Llr">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nom de ce type d'évènement" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5hr-Nw-Llr">
                                 <rect key="frame" x="98" y="168" width="218" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
@@ -565,4 +594,10 @@
             <point key="canvasLocation" x="-926" y="36"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-accueil-filled-25" width="25" height="25"/>
+        <image name="icons8-calendrier-filled-25" width="25" height="25"/>
+        <image name="icons8-document-filled-25" width="25" height="25"/>
+        <image name="icons8-personne-age-filled-25" width="25" height="25"/>
+    </resources>
 </document>
