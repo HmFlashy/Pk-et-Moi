@@ -18,12 +18,11 @@ class TypeActivityController: UIViewController{
         super.viewDidLoad()
     }
     
-    @IBAction func closePopUp(_ sender: Any) {
-        self.view.removeFromSuperview()
-    }
-    
     @IBAction func addTypeActivity(_ sender: Any) {
-        guard typeActivity.text != nil else {return}
+        guard typeActivity.text != "" else {
+            self.view.removeFromSuperview()
+            return
+        }
         let typeActivityName: String = typeActivity.text!
         let descriptionTA: String = descriptionTypeActivity.text
         TypeActivity.createActivity(name: typeActivityName, description: descriptionTA)

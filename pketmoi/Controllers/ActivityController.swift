@@ -70,8 +70,7 @@ class ActivityController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = typeActivityTableView.dequeueReusableCell(withIdentifier: "TypeActivityPlanifierCell", for: indexPath) as! TypeActivityTableViewCell
-        cell.typeActivityName.text = "salut"
-            //typeActivityFetched.object(at: indexPath).name
+        cell.typeActivityName.text = typeActivityFetched.object(at: indexPath).name
         return cell
     }
     
