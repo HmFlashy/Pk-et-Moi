@@ -20,8 +20,7 @@ class TypeActivityController: UIViewController{
     
     @IBAction func addTypeActivity(_ sender: Any) {
         guard typeActivity.text != "" else {
-            self.view.removeFromSuperview()
-            return
+            return self.view.removeFromSuperview()
         }
         let typeActivityName: String = typeActivity.text!
         let descriptionTA: String = descriptionTypeActivity.text
