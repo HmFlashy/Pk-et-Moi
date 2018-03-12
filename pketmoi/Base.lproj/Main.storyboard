@@ -25,7 +25,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DDD-RM-tR7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6" y="366"/>
+            <point key="canvasLocation" x="983" y="845"/>
         </scene>
         <!--Mes données-->
         <scene sceneID="P8N-q5-rur">
@@ -41,7 +41,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVk-p3-saS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-731" y="1066"/>
+            <point key="canvasLocation" x="983" y="2412"/>
         </scene>
         <!--Synthèses-->
         <scene sceneID="YCd-BQ-iDd">
@@ -57,7 +57,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NJW-v7-OJr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7" y="1062"/>
+            <point key="canvasLocation" x="983" y="1658"/>
         </scene>
         <!--Accueil-->
         <scene sceneID="6fX-tb-Qff">
@@ -128,7 +128,6 @@
                                                     <state key="normal" title="Planifier"/>
                                                     <connections>
                                                         <action selector="showPopup:" destination="HQe-0a-f1E" eventType="touchUpInside" id="gqC-eF-nw2"/>
-                                                        <segue destination="eL5-Wa-4ge" kind="presentation" id="qge-iG-gK9"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -166,13 +165,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Activités" id="OWR-cD-vQg"/>
                     <connections>
-                        <outlet property="backgroundButton" destination="k1Q-k4-SCG" id="LtV-fO-yWQ"/>
                         <outlet property="typeActivityTableView" destination="r2f-eG-JoC" id="xdO-FQ-5R6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cgP-8T-BdG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2026.0869565217392" y="-1433.1521739130435"/>
+            <point key="canvasLocation" x="2028" y="-1433"/>
         </scene>
         <!--Type Activity Controller-->
         <scene sceneID="7Gh-tx-WaM">
@@ -504,7 +502,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z2p-5q-B3s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="982.60869565217399" y="-708.42391304347836"/>
+            <point key="canvasLocation" x="849" y="-735"/>
         </scene>
         <!--Médicaments-->
         <scene sceneID="2PT-yw-czt">
@@ -520,7 +518,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nb9-cr-t8M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2028" y="99"/>
+            <point key="canvasLocation" x="2028" y="60"/>
         </scene>
         <!--Evènements-->
         <scene sceneID="aeX-Re-jBZ">
@@ -626,7 +624,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pxk-qN-sfx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2027.5362318840582" y="-2230.434782608696"/>
+            <point key="canvasLocation" x="2028" y="-3030"/>
         </scene>
         <!--Signaler évènement-->
         <scene sceneID="i0R-7B-DMa">
@@ -731,7 +729,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BvS-GT-pIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3125" y="-3536"/>
+            <point key="canvasLocation" x="2812" y="-3730"/>
         </scene>
         <!--Ajout type évènement-->
         <scene sceneID="YC9-Zf-bPU">
@@ -795,7 +793,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CFd-Ru-IbC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="QRS-Bk-FRw"/>
             </objects>
-            <point key="canvasLocation" x="3125" y="-2674"/>
+            <point key="canvasLocation" x="2812" y="-3030"/>
         </scene>
         <!--Show Event View Controller-->
         <scene sceneID="Nhb-M4-34Z">
@@ -853,7 +851,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vPL-KC-p4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3148" y="-1834"/>
+            <point key="canvasLocation" x="2812" y="-2313"/>
         </scene>
         <!--Pk Tab Bar Controller-->
         <scene sceneID="bms-T9-X7n">
@@ -882,6 +880,5 @@
         <image name="icons8-calendrier-filled-25" width="25" height="25"/>
         <image name="icons8-document-filled-25" width="25" height="25"/>
         <image name="icons8-personne-age-filled-25" width="25" height="25"/>
-        <image name="rsz_1test" width="100" height="54"/>
     </resources>
 </document>
