@@ -11,28 +11,18 @@ import CoreData
 
 class TypeEventController: UIViewController {
     
-    
     @IBOutlet weak var typeEventTextArea: UITextField!
-    
     @IBOutlet weak var typeEventTableView: TypeEventTableViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
     
     @IBAction func addTypeEvent(_ sender: Any) {
-        guard typeEventTextArea.text != nil else {
-            return
-        }
+        guard typeEventTextArea.text != nil else {return}
         let typeEventName: String = typeEventTextArea.text!
-        let typeEvent: TypeEvent = TypeEvent.createEvent(name: typeEventName)
+        TypeEvent.createEvent(name: typeEventName)
         typeEventTextArea.text = ""
-        
     }
-    
-    
-    
-
 }
 

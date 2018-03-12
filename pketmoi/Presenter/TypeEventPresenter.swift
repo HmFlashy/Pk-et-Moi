@@ -32,5 +32,4 @@ class TypeEventPresenter: NSObject {
         guard let cell = forCell else { return }
         cell.textLabel?.text = self.name
     }
-    
 }

@@ -1,36 +1,15 @@
 //
-//  ActivityController.swift
+//  TypeActivityTableViewController.swift
 //  pketmoi
 //
-//  Created by Loris Zirah on 09/03/2018.
+//  Created by Loris Zirah on 11/03/2018.
 //  Copyright © 2018 Hugo Maitre. All rights reserved.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
-class ActivityController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate{
-
-    @IBOutlet weak var typeActivityTableView: UITableView!
-    
-    /*@IBAction func showPopup(_ sender: Any) {
-        
-        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            self.backgroundButton.alpha = 0.5
-        })
-    }
-    
-    @IBAction func closePopup(_ sender: Any) {
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-            self.backgroundButton.alpha = 0
-        })
-    }*/
+class TypeActivityTableViewController: UITableView, UITableViewDataSource, NSFetchedResultsControllerDelegate{
     
     fileprivate lazy var typeActivityFetched: NSFetchedResultsController<TypeActivity> = {
         let request: NSFetchRequest<TypeActivity> = TypeActivity.fetchRequest()
@@ -40,14 +19,10 @@ class ActivityController: UIViewController, UITableViewDelegate, UITableViewData
         return fetchedResultController
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        typeActivityTableView.dataSource = self
-        typeActivityTableView.delegate = self
-        //popView.layer.cornerRadius = 10
-        //popView.layer.masksToBounds = true
-        
-        do{
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.dataSource = self
+        do {
             try self.typeActivityFetched.performFetch()
         } catch {
             print("Problem")
@@ -62,9 +37,8 @@ class ActivityController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = typeActivityTableView.dequeueReusableCell(withIdentifier: "TypeActivityPlanifierCell", for: indexPath) as! TypeActivityTableViewCell
-        cell.typeActivityName.text = "salut"
-            //typeActivityFetched.object(at: indexPath).name
+        let cell = dequeueReusableCell(withIdentifier: "TypeActivityCell", for: indexPath)
+        cell.textLabel?.text = typeActivityFetched.object(at: indexPath).name
         return cell
     }
     
@@ -92,12 +66,12 @@ class ActivityController: UIViewController, UITableViewDelegate, UITableViewData
         switch (type) {
         case .insert:
             if let indexPath = newIndexPath {
-                self.typeActivityTableView.insertRows(at: [indexPath], with: .fade)
+                self.insertRows(at: [indexPath], with: .fade)
             }
             break
         case .delete:
             if let indexPath = indexPath {
-                self.typeActivityTableView.deleteRows(at: [indexPath], with: .automatic)
+                self.deleteRows(at: [indexPath], with: .automatic)
             }
         default:
             break
@@ -105,10 +79,10 @@ class ActivityController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.typeActivityTableView.beginUpdates()
+        self.beginUpdates()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.typeActivityTableView.endUpdates()
+        self.endUpdates()
     }
 }

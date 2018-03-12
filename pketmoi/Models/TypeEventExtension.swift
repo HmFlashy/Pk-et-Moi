@@ -29,13 +29,11 @@ import UIKit
 
 extension TypeEvent {
 
-    private static let moc: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
     static func createEvent(name: String) -> TypeEvent {
-        let newTypeEvent = NSEntityDescription.insertNewObject(forEntityName: "TypeEvent", into: moc) as! TypeEvent
+        let newTypeEvent = NSEntityDescription.insertNewObject(forEntityName: "TypeEvent", into: CoreDataManager.context) as! TypeEvent
         newTypeEvent.name = name
         do {
-            try moc.save()
+            try CoreDataManager.context.save()
         } catch let error as NSError {
             print(error)
         }
@@ -46,7 +44,7 @@ extension TypeEvent {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TypeEvent")
         
-        let fetchResults = try moc.fetch(fetchRequest) as? [TypeEvent]
+        let fetchResults = try CoreDataManager.context.fetch(fetchRequest) as? [TypeEvent]
         return fetchResults!
     }
     

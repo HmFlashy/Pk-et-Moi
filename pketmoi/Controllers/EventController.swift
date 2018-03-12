@@ -10,9 +10,7 @@ import UIKit
 import CoreData
 
 class EventController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UITextViewDelegate {
-    
-    
-    
+
     @IBOutlet weak var buttonTriggerEvent: UIButton!
     @IBOutlet weak var buttonAddEvent: UIButton!
     
