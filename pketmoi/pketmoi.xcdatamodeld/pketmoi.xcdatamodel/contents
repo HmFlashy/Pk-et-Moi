@@ -4,7 +4,7 @@
         <relationship name="typeActivity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TypeActivity" inverseName="activities" inverseEntity="TypeActivity" syncable="YES"/>
     </entity>
     <entity name="Event" representedClassName="Event" parentEntity="TimeItem" syncable="YES" codeGenerationType="class">
-        <relationship name="typeEvent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TypeEvent" syncable="YES"/>
+        <relationship name="typeEvent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TypeEvent" inverseName="events" inverseEntity="TypeEvent" syncable="YES"/>
     </entity>
     <entity name="TimeItem" representedClassName="TimeItem" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -17,12 +17,13 @@
     </entity>
     <entity name="TypeEvent" representedClassName="TypeEvent" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="typeEvent" inverseEntity="Event" syncable="YES"/>
     </entity>
     <elements>
         <element name="Activity" positionX="216" positionY="-108" width="128" height="58"/>
         <element name="Event" positionX="-83" positionY="-84" width="128" height="58"/>
         <element name="TimeItem" positionX="79" positionY="-279" width="128" height="73"/>
         <element name="TypeActivity" positionX="396" positionY="117" width="128" height="88"/>
-        <element name="TypeEvent" positionX="-117" positionY="59" width="128" height="58"/>
+        <element name="TypeEvent" positionX="-117" positionY="59" width="128" height="73"/>
     </elements>
 </model>
