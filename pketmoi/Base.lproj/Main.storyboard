@@ -351,58 +351,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="748"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="voc-9U-PlR">
-                                <rect key="frame" x="32" y="93" width="351" height="71"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DoctorCell" textLabel="Sxe-NZ-vpt" detailTextLabel="H1o-BZ-0gh" style="IBUITableViewCellStyleSubtitle" id="Dgb-CQ-eOe" customClass="DoctorTableViewCell" customModule="pketmoi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="351" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dgb-CQ-eOe" id="fPC-mo-UPA">
-                                            <rect key="frame" x="0.0" y="0.0" width="351" height="43.666666666666664"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DoctorCell" textLabel="Sxe-NZ-vpt" detailTextLabel="H1o-BZ-0gh" style="IBUITableViewCellStyleSubtitle" translatesAutoresizingMaskIntoConstraints="NO" id="Dgb-CQ-eOe" customClass="DoctorTableViewCell" customModule="pketmoi" customModuleProvider="target">
+                                <rect key="frame" x="31" y="352" width="351" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dgb-CQ-eOe" id="fPC-mo-UPA">
+                                    <rect key="frame" x="0.0" y="0.0" width="351" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="nom médecin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sxe-NZ-vpt">
+                                            <rect key="frame" x="20.000000000000007" y="5" width="103.66666666666667" height="20.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="nom médecin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sxe-NZ-vpt">
-                                                    <rect key="frame" x="15.000000000000007" y="5" width="103.66666666666667" height="20.333333333333332"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="profession" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H1o-BZ-0gh">
-                                                    <rect key="frame" x="15.000000000000004" y="25.333333333333332" width="59.333333333333336" height="14.333333333333334"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GnD-CF-m2E">
-                                                    <rect key="frame" x="203" y="6" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="RDV"/>
-                                                    <connections>
-                                                        <action selector="appointmentButtonAction:" destination="Dgb-CQ-eOe" eventType="touchUpInside" id="uBJ-Pz-RZu"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khs-uL-Hxf">
-                                                    <rect key="frame" x="297" y="6" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Call"/>
-                                                    <connections>
-                                                        <action selector="callButton:" destination="Dgb-CQ-eOe" eventType="touchUpInside" id="5iU-21-tb0"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="appointmentButtonAction" destination="GnD-CF-m2E" id="4L3-gE-qwX"/>
-                                            <outlet property="doctorFullName" destination="Sxe-NZ-vpt" id="wUa-nZ-4fA"/>
-                                            <outlet property="doctorProfession" destination="H1o-BZ-0gh" id="OHS-kI-KbK"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="profession" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H1o-BZ-0gh">
+                                            <rect key="frame" x="20.000000000000004" y="25.333333333333332" width="59.333333333333336" height="14.333333333333334"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GnD-CF-m2E">
+                                            <rect key="frame" x="203" y="6" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="RDV"/>
+                                            <connections>
+                                                <action selector="appointmentButtonAction:" destination="Dgb-CQ-eOe" eventType="touchUpInside" id="uBJ-Pz-RZu"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khs-uL-Hxf">
+                                            <rect key="frame" x="297" y="6" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Call"/>
+                                            <connections>
+                                                <action selector="callButton:" destination="Dgb-CQ-eOe" eventType="touchUpInside" id="5iU-21-tb0"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="appointmentButtonAction" destination="GnD-CF-m2E" id="4L3-gE-qwX"/>
+                                    <outlet property="doctorFullName" destination="Sxe-NZ-vpt" id="wUa-nZ-4fA"/>
+                                    <outlet property="doctorProfession" destination="H1o-BZ-0gh" id="OHS-kI-KbK"/>
+                                </connections>
+                            </tableViewCell>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6u-9i-D9b">
                                 <rect key="frame" x="102" y="641" width="210" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -421,7 +414,6 @@
                         <outlet property="DoctorTableView" destination="Dgb-CQ-eOe" id="UOL-W9-G01"/>
                         <outlet property="addDoctorAction" destination="L6u-9i-D9b" id="H0R-pz-3dW"/>
                         <outlet property="appointmentButton" destination="GnD-CF-m2E" id="Yea-bb-iiG"/>
-                        <outlet property="doctorTableView" destination="voc-9U-PlR" id="ya7-Zz-ygU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ntd-7n-AlP" userLabel="First Responder" sceneMemberID="firstResponder"/>

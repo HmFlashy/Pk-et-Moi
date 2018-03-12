@@ -13,6 +13,8 @@ class DoctorViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     @IBOutlet weak var doctorTableView: UITableView!
     
+    let doctorPresenter: DoctorPresenter = DoctorPresenter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,7 +46,7 @@ class DoctorViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = doctorTableView.dequeueReusableCell(withIdentifier: "DoctorCell", for: indexPath) as! DoctorTableViewCell
-        cell.typeActivityName.text = doctorFetched.object(at: indexPath).name
+        self.doctorPresenter.configureCell(forCell: cell, doctor: doctorFetched.object(at: indexPath))
         return cell
     }
     
