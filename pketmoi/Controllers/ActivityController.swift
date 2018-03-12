@@ -13,6 +13,15 @@ class ActivityController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var typeActivityTableView: UITableView!
     
+    @IBAction func showPopup(_ sender: Any) {
+        let popoverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addTypeActivitySb") as! TypeActivityController
+        self.addChildViewController(popoverVC)
+        popoverVC.view.frame = self.view.frame
+        self.view.addSubview((popoverVC.view))
+        popoverVC.didMove(toParentViewController: self)
+    }
+    
+    
     /*@IBAction func showPopup(_ sender: Any) {
         
         UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
@@ -44,8 +53,6 @@ class ActivityController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         typeActivityTableView.dataSource = self
         typeActivityTableView.delegate = self
-        //popView.layer.cornerRadius = 10
-        //popView.layer.masksToBounds = true
         
         do{
             try self.typeActivityFetched.performFetch()

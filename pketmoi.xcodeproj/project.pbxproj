@@ -36,7 +36,6 @@
 		6EA83A9C2042231F00AA68CF /* TypeEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA83A9B2042231F00AA68CF /* TypeEventController.swift */; };
 		F31CEE27205557560036080F /* TypeActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31CEE26205557560036080F /* TypeActivityController.swift */; };
 		F31CEE2C20557FDF0036080F /* TypeActivityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31CEE2B20557FDF0036080F /* TypeActivityExtension.swift */; };
-		F31CEE2E2055B5550036080F /* TypeActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31CEE2D2055B5550036080F /* TypeActivityTableViewController.swift */; };
 		F31CEE3220560A590036080F /* TypeActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31CEE3120560A590036080F /* TypeActivityTableViewCell.swift */; };
 		F3811040205374580090F942 /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F381103F205374580090F942 /* ActivityController.swift */; };
 		F3DC525F2056190800579395 /* PopupTypeActivityPlanificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC525E2056190800579395 /* PopupTypeActivityPlanificationViewController.swift */; };
@@ -85,7 +84,6 @@
 		6EA83A9B2042231F00AA68CF /* TypeEventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeEventController.swift; sourceTree = "<group>"; };
 		F31CEE26205557560036080F /* TypeActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeActivityController.swift; sourceTree = "<group>"; };
 		F31CEE2B20557FDF0036080F /* TypeActivityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeActivityExtension.swift; sourceTree = "<group>"; };
-		F31CEE2D2055B5550036080F /* TypeActivityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeActivityTableViewController.swift; sourceTree = "<group>"; };
 		F31CEE3120560A590036080F /* TypeActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeActivityTableViewCell.swift; sourceTree = "<group>"; };
 		F381103F205374580090F942 /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
 		F3DC525E2056190800579395 /* PopupTypeActivityPlanificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupTypeActivityPlanificationViewController.swift; sourceTree = "<group>"; };
@@ -197,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				F3DC525E2056190800579395 /* PopupTypeActivityPlanificationViewController.swift */,
-				F31CEE2D2055B5550036080F /* TypeActivityTableViewController.swift */,
 				6E8B9186203DCA6E00B11989 /* HomeController.swift */,
 				6E389037203DDDB900105CE8 /* EventController.swift */,
 				6E389039203DE61D00105CE8 /* EventTableViewController.swift */,
@@ -344,7 +341,6 @@
 				F31CEE27205557560036080F /* TypeActivityController.swift in Sources */,
 				6E5BA19B2032DD6500703328 /* AppDelegate.swift in Sources */,
 				6E287CA32046A9CE0007EFC2 /* TypeEventPresenter.swift in Sources */,
-				F31CEE2E2055B5550036080F /* TypeActivityTableViewController.swift in Sources */,
 				6E3893DD204D55820052DCD6 /* EventTableViewCell.swift in Sources */,
 				F31CEE2C20557FDF0036080F /* TypeActivityExtension.swift in Sources */,
 				6E5BA1A32032DD6500703328 /* pketmoi.xcdatamodeld in Sources */,

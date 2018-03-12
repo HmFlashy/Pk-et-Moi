@@ -9,7 +9,7 @@
 import UIKit
 
 class PopupTypeActivityPlanificationViewController: UIViewController {
-    
+
     @IBOutlet weak var popupView: UIView!
     
     override func viewDidLoad() {
