@@ -11,11 +11,14 @@ import CoreData
 
 class TypeActivityController: UIViewController{
     
+    @IBOutlet weak var popUpView: UIView!
     @IBOutlet weak var typeActivity: UITextField!
     @IBOutlet weak var descriptionTypeActivity: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        popUpView.layer.cornerRadius = 10
+        popUpView.layer.masksToBounds = true
     }
     
     @IBAction func addTypeActivity(_ sender: Any) {
