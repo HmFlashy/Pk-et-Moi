@@ -10,6 +10,13 @@ import UIKit
 
 class OnBoardViewController: UIViewController {
 
+    @IBOutlet weak var nameOutlet: UITextField!
+    @IBOutlet weak var firstnameOutlet: UITextField!
+    @IBOutlet weak var birthDateOutlet: UIDatePicker!
+    @IBOutlet weak var preparationTimeOutlet: UISlider!
+    
+    @IBOutlet weak var preparationTimeDisplay: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,10 +28,15 @@ class OnBoardViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        let currentValue = Int(sender.value)
+        preparationTimeDisplay.text = String(currentValue) + " min"
+    }
     @IBAction func validateFirstTimeAction(_ sender: Any) {
         let typeProfession = TypeProfession.fillDatabase()
         let profession = Profession.fillDatabase()
-        profession?.typeProfession = typeProfession
+        profession[0].typeProfession = typeProfession[0]
+        profession[1].typeProfession = typeProfession[1]
         do {
             try CoreDataManager.context.save()
         } catch {
@@ -32,6 +44,10 @@ class OnBoardViewController: UIViewController {
             fatalError()
         }
         UserDefaults.standard.set("false", forKey: "firstLaunch")
+        UserDefaults.standard.set(nameOutlet.text, forKey: "LastName")
+        UserDefaults.standard.set(firstnameOutlet.text, forKey: "FirstName")
+        UserDefaults.standard.set(birthDateOutlet.date, forKey: "BirthDate")
+        UserDefaults.standard.set(preparationTimeOutlet.value, forKey: "PreparationTime")
         performSegue(withIdentifier: "toMainView", sender: sender)
     }
     

@@ -18,13 +18,16 @@ extension TypeProfession {
         return TypeProfession(entity: entity, insertInto: CoreDataManager.context)
     }
     
-    static func fillDatabase() -> TypeProfession? {
+    static func fillDatabase() -> [TypeProfession] {
         guard let entity = NSEntityDescription.entity(forEntityName: "TypeProfession", in: CoreDataManager.context) else {
             print("TypeProfession does not exist in database")
             fatalError()
         }
-        let typeProfession = TypeProfession(entity: entity, insertInto: CoreDataManager.context)
-        typeProfession.title = "Test"
+        var typeProfession: [TypeProfession] = []
+        typeProfession.append(TypeProfession(entity: entity, insertInto: CoreDataManager.context))
+        typeProfession.append(TypeProfession(entity: entity, insertInto: CoreDataManager.context))
+        typeProfession[0].title = "Test"
+        typeProfession[1].title = "Test2"
         return typeProfession
     }
 }
