@@ -4,8 +4,26 @@
         <attribute name="duration" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="typeActivity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TypeActivity" inverseName="activities" inverseEntity="TypeActivity" syncable="YES"/>
     </entity>
+    <entity name="Doctor" representedClassName="Doctor" parentEntity="Person" syncable="YES" codeGenerationType="class">
+        <attribute name="timeTravel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="profession" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profession" inverseName="doctors" inverseEntity="Profession" syncable="YES"/>
+    </entity>
     <entity name="Event" representedClassName="Event" parentEntity="TimeItem" syncable="YES" codeGenerationType="class">
         <relationship name="typeEvent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TypeEvent" inverseName="events" inverseEntity="TypeEvent" syncable="YES"/>
+    </entity>
+    <entity name="Person" representedClassName="Person" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Profession" representedClassName="Profession" syncable="YES" codeGenerationType="class">
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="doctors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Doctor" inverseName="profession" inverseEntity="Doctor" syncable="YES"/>
+        <relationship name="typeProfession" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TypeProfession" inverseName="professions" inverseEntity="TypeProfession" syncable="YES"/>
     </entity>
     <entity name="TimeItem" representedClassName="TimeItem" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -20,11 +38,18 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="typeEvent" inverseEntity="Event" syncable="YES"/>
     </entity>
+    <entity name="TypeProfession" representedClassName="TypeProfession" syncable="YES" codeGenerationType="class">
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="professions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Profession" inverseName="typeProfession" inverseEntity="Profession" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Activity" positionX="216" positionY="-108" width="128" height="75"/>
         <element name="Event" positionX="-83" positionY="-84" width="128" height="58"/>
+        <element name="Person" positionX="79" positionY="75" width="128" height="150"/>
+        <element name="Profession" positionX="432" positionY="-36" width="128" height="90"/>
         <element name="TimeItem" positionX="79" positionY="-279" width="128" height="73"/>
         <element name="TypeActivity" positionX="396" positionY="117" width="128" height="90"/>
         <element name="TypeEvent" positionX="-117" positionY="59" width="128" height="73"/>
+        <element name="TypeProfession" positionX="367" positionY="-279" width="128" height="75"/>
     </elements>
 </model>
