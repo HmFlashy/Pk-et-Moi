@@ -29,7 +29,7 @@ class TypeActivityController: UIViewController{
         }
         let typeActivityName: String = typeActivity.text!
         let descriptionTA: String = descriptionTypeActivity.text
-        TypeActivity.createActivity(name: typeActivityName, description: descriptionTA)
+        TypeActivity.createTypeActivity(name: typeActivityName, description: descriptionTA)
         typeActivity.text = ""
         self.removeAnimate()
     }
@@ -44,6 +44,10 @@ class TypeActivityController: UIViewController{
         });
     }
     
+    @IBAction func returnButton(_ sender: Any) {
+        removeAnimate()
+    }
+    
     func removeAnimate()
     {
         UIView.animate(withDuration: 0.25, animations: {
@@ -52,7 +56,7 @@ class TypeActivityController: UIViewController{
         }, completion:{(finished : Bool)  in
             if (finished)
             {
-                self.view.removeFromSuperview()
+                self.dismiss(animated: true, completion: nil)
             }
         });
     }

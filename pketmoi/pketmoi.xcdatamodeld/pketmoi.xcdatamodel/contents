@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Activity" representedClassName="Activity" parentEntity="TimeItem" syncable="YES" codeGenerationType="class">
+        <attribute name="duration" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="typeActivity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TypeActivity" inverseName="activities" inverseEntity="TypeActivity" syncable="YES"/>
     </entity>
     <entity name="Event" representedClassName="Event" parentEntity="TimeItem" syncable="YES" codeGenerationType="class">
@@ -11,7 +12,7 @@
         <attribute name="itemDescription" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="TypeActivity" representedClassName="TypeActivity" syncable="YES" codeGenerationType="class">
-        <attribute name="descriptionActivity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descriptionTypeActivity" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="activities" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Activity" inverseName="typeActivity" inverseEntity="Activity" syncable="YES"/>
     </entity>
@@ -20,10 +21,10 @@
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="typeEvent" inverseEntity="Event" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Activity" positionX="216" positionY="-108" width="128" height="58"/>
+        <element name="Activity" positionX="216" positionY="-108" width="128" height="75"/>
         <element name="Event" positionX="-83" positionY="-84" width="128" height="58"/>
         <element name="TimeItem" positionX="79" positionY="-279" width="128" height="73"/>
-        <element name="TypeActivity" positionX="396" positionY="117" width="128" height="88"/>
+        <element name="TypeActivity" positionX="396" positionY="117" width="128" height="90"/>
         <element name="TypeEvent" positionX="-117" positionY="59" width="128" height="73"/>
     </elements>
 </model>

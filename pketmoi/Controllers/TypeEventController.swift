@@ -21,8 +21,9 @@ class TypeEventController: UIViewController {
     @IBAction func addTypeEvent(_ sender: Any) {
         guard typeEventTextArea.text != nil else {return}
         let typeEventName: String = typeEventTextArea.text!
-        TypeEvent.createEvent(name: typeEventName)
+        TypeEventModel(nom: typeEventName)
         typeEventTextArea.text = ""
+        CoreDataManager.save()
     }
 }
 

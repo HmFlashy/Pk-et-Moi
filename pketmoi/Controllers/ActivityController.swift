@@ -13,15 +13,6 @@ class ActivityController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var typeActivityTableView: UITableView!
     
-    @IBAction func showPopup(_ sender: Any) {
-        let popoverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addTypeActivitySb") as! TypeActivityController
-        self.addChildViewController(popoverVC)
-        popoverVC.view.frame = self.view.frame
-        self.view.addSubview((popoverVC.view))
-        popoverVC.didMove(toParentViewController: self)
-    }
-    
-    
     /*@IBAction func showPopup(_ sender: Any) {
         
         UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
@@ -71,6 +62,7 @@ class ActivityController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = typeActivityTableView.dequeueReusableCell(withIdentifier: "TypeActivityPlanifierCell", for: indexPath) as! TypeActivityTableViewCell
         cell.typeActivityName.text = typeActivityFetched.object(at: indexPath).name
+        cell.button.tag = indexPath.row
         return cell
     }
     
@@ -110,11 +102,26 @@ class ActivityController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {
+    }
+    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.typeActivityTableView.beginUpdates()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.typeActivityTableView.endUpdates()
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ScheduleActivity" {
+            if let button = sender as? UIButton{
+                let indexPath = IndexPath(row: button.tag, section: 0)
+                    let ScheduleActivityVC: ScheduleActivityViewController = segue.destination as! ScheduleActivityViewController
+                    ScheduleActivityVC.typeActivity = self.typeActivityFetched.object(at: indexPath)
+                    self.typeActivityTableView.deselectRow(at: indexPath, animated: true)
+            }
+        }
     }
 }

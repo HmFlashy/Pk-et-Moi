@@ -12,4 +12,13 @@ import UIKit
 class CoreDataManager {
     
     public static let context: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    public static func save(){
+        do{
+            try CoreDataManager.context.save()
+        }
+        catch{
+            print("error")
+        }
+    }
 }

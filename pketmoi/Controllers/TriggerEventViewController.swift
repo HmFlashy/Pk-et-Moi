@@ -13,7 +13,7 @@ class TriggerEventViewController: UIViewController, NSFetchedResultsControllerDe
     
     @IBOutlet weak var typeEventPickerView: TypeEventPickerViewController!
     
-    @IBOutlet weak var dataPicker: UIDatePicker!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBOutlet weak var descriptionTextArea: UITextView!
     
@@ -23,20 +23,11 @@ class TriggerEventViewController: UIViewController, NSFetchedResultsControllerDe
     }
     
     @IBAction func addTriggerEvent(_ sender: Any) {
-        let event: Event = Event(context: CoreDataManager.context)
-        event.typeEvent = typeEventPickerView.selectedTypeEvent
-        event.date = dataPicker.date
-        event.itemDescription = descriptionTextArea.text
-        do {
-            try CoreDataManager.context.save()
-            navigationController?.popViewController(animated: true)
-        } catch {
-            print("Erreur")
-        }
+        guard let typeEvent = typeEventPickerView.selectedTypeEvent else {return}
+        Event.createEvent(itemDescription: descriptionTextArea.text, date: datePicker.date, typeEvent: typeEvent)
     }
     
-    
-    // MARKL: - TextViewDelegate
+    // MARK : - TextViewDelegate
     
     // Start Editing The Text Field
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -62,4 +53,12 @@ class TriggerEventViewController: UIViewController, NSFetchedResultsControllerDe
         self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
         UIView.commitAnimations()
     }
+    
+    // MARK: - Navigation
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addEvent"{
+            guard let typeEvent = typeEventPickerView.selectedTypeEvent else {return}
+            Event.createEvent(itemDescription: descriptionTextArea.text, date: datePicker.date, typeEvent: typeEvent)
+        }
+    }*/
 }

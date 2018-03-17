@@ -14,7 +14,7 @@ class EventController: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var buttonTriggerEvent: UIButton!
     @IBOutlet weak var buttonAddEvent: UIButton!
     
-    @IBOutlet weak var eventTableView: EventTableView!
+    @IBOutlet weak var eventTableView: UITableView!
     
     let segueShowEvent = "showEvent"
     
@@ -44,9 +44,7 @@ class EventController: UIViewController, UITableViewDelegate, UITableViewDataSou
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {
     }
     
     // MARK: - UITableViewDataSource required protocol
@@ -106,6 +104,7 @@ class EventController: UIViewController, UITableViewDelegate, UITableViewDataSou
         self.eventTableView.endUpdates()
     }
     
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == self.segueShowEvent{
             if let indexPath = self.eventTableView.indexPathForSelectedRow{
@@ -115,12 +114,4 @@ class EventController: UIViewController, UITableViewDelegate, UITableViewDataSou
             }
         }
     }
-    
-    // MARK: - Action Handler
-    func deleteHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void{
-        let event = self.eventFetched.object(at: indexPath)
-        CoreDataManager.context.delete(event)
-    }
-    
-    
 }
