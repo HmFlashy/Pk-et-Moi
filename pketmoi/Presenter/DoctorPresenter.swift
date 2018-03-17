@@ -12,25 +12,25 @@ import UIKit
 class DoctorPresenter {
     
     
-    fileprivate var fullName: String = ""
+    fileprivate var fullname: String = ""
     fileprivate var profession: String = ""
     
     
     fileprivate var doctor: Doctor? = nil {
         didSet {
             if let doctor = self.doctor {
-                if let fullName = doctor.fullName {
-                    self.fullName = fullName
+                if let fullname = doctor.fullname {
+                    self.fullname = fullname
                 } else {
-                    self.fullName = "unknown"
+                    self.fullname = "unknown"
                 }
-                if doctor.profession != nil {
-                    self.profession = (doctor.profession?.title)!
+                if let profession = doctor.profession?.title {
+                    self.profession = profession
                 } else {
                     self.profession = "unknown"
                 }
             } else {
-                self.fullName = "NIL"
+                self.fullname = "NIL"
                 self.profession = "NIL"
             }
         }
@@ -39,7 +39,7 @@ class DoctorPresenter {
     func configureCell(forCell: UITableViewCell?, doctor: Doctor){
         self.doctor = doctor
         guard let cell: DoctorTableViewCell = forCell as? DoctorTableViewCell else { return }
-        cell.doctorFullName.text = self.fullName
+        cell.doctorFullName.text = self.fullname
         cell.doctorProfession.text = self.profession
     }
 }

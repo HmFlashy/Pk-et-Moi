@@ -43,13 +43,13 @@
     </entity>
     <elements>
         <element name="Activity" positionX="216" positionY="-108" width="128" height="58"/>
-        <element name="Doctor" positionX="90" positionY="-126" width="128" height="75"/>
+        <element name="Doctor" positionX="72" positionY="-54" width="128" height="73"/>
         <element name="Event" positionX="-83" positionY="-84" width="128" height="58"/>
-        <element name="Person" positionX="0" positionY="-54" width="128" height="150"/>
-        <element name="Profession" positionX="117" positionY="-99" width="128" height="90"/>
+        <element name="Person" positionX="79" positionY="75" width="128" height="150"/>
+        <element name="Profession" positionX="432" positionY="-36" width="128" height="90"/>
         <element name="TimeItem" positionX="79" positionY="-279" width="128" height="73"/>
         <element name="TypeActivity" positionX="396" positionY="117" width="128" height="88"/>
         <element name="TypeEvent" positionX="-117" positionY="59" width="128" height="73"/>
-        <element name="TypeProfession" positionX="126" positionY="-90" width="128" height="75"/>
+        <element name="TypeProfession" positionX="367" positionY="-279" width="128" height="75"/>
     </elements>
 </model>

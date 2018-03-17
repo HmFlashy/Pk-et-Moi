@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E0F6E4B204311D4005D4744 /* TypeEventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0F6E4A204311D4005D4744 /* TypeEventExtension.swift */; };
 		6E0F6E5320448906005D4744 /* TypeEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0F6E5220448906005D4744 /* TypeEventTableViewController.swift */; };
 		6E21DF632056DD2E00EE2F9B /* DoctorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21DF622056DD2E00EE2F9B /* DoctorTableViewCell.swift */; };
-		6E21DF652056DE0400EE2F9B /* PersonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21DF642056DE0400EE2F9B /* PersonExtension.swift */; };
 		6E21DF672056E31200EE2F9B /* DoctorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21DF662056E31200EE2F9B /* DoctorPresenter.swift */; };
+		6E21DF6D2056F59700EE2F9B /* AddDoctorStepTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21DF6C2056F59700EE2F9B /* AddDoctorStepTwoViewController.swift */; };
+		6E21DF6F2056FDF400EE2F9B /* AddDoctorStepOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21DF6E2056FDF400EE2F9B /* AddDoctorStepOneViewController.swift */; };
+		6E21DF712058430700EE2F9B /* DoctorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21DF702058430700EE2F9B /* DoctorModel.swift */; };
+		6E21DF732058439400EE2F9B /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21DF722058439400EE2F9B /* PersonModel.swift */; };
+		6E21DF762058452300EE2F9B /* PersonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21DF752058452300EE2F9B /* PersonExtension.swift */; };
+		6E21DF7820584BAC00EE2F9B /* DoctorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E21DF7720584BAC00EE2F9B /* DoctorExtension.swift */; };
 		6E287CA32046A9CE0007EFC2 /* TypeEventPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E287CA22046A9CE0007EFC2 /* TypeEventPresenter.swift */; };
 		6E389038203DDDB900105CE8 /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E389037203DDDB900105CE8 /* EventController.swift */; };
 		6E38903A203DE61D00105CE8 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E389039203DE61D00105CE8 /* EventTableViewController.swift */; };
@@ -23,6 +27,7 @@
 		6E3893DD204D55820052DCD6 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3893DC204D55820052DCD6 /* EventTableViewCell.swift */; };
 		6E3893DF204D55820052DCD6 /* EventTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3893DE204D55820052DCD6 /* EventTableView.swift */; };
 		6E3893E1204D55820052DCD6 /* EventPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3893E0204D55820052DCD6 /* EventPresenter.swift */; };
+		6E3F6E0A205D409F00F33D95 /* OnBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3F6E09205D409F00F33D95 /* OnBoardViewController.swift */; };
 		6E455C3220534770009343C1 /* ShowEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E455C3120534770009343C1 /* ShowEventViewController.swift */; };
 		6E4A63A72056D3F900BB436C /* DoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4A63A62056D3F900BB436C /* DoctorViewController.swift */; };
 		6E5BA19B2032DD6500703328 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BA19A2032DD6500703328 /* AppDelegate.swift */; };
@@ -32,11 +37,14 @@
 		6E5BA1A52032DD6500703328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E5BA1A42032DD6500703328 /* Assets.xcassets */; };
 		6E5BA1A82032DD6500703328 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E5BA1A62032DD6500703328 /* LaunchScreen.storyboard */; };
 		6E5BA1B32032DD6500703328 /* pketmoiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BA1B22032DD6500703328 /* pketmoiTests.swift */; };
+		6E5C7125205855830028D26F /* TypeProfessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5C7124205855830028D26F /* TypeProfessionExtension.swift */; };
 		6E8B9187203DCA6E00B11989 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8B9186203DCA6E00B11989 /* HomeController.swift */; };
 		6EA83A9A20421CAF00AA68CF /* databaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA83A9920421CAF00AA68CF /* databaseFactory.swift */; };
 		6EA83A9C2042231F00AA68CF /* TypeEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA83A9B2042231F00AA68CF /* TypeEventController.swift */; };
+		6EB9F2122059357F00712235 /* ProfessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB9F2112059357F00712235 /* ProfessionExtension.swift */; };
+		6EB9F21420595A7000712235 /* TypeProfessionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB9F21320595A7000712235 /* TypeProfessionPickerView.swift */; };
+		6EB9F216205ADE1E00712235 /* ProfessionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB9F215205ADE1E00712235 /* ProfessionPickerView.swift */; };
 		F31CEE27205557560036080F /* TypeActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31CEE26205557560036080F /* TypeActivityController.swift */; };
-		F31CEE2C20557FDF0036080F /* TypeActivityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31CEE2B20557FDF0036080F /* TypeActivityExtension.swift */; };
 		F31CEE3220560A590036080F /* TypeActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31CEE3120560A590036080F /* TypeActivityTableViewCell.swift */; };
 		F3811040205374580090F942 /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F381103F205374580090F942 /* ActivityController.swift */; };
 		F3DC525F2056190800579395 /* PopupTypeActivityPlanificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC525E2056190800579395 /* PopupTypeActivityPlanificationViewController.swift */; };
@@ -53,11 +61,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6E0F6E4A204311D4005D4744 /* TypeEventExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeEventExtension.swift; sourceTree = "<group>"; };
 		6E0F6E5220448906005D4744 /* TypeEventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeEventTableViewController.swift; sourceTree = "<group>"; };
 		6E21DF622056DD2E00EE2F9B /* DoctorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorTableViewCell.swift; sourceTree = "<group>"; };
-		6E21DF642056DE0400EE2F9B /* PersonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonExtension.swift; sourceTree = "<group>"; };
 		6E21DF662056E31200EE2F9B /* DoctorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorPresenter.swift; sourceTree = "<group>"; };
+		6E21DF6C2056F59700EE2F9B /* AddDoctorStepTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDoctorStepTwoViewController.swift; sourceTree = "<group>"; };
+		6E21DF6E2056FDF400EE2F9B /* AddDoctorStepOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDoctorStepOneViewController.swift; sourceTree = "<group>"; };
+		6E21DF702058430700EE2F9B /* DoctorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorModel.swift; sourceTree = "<group>"; };
+		6E21DF722058439400EE2F9B /* PersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonModel.swift; sourceTree = "<group>"; };
+		6E21DF752058452300EE2F9B /* PersonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonExtension.swift; sourceTree = "<group>"; };
+		6E21DF7720584BAC00EE2F9B /* DoctorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorExtension.swift; sourceTree = "<group>"; };
 		6E287CA22046A9CE0007EFC2 /* TypeEventPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeEventPresenter.swift; sourceTree = "<group>"; };
 		6E389037203DDDB900105CE8 /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
 		6E389039203DE61D00105CE8 /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +80,7 @@
 		6E3893DC204D55820052DCD6 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		6E3893DE204D55820052DCD6 /* EventTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableView.swift; sourceTree = "<group>"; };
 		6E3893E0204D55820052DCD6 /* EventPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPresenter.swift; sourceTree = "<group>"; };
+		6E3F6E09205D409F00F33D95 /* OnBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardViewController.swift; sourceTree = "<group>"; };
 		6E455C3120534770009343C1 /* ShowEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventViewController.swift; sourceTree = "<group>"; };
 		6E4A63A62056D3F900BB436C /* DoctorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorViewController.swift; sourceTree = "<group>"; };
 		6E5BA1972032DD6500703328 /* pketmoi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pketmoi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,11 +94,14 @@
 		6E5BA1AE2032DD6500703328 /* pketmoiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pketmoiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E5BA1B22032DD6500703328 /* pketmoiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pketmoiTests.swift; sourceTree = "<group>"; };
 		6E5BA1B42032DD6500703328 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E5C7124205855830028D26F /* TypeProfessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeProfessionExtension.swift; sourceTree = "<group>"; };
 		6E8B9186203DCA6E00B11989 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		6EA83A9920421CAF00AA68CF /* databaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = databaseFactory.swift; sourceTree = "<group>"; };
 		6EA83A9B2042231F00AA68CF /* TypeEventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeEventController.swift; sourceTree = "<group>"; };
+		6EB9F2112059357F00712235 /* ProfessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionExtension.swift; sourceTree = "<group>"; };
+		6EB9F21320595A7000712235 /* TypeProfessionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeProfessionPickerView.swift; sourceTree = "<group>"; };
+		6EB9F215205ADE1E00712235 /* ProfessionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionPickerView.swift; sourceTree = "<group>"; };
 		F31CEE26205557560036080F /* TypeActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeActivityController.swift; sourceTree = "<group>"; };
-		F31CEE2B20557FDF0036080F /* TypeActivityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeActivityExtension.swift; sourceTree = "<group>"; };
 		F31CEE3120560A590036080F /* TypeActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeActivityTableViewCell.swift; sourceTree = "<group>"; };
 		F381103F205374580090F942 /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
 		F3DC525E2056190800579395 /* PopupTypeActivityPlanificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupTypeActivityPlanificationViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +125,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E21DF74205844CD00EE2F9B /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				6E21DF752058452300EE2F9B /* PersonExtension.swift */,
+				6E21DF7720584BAC00EE2F9B /* DoctorExtension.swift */,
+				6E5C7124205855830028D26F /* TypeProfessionExtension.swift */,
+				6EB9F2112059357F00712235 /* ProfessionExtension.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		6E287CA12046A9B90007EFC2 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +183,7 @@
 		6E5BA1992032DD6500703328 /* pketmoi */ = {
 			isa = PBXGroup;
 			children = (
+				6E21DF74205844CD00EE2F9B /* CoreData */,
 				6E3893D7204B016D0052DCD6 /* Helper */,
 				6E287CA12046A9B90007EFC2 /* Presenter */,
 				6E463B032041DE0000F7332F /* Data */,
@@ -185,9 +213,8 @@
 		6E5BA1BF203C7CE300703328 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F31CEE2B20557FDF0036080F /* TypeActivityExtension.swift */,
-				6E0F6E4A204311D4005D4744 /* TypeEventExtension.swift */,
-				6E21DF642056DE0400EE2F9B /* PersonExtension.swift */,
+				6E21DF702058430700EE2F9B /* DoctorModel.swift */,
+				6E21DF722058439400EE2F9B /* PersonModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,6 +222,7 @@
 		6E5BA1C0203C7D0400703328 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6E3F6E09205D409F00F33D95 /* OnBoardViewController.swift */,
 				F3DC525E2056190800579395 /* PopupTypeActivityPlanificationViewController.swift */,
 				6E8B9186203DCA6E00B11989 /* HomeController.swift */,
 				6E389037203DDDB900105CE8 /* EventController.swift */,
@@ -204,11 +232,12 @@
 				6E0F6E5220448906005D4744 /* TypeEventTableViewController.swift */,
 				6EA83A9B2042231F00AA68CF /* TypeEventController.swift */,
 				6E3893DA204B02A80052DCD6 /* TriggerEventViewController.swift */,
-				6E3893DE204D55820052DCD6 /* EventTableView.swift */,
 				6E455C3120534770009343C1 /* ShowEventViewController.swift */,
 				F381103F205374580090F942 /* ActivityController.swift */,
 				F31CEE26205557560036080F /* TypeActivityController.swift */,
 				6E4A63A62056D3F900BB436C /* DoctorViewController.swift */,
+				6E21DF6C2056F59700EE2F9B /* AddDoctorStepTwoViewController.swift */,
+				6E21DF6E2056FDF400EE2F9B /* AddDoctorStepOneViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -219,6 +248,9 @@
 				6E3893DC204D55820052DCD6 /* EventTableViewCell.swift */,
 				F31CEE3120560A590036080F /* TypeActivityTableViewCell.swift */,
 				6E21DF622056DD2E00EE2F9B /* DoctorTableViewCell.swift */,
+				6EB9F21320595A7000712235 /* TypeProfessionPickerView.swift */,
+				6EB9F215205ADE1E00712235 /* ProfessionPickerView.swift */,
+				6E3893DE204D55820052DCD6 /* EventTableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -334,10 +366,10 @@
 				F3DC525F2056190800579395 /* PopupTypeActivityPlanificationViewController.swift in Sources */,
 				6E3893DF204D55820052DCD6 /* EventTableView.swift in Sources */,
 				6E3890452041CA6900105CE8 /* TypeEventPickerViewController.swift in Sources */,
-				6E21DF652056DE0400EE2F9B /* PersonExtension.swift in Sources */,
 				6E455C3220534770009343C1 /* ShowEventViewController.swift in Sources */,
 				F3811040205374580090F942 /* ActivityController.swift in Sources */,
-				6E0F6E4B204311D4005D4744 /* TypeEventExtension.swift in Sources */,
+				6EB9F216205ADE1E00712235 /* ProfessionPickerView.swift in Sources */,
+				6E5C7125205855830028D26F /* TypeProfessionExtension.swift in Sources */,
 				6E8B9187203DCA6E00B11989 /* HomeController.swift in Sources */,
 				6E3893E1204D55820052DCD6 /* EventPresenter.swift in Sources */,
 				6E38903C203DF0D800105CE8 /* PkTabBarController.swift in Sources */,
@@ -346,14 +378,22 @@
 				6E5BA19B2032DD6500703328 /* AppDelegate.swift in Sources */,
 				6E287CA32046A9CE0007EFC2 /* TypeEventPresenter.swift in Sources */,
 				6E3893DD204D55820052DCD6 /* EventTableViewCell.swift in Sources */,
-				F31CEE2C20557FDF0036080F /* TypeActivityExtension.swift in Sources */,
+				6E21DF732058439400EE2F9B /* PersonModel.swift in Sources */,
 				6E5BA1A32032DD6500703328 /* pketmoi.xcdatamodeld in Sources */,
 				6E389038203DDDB900105CE8 /* EventController.swift in Sources */,
+				6EB9F2122059357F00712235 /* ProfessionExtension.swift in Sources */,
 				F31CEE3220560A590036080F /* TypeActivityTableViewCell.swift in Sources */,
 				6EA83A9C2042231F00AA68CF /* TypeEventController.swift in Sources */,
+				6EB9F21420595A7000712235 /* TypeProfessionPickerView.swift in Sources */,
+				6E21DF6D2056F59700EE2F9B /* AddDoctorStepTwoViewController.swift in Sources */,
+				6E21DF7820584BAC00EE2F9B /* DoctorExtension.swift in Sources */,
 				6E4A63A72056D3F900BB436C /* DoctorViewController.swift in Sources */,
 				6E3893DB204B02A90052DCD6 /* TriggerEventViewController.swift in Sources */,
+				6E21DF762058452300EE2F9B /* PersonExtension.swift in Sources */,
+				6E21DF712058430700EE2F9B /* DoctorModel.swift in Sources */,
 				6E21DF632056DD2E00EE2F9B /* DoctorTableViewCell.swift in Sources */,
+				6E21DF6F2056FDF400EE2F9B /* AddDoctorStepOneViewController.swift in Sources */,
+				6E3F6E0A205D409F00F33D95 /* OnBoardViewController.swift in Sources */,
 				6E0F6E5320448906005D4744 /* TypeEventTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

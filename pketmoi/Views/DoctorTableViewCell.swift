@@ -29,7 +29,6 @@ class DoctorTableViewCell: UITableViewCell {
         
     }
     
-    
     @IBAction func appointmentButtonAction(_ sender: Any) {
         
     }

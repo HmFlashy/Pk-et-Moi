@@ -34,11 +34,6 @@ class DoctorViewController: UIViewController, NSFetchedResultsControllerDelegate
         return fetchedResultController
     }()
     
-    @IBAction func addDoctorAction(_ sender: Any) {
-        
-    }
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let doctors = doctorFetched.fetchedObjects else { return 0 }
         return doctors.count
@@ -46,8 +41,13 @@ class DoctorViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = doctorTableView.dequeueReusableCell(withIdentifier: "DoctorCell", for: indexPath) as! DoctorTableViewCell
-        self.doctorPresenter.configureCell(forCell: cell, doctor: doctorFetched.object(at: indexPath))
+        let doctor: Doctor = doctorFetched.object(at: indexPath)
+        self.doctorPresenter.configureCell(forCell: cell, doctor: doctor)
         return cell
+    }
+    
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
+        
     }
     
     
