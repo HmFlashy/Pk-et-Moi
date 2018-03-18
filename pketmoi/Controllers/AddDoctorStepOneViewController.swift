@@ -18,7 +18,8 @@ class AddDoctorStepOneViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        professionTypePicker.setProfessionPicker(professionPicker: professionPicker)
+        professionTypePicker.selectedRow(inComponent: 0)
         // Do any additional setup after loading the view.
     }
 
@@ -30,7 +31,8 @@ class AddDoctorStepOneViewController: UIViewController {
     
     @IBAction func choseProfessionAction(_ sender: Any) {
         doctor = Doctor.getNewDoctorDAO()
-        doctor?.profession = professionPicker.professionFetched.object(at: IndexPath(row: professionPicker.selectedRow(inComponent: 0), section: 0))
+        guard let professions = professionPicker.professionsFetched else { return }
+        doctor?.profession = professions[professionPicker.selectedRow(inComponent: 0)]
     }
     
     

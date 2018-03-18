@@ -12,7 +12,9 @@ import CoreData
 class TypeProfessionPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource, NSFetchedResultsControllerDelegate {
     
     
-    var selectedTypeProfession: TypeProfession?
+    private var selectedTypeProfession: TypeProfession?
+    
+    private var professionPicker: ProfessionPickerView?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -23,10 +25,6 @@ class TypeProfessionPickerView: UIPickerView, UIPickerViewDelegate, UIPickerView
         } catch {
             print("Problem")
         }
-        guard let typeProfessions = typeProfessionFetched.fetchedObjects else { return }
-        if(typeProfessions.count > 0) {
-            selectedTypeProfession = typeProfessions[0]
-        }
     }
     
     public lazy var typeProfessionFetched: NSFetchedResultsController<TypeProfession> = {
@@ -36,6 +34,10 @@ class TypeProfessionPickerView: UIPickerView, UIPickerViewDelegate, UIPickerView
         fetchedResultController.delegate = self
         return fetchedResultController
     }()
+    
+    public func setProfessionPicker(professionPicker: ProfessionPickerView){
+        self.professionPicker = professionPicker
+    }
     
     // UIPickerViewDataSource required protocol
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -55,7 +57,8 @@ class TypeProfessionPickerView: UIPickerView, UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard let typeProfessions = typeProfessionFetched.fetchedObjects else { return }
-        selectedTypeProfession = typeProfessions[row]
+        guard let professionPickerView = professionPicker else { return }
+        professionPickerView.set(forProfessions: typeProfessions[row].professions?.allObjects as? [Profession])
     }
     
 

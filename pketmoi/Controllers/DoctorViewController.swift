@@ -36,6 +36,7 @@ class DoctorViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let doctors = doctorFetched.fetchedObjects else { return 0 }
+        print(doctors.count)
         return doctors.count
     }
     

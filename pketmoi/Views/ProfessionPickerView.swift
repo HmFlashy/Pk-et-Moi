@@ -15,24 +15,9 @@ class ProfessionPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewData
         super.init(coder: aDecoder)
         self.delegate = self
         self.dataSource = self
-        do {
-            try self.professionFetched.performFetch()
-        } catch {
-            print("Problem")
-        }
-        guard let professions = professionFetched.fetchedObjects else { return }
-        if(professions.count > 0){
-            self.selectRow(0, inComponent: 0, animated: true)
-        }
     }
     
-    public lazy var professionFetched: NSFetchedResultsController<Profession> = {
-        let request: NSFetchRequest<Profession> = Profession.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Profession.title), ascending: true)]
-        let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultController.delegate = self
-        return fetchedResultController
-    }()
+    public var professionsFetched: [Profession]?
     
     // UIPickerViewDataSource required protocol
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -40,18 +25,25 @@ class ProfessionPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewData
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        guard let professions = professionFetched.fetchedObjects else { return 0 }
+        guard let professions = professionsFetched else { return 0 }
+        print(professions.count)
         return professions.count
     }
     
     // UIPickerViewDelegate optional protocol
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard let professions = professionFetched.fetchedObjects else { return ""}
+        guard let professions = professionsFetched else { return "" }
         return professions[row].title
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        guard let professions = professionFetched.fetchedObjects else { return }
+    }
+    
+    public func set(forProfessions: [Profession]?){
+        self.professionsFetched = forProfessions
+        self.reloadAllComponents()
+        self.selectedRow(inComponent: 0)
+        
     }
     
     
