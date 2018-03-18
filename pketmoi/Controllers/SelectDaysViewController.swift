@@ -22,6 +22,7 @@ class SelectDaysViewController: UIViewController {
     var duration: String!
     var HoursInterval: String!
     var typeActivity: TypeActivity!
+    var descriptionActivity: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,15 +52,24 @@ class SelectDaysViewController: UIViewController {
             days.append("Sunday")
         }
         var tomorrow: Date = startDate!
-        while tomorrow.compare(endDate!).rawValue<1 {
+        while tomorrow.compare(endDate!).rawValue<0 {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat  = "EEEE"
             let dayInWeek = dateFormatter.string(from: tomorrow)
             if days.contains(dayInWeek){
-                print(Activity.createActivity(itemDescription: "", date: tomorrow, duration: duration, typeActivity: typeActivity))
+                print(Activity.createActivity(itemDescription: descriptionActivity, date: tomorrow, duration: duration, typeActivity: typeActivity))
             }
             tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: tomorrow)!
         }
+        // We add one more activity because the compare() is not displaying 0 when
+        // the dates are equal but 1
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat  = "EEEE"
+        let dayInWeek = dateFormatter.string(from: tomorrow)
+        if days.contains(dayInWeek){
+            print(Activity.createActivity(itemDescription: descriptionActivity, date: tomorrow, duration: duration, typeActivity: typeActivity))
+        }
+        
     }
     
     /*

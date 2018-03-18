@@ -12,7 +12,7 @@ import CoreData
 class ActivityController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate{
 
     @IBOutlet weak var typeActivityTableView: UITableView!
-    
+
     /*@IBAction func showPopup(_ sender: Any) {
         
         UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
@@ -44,7 +44,7 @@ class ActivityController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         typeActivityTableView.dataSource = self
         typeActivityTableView.delegate = self
-        
+	
         do{
             try self.typeActivityFetched.performFetch()
         } catch {

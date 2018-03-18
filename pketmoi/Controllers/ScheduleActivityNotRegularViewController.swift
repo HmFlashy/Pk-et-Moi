@@ -8,16 +8,18 @@
 
 import UIKit
 
-class ScheduleActivityNotRegularViewController: UIViewController {
+class ScheduleActivityNotRegularViewController: UIViewController, UITextViewDelegate {
 
     var typeActivity: TypeActivity?
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var duration: UITextField!
     @IBOutlet weak var dateErrorMessage: UILabel!
     @IBOutlet weak var durationErrorMessage: UILabel!
+    @IBOutlet weak var descriptionActivity: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        descriptionActivity.delegate = self
     }
     
     func addActivity(){
@@ -45,6 +47,32 @@ class ScheduleActivityNotRegularViewController: UIViewController {
         }
         self.addActivity()
         return true
+    }
+    
+    // MARK : - TextViewDelegate
+    
+    // Start Editing The Text Field
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        moveTextView(textView, moveDistance: -250, up: true)
+    }
+    
+    // Finish Editing The Text Field
+    func textViewDidEndEditing(_ textView: UITextView) {
+        moveTextView(textView, moveDistance: -250, up: false)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        descriptionActivity.resignFirstResponder()
+    }
+    
+    private func moveTextView(_ textView: UITextView, moveDistance: Int, up: Bool) {
+        let moveDuration = 0.3
+        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(moveDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
     }
     
     /*
