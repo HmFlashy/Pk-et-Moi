@@ -9,36 +9,36 @@
 import UIKit
 import CoreData
 
-class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class DrugsViewController: UIViewController, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var drugTableView: UITableView!
     
-    fileprivate lazy var drugFetched: NSFetchedResultsController<Drug> = {
+    /*fileprivate lazy var drugFetched: NSFetchedResultsController<Drug> = {
         let request: NSFetchRequest<Drug> = Drug.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Drug.name), ascending: true)]
         let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultController.delegate = self
         return fetchedResultController
-    }()
+    }()*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
-            try self.drugFetched.performFetch()
+            //try self.drugFetched.performFetch()
         } catch {
             print("Problem")
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    /*func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let drugs = drugFetched.fetchedObjects else { return 0 }
         return drugs.count
-    }
+    }*/
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = drugTableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
-        eventPresenter.configureCell(forCell: cell, event: drugFetched.object(at: indexPath))
+        //eventPresenter.configureCell(forCell: cell, event: drugFetched.object(at: indexPath))
         return cell
     }
     
@@ -46,10 +46,10 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+   /* func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-            let event = eventFetched.object(at: indexPath)
+            let event = drugFetched.object(at: indexPath)
             CoreDataManager.context.delete(event)
             do {
                 try CoreDataManager.context.save()
@@ -60,18 +60,18 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         default:break
         }
     }
-    
+    */
     // MARK: - NSFetchResultController delegate protocol
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch (type) {
         case .insert:
             if let indexPath = newIndexPath {
-                self.eventTableView.insertRows(at: [indexPath], with: .fade)
+                self.drugTableView.insertRows(at: [indexPath], with: .fade)
             }
             break
         case .delete:
             if let indexPath = indexPath {
-                self.eventTableView.deleteRows(at: [indexPath], with: .automatic)
+                self.drugTableView.deleteRows(at: [indexPath], with: .automatic)
             }
         default:
             break
@@ -79,11 +79,11 @@ class DrugsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.eventTableView.beginUpdates()
+        self.drugTableView.beginUpdates()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.eventTableView.endUpdates()
+        self.drugTableView.endUpdates()
     }
 
     /*
