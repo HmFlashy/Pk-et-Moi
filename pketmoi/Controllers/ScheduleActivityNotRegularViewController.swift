@@ -12,37 +12,32 @@ class ScheduleActivityNotRegularViewController: UIViewController, UITextViewDele
 
     var typeActivity: TypeActivity?
     @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var duration: UITextField!
     @IBOutlet weak var dateErrorMessage: UILabel!
-    @IBOutlet weak var durationErrorMessage: UILabel!
+    @IBOutlet weak var durationValue: UILabel!
+    @IBOutlet weak var durationSlider: UISlider!
     @IBOutlet weak var descriptionActivity: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionActivity.delegate = self
     }
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        let currentValue = Int(sender.value)
+        durationValue.text = String(currentValue) + " min"
+    }
     
     func addActivity(){
         guard let typeActivity = self.typeActivity else{
             return
         }
-        Activity.createActivity(itemDescription: "", date: datePicker.date, duration: duration.text!, typeActivity: typeActivity)
+        print(Activity.createActivity(itemDescription: "", date: datePicker.date, duration: Int(durationSlider.value), typeActivity: typeActivity))
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         self.dateErrorMessage.text = ""
-        self.durationErrorMessage.text = ""
         // The current date is 2 hours before the real one, need to fix it
         guard Date().compare(datePicker.date).rawValue>0 else{
             self.dateErrorMessage.text = "La date ne peut pas être plus tôt qu'aujourd'hui"
-            return false
-        }
-        guard duration.hasText else{
-            self.durationErrorMessage.text = "La durée doit être renseignée"
-            return false
-        }
-        guard let durationInt = Int(duration.text!) else{
-            self.durationErrorMessage.text = "La durée doit être un entier"
             return false
         }
         self.addActivity()

@@ -9,36 +9,40 @@
 import UIKit
 import CoreData
 
-class DrugsViewController: UIViewController, NSFetchedResultsControllerDelegate {
+class DrugsViewController: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var drugTableView: UITableView!
+    @IBOutlet weak var typeDrugTableView: UITableView!
     
-    /*fileprivate lazy var drugFetched: NSFetchedResultsController<Drug> = {
-        let request: NSFetchRequest<Drug> = Drug.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Drug.name), ascending: true)]
+    let typeDrugPresenter = TypeDrugPresenter()
+    
+    fileprivate lazy var typeDrugFetched: NSFetchedResultsController<TypeDrug> = {
+        let request: NSFetchRequest<TypeDrug> = TypeDrug.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(TypeDrug.name), ascending: true)]
         let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultController.delegate = self
         return fetchedResultController
-    }()*/
+    }()
     
     override func viewDidLoad() {
+        typeDrugTableView.delegate = self
+        typeDrugTableView.dataSource = self
         super.viewDidLoad()
         do {
-            //try self.drugFetched.performFetch()
+            try self.typeDrugFetched.performFetch()
         } catch {
-            print("Problem")
+            print("")
         }
     }
     
-    /*func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let drugs = drugFetched.fetchedObjects else { return 0 }
-        return drugs.count
-    }*/
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let typeDrugs = typeDrugFetched.fetchedObjects else { return 0 }
+        return typeDrugs.count
+    }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = drugTableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
-        //eventPresenter.configureCell(forCell: cell, event: drugFetched.object(at: indexPath))
+        let cell = typeDrugTableView.dequeueReusableCell(withIdentifier: "typeDrugCell", for: indexPath) as! TypeDrugTableViewCell
+        typeDrugPresenter.configureCell(forCell: cell, typeDrug: typeDrugFetched.object(at: indexPath))
         return cell
     }
     
@@ -46,10 +50,10 @@ class DrugsViewController: UIViewController, NSFetchedResultsControllerDelegate 
         return true
     }
     
-   /* func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-            let event = drugFetched.object(at: indexPath)
+            let event = typeDrugFetched.object(at: indexPath)
             CoreDataManager.context.delete(event)
             do {
                 try CoreDataManager.context.save()
@@ -60,18 +64,18 @@ class DrugsViewController: UIViewController, NSFetchedResultsControllerDelegate 
         default:break
         }
     }
-    */
+ 
     // MARK: - NSFetchResultController delegate protocol
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch (type) {
         case .insert:
             if let indexPath = newIndexPath {
-                self.drugTableView.insertRows(at: [indexPath], with: .fade)
+                self.typeDrugTableView.insertRows(at: [indexPath], with: .fade)
             }
             break
         case .delete:
             if let indexPath = indexPath {
-                self.drugTableView.deleteRows(at: [indexPath], with: .automatic)
+                self.typeDrugTableView.deleteRows(at: [indexPath], with: .automatic)
             }
         default:
             break
@@ -79,21 +83,27 @@ class DrugsViewController: UIViewController, NSFetchedResultsControllerDelegate 
     }
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.drugTableView.beginUpdates()
+        self.typeDrugTableView.beginUpdates()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.drugTableView.endUpdates()
+        self.typeDrugTableView.endUpdates()
+    }
+    
+    @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {
     }
 
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showTypeDrug"{
+            if let indexPath = self.typeDrugTableView.indexPathForSelectedRow{
+                print(segue.destination.description)
+                let destinationVC = segue.destination as! ShowTypeDrugViewController
+                destinationVC.typeDrug = self.typeDrugFetched.object(at: indexPath)
+                self.typeDrugTableView.deselectRow(at: indexPath, animated: true)
+            }
+        }
     }
-    */
 
 }

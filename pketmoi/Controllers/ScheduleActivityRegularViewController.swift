@@ -14,30 +14,31 @@ class ScheduleActivityRegularViewController: UIViewController, UITextViewDelegat
     @IBOutlet weak var dateErrorMessage: UILabel!
     @IBOutlet weak var StartDatePicker: UIDatePicker!
     @IBOutlet weak var EndDatePicker: UIDatePicker!
-    @IBOutlet weak var Duration: UITextField!
-    @IBOutlet weak var durationErrorMessage: UILabel!
+    @IBOutlet weak var durationSlider: UISlider!
     @IBOutlet weak var descriptionActivity: UITextView!
+    @IBOutlet weak var durationValue: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionActivity.delegate = self
+        durationValue.text = String(Int(durationSlider.value)) + " min"
     }
     
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        let currentValue = Int(sender.value)
+        durationValue.text = String(currentValue) + " min"
+    }
+    
+    
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        dateErrorMessage.text = ""
-        durationErrorMessage.text = ""
-        guard StartDatePicker.date.compare(EndDatePicker.date).rawValue<1 else{
-            self.dateErrorMessage.text = "La date de fin doit être supérieure à la date de début"
-            return false
+        if(identifier == "selectDays"){
+            dateErrorMessage.text = ""
+            guard StartDatePicker.date.compare(EndDatePicker.date).rawValue<1 else{
+                self.dateErrorMessage.text = "La date de fin doit être supérieure à la date de début"
+                return false
+            }
         }
-        guard Duration.hasText else{
-            self.durationErrorMessage.text = "La durée doit être renseignée"
-            return false}
-        guard let durationInt = Int(Duration.text!) else{
-            self.durationErrorMessage.text = "La durée doit être un entier"
-            return false
-        }
-        return true
+            return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -45,7 +46,7 @@ class ScheduleActivityRegularViewController: UIViewController, UITextViewDelegat
             let selectDaysViewController = segue.destination as! SelectDaysViewController
             selectDaysViewController.startDate = StartDatePicker.date
             selectDaysViewController.endDate = EndDatePicker.date
-            selectDaysViewController.duration = Duration.text!
+            selectDaysViewController.duration = Int(durationSlider.value)
             selectDaysViewController.typeActivity = typeActivity
             selectDaysViewController.descriptionActivity = descriptionActivity.text
         }

@@ -19,7 +19,7 @@ class SelectDaysViewController: UIViewController {
     @IBOutlet weak var SundaySwitch: UISwitch!
     var startDate: Date?
     var endDate: Date?
-    var duration: String!
+    var duration: Int!
     var HoursInterval: String!
     var typeActivity: TypeActivity!
     var descriptionActivity: String?
@@ -57,7 +57,7 @@ class SelectDaysViewController: UIViewController {
             dateFormatter.dateFormat  = "EEEE"
             let dayInWeek = dateFormatter.string(from: tomorrow)
             if days.contains(dayInWeek){
-                print(Activity.createActivity(itemDescription: descriptionActivity, date: tomorrow, duration: duration, typeActivity: typeActivity))
+                print(Activity.createActivity(itemDescription: descriptionActivity, date: tomorrow, duration: Int(duration), typeActivity: typeActivity))
             }
             tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: tomorrow)!
         }
@@ -67,7 +67,7 @@ class SelectDaysViewController: UIViewController {
         dateFormatter.dateFormat  = "EEEE"
         let dayInWeek = dateFormatter.string(from: tomorrow)
         if days.contains(dayInWeek){
-            print(Activity.createActivity(itemDescription: descriptionActivity, date: tomorrow, duration: duration, typeActivity: typeActivity))
+            print(Activity.createActivity(itemDescription: descriptionActivity, date: tomorrow, duration: Int(duration), typeActivity: typeActivity))
         }
         
     }

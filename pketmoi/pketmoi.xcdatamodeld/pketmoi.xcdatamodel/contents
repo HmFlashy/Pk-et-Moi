@@ -8,6 +8,10 @@
         <attribute name="timeTravel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="profession" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profession" inverseName="doctors" inverseEntity="Profession" syncable="YES"/>
     </entity>
+    <entity name="Drug" representedClassName="Drug" parentEntity="TimeItem" syncable="YES" codeGenerationType="class">
+        <attribute name="dose" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="typeDrug" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TypeDrug" inverseName="drugs" inverseEntity="TypeDrug" syncable="YES"/>
+    </entity>
     <entity name="Event" representedClassName="Event" parentEntity="TimeItem" syncable="YES" codeGenerationType="class">
         <relationship name="typeEvent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TypeEvent" inverseName="events" inverseEntity="TypeEvent" syncable="YES"/>
     </entity>
@@ -34,6 +38,16 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="activities" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Activity" inverseName="typeActivity" inverseEntity="Activity" syncable="YES"/>
     </entity>
+    <entity name="TypeDrug" representedClassName="TypeDrug" syncable="YES" codeGenerationType="class">
+        <attribute name="drugDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maximalDose" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maximalFrequency" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minimalDose" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minimalIntervalDose" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="drugs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Drug" inverseName="typeDrug" inverseEntity="Drug" syncable="YES"/>
+    </entity>
     <entity name="TypeEvent" representedClassName="TypeEvent" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="typeEvent" inverseEntity="Event" syncable="YES"/>
@@ -45,11 +59,13 @@
     <elements>
         <element name="Activity" positionX="216" positionY="-108" width="128" height="75"/>
         <element name="Doctor" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="Drug" positionX="99" positionY="-117" width="128" height="75"/>
         <element name="Event" positionX="-83" positionY="-84" width="128" height="58"/>
         <element name="Person" positionX="79" positionY="75" width="128" height="150"/>
         <element name="Profession" positionX="432" positionY="-36" width="128" height="90"/>
         <element name="TimeItem" positionX="79" positionY="-279" width="128" height="75"/>
         <element name="TypeActivity" positionX="396" positionY="117" width="128" height="90"/>
+        <element name="TypeDrug" positionX="81" positionY="-135" width="128" height="165"/>
         <element name="TypeEvent" positionX="-117" positionY="59" width="128" height="73"/>
         <element name="TypeProfession" positionX="367" positionY="-279" width="128" height="75"/>
     </elements>
