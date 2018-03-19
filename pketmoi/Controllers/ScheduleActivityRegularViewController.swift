@@ -8,45 +8,37 @@
 
 import UIKit
 
-class ScheduleActivityRegularViewController: UIViewController {
+class ScheduleActivityRegularViewController: UIViewController, UITextViewDelegate {
     var typeActivity: TypeActivity?
     
     @IBOutlet weak var dateErrorMessage: UILabel!
-    @IBOutlet weak var durationErrorMessage: UILabel!
-    @IBOutlet weak var intervalErrorMessage: UILabel!
     @IBOutlet weak var StartDatePicker: UIDatePicker!
     @IBOutlet weak var EndDatePicker: UIDatePicker!
-    @IBOutlet weak var Duration: UITextField!
-    @IBOutlet weak var HourInterval: UITextField!
+    @IBOutlet weak var durationSlider: UISlider!
+    @IBOutlet weak var descriptionActivity: UITextView!
+    @IBOutlet weak var durationValue: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        descriptionActivity.delegate = self
+        durationValue.text = String(Int(durationSlider.value)) + " min"
     }
     
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        let currentValue = Int(sender.value)
+        durationValue.text = String(currentValue) + " min"
+    }
+    
+    
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        dateErrorMessage.text = ""
-        durationErrorMessage.text = ""
-        intervalErrorMessage.text = ""
-        guard StartDatePicker.date.compare(EndDatePicker.date).rawValue<1 else{
-            self.dateErrorMessage.text = "La date de fin doit être supérieure à la date de début"
-            return false
+        if(identifier == "selectDays"){
+            dateErrorMessage.text = ""
+            guard StartDatePicker.date.compare(EndDatePicker.date).rawValue<1 else{
+                self.dateErrorMessage.text = "La date de fin doit être supérieure à la date de début"
+                return false
+            }
         }
-        guard Duration.hasText else{
-            self.durationErrorMessage.text = "La durée doit être renseignée"
-            return false}
-        guard let durationInt = Int(Duration.text!) else{
-            self.durationErrorMessage.text = "La durée doit être un entier"
-            return false
-        }
-        guard HourInterval.hasText else{
-            self.intervalErrorMessage.text = "L'intervalle heure doit être mentionnée"
-            return false
-        }
-        guard let hourIntervalInt = Int(HourInterval.text!) else{
-            self.intervalErrorMessage.text = "L'intervalle doit être un entier"
-            return false
-        }
-        return true
+            return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -54,9 +46,35 @@ class ScheduleActivityRegularViewController: UIViewController {
             let selectDaysViewController = segue.destination as! SelectDaysViewController
             selectDaysViewController.startDate = StartDatePicker.date
             selectDaysViewController.endDate = EndDatePicker.date
-            selectDaysViewController.duration = Duration.text!
-            selectDaysViewController.duration = HourInterval.text!
+            selectDaysViewController.duration = Int(durationSlider.value)
             selectDaysViewController.typeActivity = typeActivity
+            selectDaysViewController.descriptionActivity = descriptionActivity.text
         }
+    }
+    
+    // MARK : - TextViewDelegate
+    
+    // Start Editing The Text Field
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        moveTextView(textView, moveDistance: -250, up: true)
+    }
+    
+    // Finish Editing The Text Field
+    func textViewDidEndEditing(_ textView: UITextView) {
+        moveTextView(textView, moveDistance: -250, up: false)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        descriptionActivity.resignFirstResponder()
+    }
+    
+    private func moveTextView(_ textView: UITextView, moveDistance: Int, up: Bool) {
+        let moveDuration = 0.3
+        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(moveDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
     }
 }

@@ -93,7 +93,6 @@ class DoctorViewController: UIViewController, NSFetchedResultsControllerDelegate
     }
     
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
-        
     }
     
     // MARK: - Navigation
