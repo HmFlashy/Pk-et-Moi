@@ -12,6 +12,10 @@ class DoctorTableViewCell: UITableViewCell {
 
     @IBOutlet weak var doctorFullName: UILabel!
     @IBOutlet weak var doctorProfession: UILabel!
+    @IBOutlet weak var appointmentButton: UIButton!
+    
+    var parent: UIViewController?
+    var doctor: Doctor?
     
     
     override func awakeFromNib() {
@@ -26,10 +30,12 @@ class DoctorTableViewCell: UITableViewCell {
     }
 
     @IBAction func callButtonAction(_ sender: Any) {
-        
+        guard let phoneNumber = self.doctor?.phone else { return }
+        if let url = URL(string: "telprompt://\(phoneNumber)") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
-    @IBAction func appointmentButtonAction(_ sender: Any) {
-        
+    @IBAction func appointmentButtonAction(_ sender: UIButton) {
     }
 }

@@ -708,6 +708,67 @@
             </objects>
             <point key="canvasLocation" x="2811.594202898551" y="-1632.0652173913045"/>
         </scene>
+        <!--Add Doctor Appointment View Controller-->
+        <scene sceneID="uyU-aH-khd">
+            <objects>
+                <viewController id="aO7-0f-c3b" customClass="AddDoctorAppointmentViewController" customModule="pketmoi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e23-Jk-r1Q">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="748"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JnC-Y8-UjD">
+                                <rect key="frame" x="20" y="240" width="374" height="246"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="MWL-eU-Kka">
+                                        <rect key="frame" x="23" y="49" width="328" height="148"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="543157500.01819694">
+                                            <!--2018-03-19 13:05:00 +0000-->
+                                        </date>
+                                        <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
+                                            <!--1970-01-01 11:00:00 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V5x-LV-VdE">
+                                        <rect key="frame" x="34" y="6" width="25" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="&lt;--"/>
+                                        <connections>
+                                            <action selector="close:" destination="aO7-0f-c3b" eventType="touchUpInside" id="nuW-3w-fJc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIT-Dj-9NX">
+                                        <rect key="frame" x="172" y="205" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="OK"/>
+                                        <connections>
+                                            <action selector="addAppointmentAction:" destination="aO7-0f-c3b" eventType="touchUpInside" id="6qG-YV-aAv"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Quelle date?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VgT-LQ-XFK">
+                                        <rect key="frame" x="139" y="8" width="96" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="5T5-P9-V0F"/>
+                    </view>
+                    <connections>
+                        <outlet property="appointmentDatePicker" destination="MWL-eU-Kka" id="6TO-Iw-s2N"/>
+                        <outlet property="appointmentView" destination="JnC-Y8-UjD" id="dUO-tC-pZu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pkx-HW-KMU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3779.7101449275365" y="844.56521739130437"/>
+        </scene>
         <!--Médecins-->
         <scene sceneID="jtt-DD-xl2">
             <objects>
@@ -730,7 +791,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="EhL-CW-hJg" detailTextLabel="RBg-4A-HM7" style="IBUITableViewCellStyleSubtitle" id="8yQ-NV-Icu" customClass="DoctorTableViewCell" customModule="pketmoi" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DoctorCell" textLabel="EhL-CW-hJg" detailTextLabel="RBg-4A-HM7" style="IBUITableViewCellStyleSubtitle" id="8yQ-NV-Icu" customClass="DoctorTableViewCell" customModule="pketmoi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="352" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8yQ-NV-Icu" id="RjU-og-bl2">
@@ -756,7 +817,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Rdv"/>
                                                     <connections>
-                                                        <action selector="appointmentButtonAction:" destination="8yQ-NV-Icu" eventType="touchUpInside" id="2PJ-10-oIo"/>
+                                                        <segue destination="aO7-0f-c3b" kind="presentation" identifier="addAppointmentSegue" modalPresentationStyle="fullScreen" id="OJp-5w-BFy"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pX0-F3-La1">
@@ -770,6 +831,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="appointmentButton" destination="CIx-tD-EEZ" id="bJt-pz-vDy"/>
                                             <outlet property="doctorFullName" destination="EhL-CW-hJg" id="UHd-02-Rtv"/>
                                             <outlet property="doctorProfession" destination="RBg-4A-HM7" id="Rhw-Of-cAi"/>
                                         </connections>
@@ -781,6 +843,9 @@
                         <viewLayoutGuide key="safeArea" id="vjE-Gl-6S3"/>
                     </view>
                     <navigationItem key="navigationItem" title="Médecins" id="bYm-0E-l0E"/>
+                    <connections>
+                        <outlet property="doctorTableView" destination="lAB-Hx-xAK" id="cLM-mF-wkW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ntd-7n-AlP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -855,6 +920,55 @@
                                     <segue destination="uHw-5v-odV" kind="show" id="7sG-CJ-qDc"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="G5v-Jb-jva">
+                                <rect key="frame" x="20" y="144" width="374" height="233"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="20" id="j4G-aJ-DuQ">
+                                    <size key="itemSize" width="150" height="233"/>
+                                    <size key="headerReferenceSize" width="20" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="timeItemCell" id="3BN-gk-9zr" customClass="TimeItemCollectionViewCell" customModule="pketmoi" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="0.0" width="150" height="233"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="233"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ta race" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OoP-rT-gEy">
+                                                    <rect key="frame" x="47" y="14" width="56" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="01/01/2000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXT-FP-wwe">
+                                                    <rect key="frame" x="31" y="44" width="88" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="descItemDate" destination="OoP-rT-gEy" id="Buf-n0-w2i"/>
+                                            <outlet property="timeItemDate" destination="iXT-FP-wwe" id="wIV-QO-g76"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pqK-Kl-gKJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="20" height="233"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="s84-gF-ptP" id="gCW-Th-ept"/>
+                                    <outlet property="delegate" destination="s84-gF-ptP" id="A5a-6V-BEK"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="DDd-aN-QIV"/>
@@ -866,11 +980,12 @@
                         <outlet property="buttonProgramDrugs" destination="a9H-jh-hLw" id="pCi-ND-gK3"/>
                         <outlet property="buttonSynthesis" destination="5jq-00-rm3" id="YIL-XW-nO3"/>
                         <outlet property="buttonTriggerEvent" destination="Z0V-O8-7Ta" id="Nn8-9b-yQG"/>
+                        <outlet property="timeEventCollectionView" destination="G5v-Jb-jva" id="lXh-ag-Ap3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z2p-5q-B3s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="849" y="-735"/>
+            <point key="canvasLocation" x="847.82608695652175" y="-735.32608695652175"/>
         </scene>
         <!--Médicaments-->
         <scene sceneID="2PT-yw-czt">
@@ -1022,7 +1137,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PNg-Rd-QmP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="YEX-Je-bME" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3090" y="424"/>
+            <point key="canvasLocation" x="3022" y="588"/>
         </scene>
         <!--Ajout médecin (Etape 1)-->
         <scene sceneID="HbH-AD-BzU">

@@ -4,8 +4,12 @@
         <attribute name="duration" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="typeActivity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TypeActivity" inverseName="activities" inverseEntity="TypeActivity" syncable="YES"/>
     </entity>
+    <entity name="Appointment" representedClassName="Appointment" parentEntity="TimeItem" syncable="YES" codeGenerationType="class">
+        <relationship name="doctor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Doctor" inverseName="appointments" inverseEntity="Doctor" syncable="YES"/>
+    </entity>
     <entity name="Doctor" representedClassName="Doctor" parentEntity="Person" syncable="YES" codeGenerationType="class">
         <attribute name="timeTravel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="doctor" inverseEntity="Appointment" syncable="YES"/>
         <relationship name="profession" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profession" inverseName="doctors" inverseEntity="Profession" syncable="YES"/>
     </entity>
     <entity name="Event" representedClassName="Event" parentEntity="TimeItem" syncable="YES" codeGenerationType="class">
@@ -44,6 +48,7 @@
     </entity>
     <elements>
         <element name="Activity" positionX="216" positionY="-108" width="128" height="75"/>
+        <element name="Doctor" positionX="160" positionY="192" width="128" height="90"/>
         <element name="Event" positionX="-83" positionY="-84" width="128" height="58"/>
         <element name="Person" positionX="79" positionY="75" width="128" height="150"/>
         <element name="Profession" positionX="432" positionY="-36" width="128" height="90"/>
@@ -51,5 +56,6 @@
         <element name="TypeActivity" positionX="396" positionY="117" width="128" height="90"/>
         <element name="TypeEvent" positionX="-117" positionY="59" width="128" height="73"/>
         <element name="TypeProfession" positionX="367" positionY="-279" width="128" height="75"/>
+        <element name="Appointment" positionX="81" positionY="-135" width="128" height="60"/>
     </elements>
 </model>
