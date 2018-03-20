@@ -46,6 +46,10 @@ class AppointmentPresenter {
         guard let cell: AppointmentCollectionViewCell = forCollectionCell as? AppointmentCollectionViewCell else {
             return nil
         }
+        let date: Date! = appointement.date
+        print(date.description)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
         cell.backgroundColor = UIColor.red
         return cell
     }

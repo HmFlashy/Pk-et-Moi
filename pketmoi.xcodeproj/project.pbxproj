@@ -64,7 +64,6 @@
 		6E5F9B62205D7BB80064ADF7 /* TimeItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5F9B5A205D7BB80064ADF7 /* TimeItemModel.swift */; };
 		6E5F9B63205D7BB80064ADF7 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5F9B5B205D7BB80064ADF7 /* Empty.swift */; };
 		6EA83A9A20421CAF00AA68CF /* databaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA83A9920421CAF00AA68CF /* databaseFactory.swift */; };
-		6EC9DAE620601CF2007D8502 /* TimeItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC9DAE520601CF2007D8502 /* TimeItemPresenter.swift */; };
 		F35D87FC205FD22400BA06CD /* TypeDrugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35D87FB205FD22400BA06CD /* TypeDrugViewController.swift */; };
 		F35D87FE205FED5800BA06CD /* TypeDrugExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35D87FD205FED5800BA06CD /* TypeDrugExtension.swift */; };
 		F35D8800205FFB7900BA06CD /* TypeDrugPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35D87FF205FFB7900BA06CD /* TypeDrugPresenter.swift */; };
@@ -155,7 +154,6 @@
 		6E5F9B5A205D7BB80064ADF7 /* TimeItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeItemModel.swift; sourceTree = "<group>"; };
 		6E5F9B5B205D7BB80064ADF7 /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		6EA83A9920421CAF00AA68CF /* databaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = databaseFactory.swift; sourceTree = "<group>"; };
-		6EC9DAE520601CF2007D8502 /* TimeItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeItemPresenter.swift; sourceTree = "<group>"; };
 		F35D87FB205FD22400BA06CD /* TypeDrugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeDrugViewController.swift; sourceTree = "<group>"; };
 		F35D87FD205FED5800BA06CD /* TypeDrugExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDrugExtension.swift; sourceTree = "<group>"; };
 		F35D87FF205FFB7900BA06CD /* TypeDrugPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDrugPresenter.swift; sourceTree = "<group>"; };
@@ -207,7 +205,6 @@
 				6E5F9B1E205D7B6D0064ADF7 /* DoctorPresenter.swift */,
 				6E5F9B1D205D7B6C0064ADF7 /* EventPresenter.swift */,
 				6E5F9B1F205D7B6D0064ADF7 /* TypeEventPresenter.swift */,
-				6EC9DAE520601CF2007D8502 /* TimeItemPresenter.swift */,
 				F35D87FF205FFB7900BA06CD /* TypeDrugPresenter.swift */,
 				6E134FED20614F38005235C8 /* ActivityPresenter.swift */,
 				6E134FF620615473005235C8 /* AppointmentPresenter.swift */,
@@ -483,7 +480,6 @@
 				6E5F9B45205D7B980064ADF7 /* OnBoardViewController.swift in Sources */,
 				6E5F9B46205D7B980064ADF7 /* ShowEventViewController.swift in Sources */,
 				6E5F9B43205D7B980064ADF7 /* PopupTypeActivityPlanificationViewController.swift in Sources */,
-				6EC9DAE620601CF2007D8502 /* TimeItemPresenter.swift in Sources */,
 				6E5F9B2C205D7B7F0064ADF7 /* TypeActivityTableViewCell.swift in Sources */,
 				6E134FEE20614F38005235C8 /* ActivityPresenter.swift in Sources */,
 				6E5F9B61205D7BB80064ADF7 /* TypeEventModel.swift in Sources */,

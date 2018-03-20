@@ -46,6 +46,10 @@ class ActivityPresenter {
         guard let cell: ActivityCollectionViewCell = forCollectionCell as? ActivityCollectionViewCell else {
             return nil
         }
+        let date: Date! = activity.date
+        print(date.description)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
         cell.backgroundColor = UIColor.green
         return cell
     }

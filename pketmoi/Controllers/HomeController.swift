@@ -101,7 +101,7 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
             cell = timeEventCollectionView.dequeueReusableCell(withReuseIdentifier: "drugCell", for: indexPath) as! DrugCollectionViewCell
             cell = drugPresenter.configureCollectionCell(forCollectionCell: cell, drug: timeItem as! Drug)!
         }else if(timeItem.isKind(of: Appointment.self)) {
-            cell = timeEventCollectionView.dequeueReusableCell(withReuseIdentifier: "appointmentCell", for: indexPath) as! AppointmentCollectionViewCell	
+            cell = timeEventCollectionView.dequeueReusableCell(withReuseIdentifier: "appointmentCell", for: indexPath) as! AppointmentCollectionViewCell
             cell = appointmentPresenter.configureCollectionCell(forCollectionCell: cell, appointement: timeItem as! Appointment)!
         }
         return cell

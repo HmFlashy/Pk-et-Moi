@@ -46,6 +46,9 @@ class DrugPresenter {
         guard let cell: DrugCollectionViewCell = forCollectionCell as? DrugCollectionViewCell else {
             return nil
         }
+        let date: Date! = drug.date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
         cell.backgroundColor = UIColor.blue
         return cell
     }
