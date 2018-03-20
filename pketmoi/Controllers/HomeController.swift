@@ -19,7 +19,9 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var timeEventCollectionView: UICollectionView!
     
-    private let timeItemPresenter = TimeItemPresenter()
+    private var drugPresenter: DrugPresenter = DrugPresenter()
+    private var appointmentPresenter: AppointmentPresenter = AppointmentPresenter()
+    private var activityPresenter: ActivityPresenter = ActivityPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,9 +92,18 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = timeEventCollectionView.dequeueReusableCell(withReuseIdentifier: "timeItemCell", for: indexPath) as! TimeItemCollectionViewCell
-        timeItemPresenter.configureCell(forCell: cell, timeItem: timeEventFetched.object(at: indexPath))
-        cell.backgroundColor = UIColor.red
+        var cell: UICollectionViewCell!
+        let timeItem = timeEventFetched.object(at: indexPath)
+        if(timeItem.isKind(of: Activity.self)) {
+            cell = timeEventCollectionView.dequeueReusableCell(withReuseIdentifier: "activityCell", for: indexPath) as! ActivityCollectionViewCell
+            cell = activityPresenter.configureCollectionCell(forCollectionCell: cell, activity: timeItem as! Activity)!
+        } else if(timeItem.isKind(of: Drug.self)) {
+            cell = timeEventCollectionView.dequeueReusableCell(withReuseIdentifier: "drugCell", for: indexPath) as! DrugCollectionViewCell
+            cell = drugPresenter.configureCollectionCell(forCollectionCell: cell, drug: timeItem as! Drug)!
+        }else if(timeItem.isKind(of: Appointment.self)) {
+            cell = timeEventCollectionView.dequeueReusableCell(withReuseIdentifier: "appointmentCell", for: indexPath) as! AppointmentCollectionViewCell	
+            cell = appointmentPresenter.configureCollectionCell(forCollectionCell: cell, appointement: timeItem as! Appointment)!
+        }
         return cell
     }
     

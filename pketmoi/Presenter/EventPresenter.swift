@@ -44,5 +44,6 @@ class EventPresenter: NSObject {
         cell.typeEventTitle.text = self.typeEventName
     }
     
+    
 }
 

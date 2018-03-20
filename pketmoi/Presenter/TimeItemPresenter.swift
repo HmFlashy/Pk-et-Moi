@@ -11,34 +11,26 @@ import UIKit
 
 class TimeItemPresenter: NSObject {
     
-    fileprivate var date: String = ""
-    fileprivate var descTimeItem: String = ""
+    private var drugPresenter: DrugPresenter = DrugPresenter()
+    private var appointmentPresenter: AppointmentPresenter = AppointmentPresenter()
+    private var activityPresenter: ActivityPresenter = ActivityPresenter()
     
-    fileprivate var timeItem: TimeItem? = nil {
-        didSet {
-            if let timeItem = self.timeItem {
-                if let tiDate = timeItem.date {
-                    self.date = tiDate.description
-                } else {
-                    self.date = "unknown"
-                }
-            } else {
-                self.date = "NIL"
-                self.descTimeItem = "NIL"
-            }
+    func configureCell(forCell: UICollectionViewCell?, timeItem: TimeItem) -> UICollectionViewCell? {
+        var cell = forCell
+        if(cell == nil) {
+            return nil
         }
-    }
-    
-    func configureCell(forCell: TimeItemCollectionViewCell?, timeItem: TimeItem){
-        self.timeItem = timeItem
-        guard let cell = forCell else { return }
         let date: Date! = timeItem.date
         print(date.description)
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
-        print(date)
-        formatter.timeZone = TimeZone(abbreviation: "UTC+1")
-        cell.descItemDate.text = self.descTimeItem
-        cell.timeItemDate.text = formatter.string(from: date)
+        if(timeItem.isKind(of: Activity.self)) {
+            cell = activityPresenter.configureCollectionCell(forCollectionCell: cell, activity: timeItem as! Activity)!
+        } else if(timeItem.isKind(of: Drug.self)) {
+            cell = drugPresenter.configureCollectionCell(forCollectionCell: cell, drug: timeItem as! Drug)!
+        }else if(timeItem.isKind(of: Appointment.self)) {
+            cell = appointmentPresenter.configureCollectionCell(forCollectionCell: cell, appointement: timeItem as! Appointment)!
+        }
+        return cell
     }
 }

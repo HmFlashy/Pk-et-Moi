@@ -36,7 +36,7 @@ class DoctorViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     fileprivate lazy var doctorFetched: NSFetchedResultsController<Doctor> = {
         let request: NSFetchRequest<Doctor> = Doctor.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Doctor.plastname), ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Doctor.lastname), ascending: true)]
         let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultController.delegate = self
         return fetchedResultController
@@ -90,6 +90,10 @@ class DoctorViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.doctorTableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.doctorTableView.endUpdates()
     }
     
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {

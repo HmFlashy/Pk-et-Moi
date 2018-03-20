@@ -20,13 +20,15 @@ extension Doctor {
     
     var fullname: String? {
         get {
-            guard let firstname = self.firstname else {
-                fatalError()
+            var firstname = self.firstname
+            var lastname = self.lastname
+            if firstname == nil {
+                firstname = "unknown"
             }
-            guard let lastname = self.lastname else {
-                fatalError()
+            if lastname == nil {
+                lastname = "unknown"
             }
-            return firstname + " " + lastname
+            return firstname! + " " + lastname!
         }
         
     }

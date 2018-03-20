@@ -38,81 +38,10 @@ extension Doctor {
     }
     
     
-    var lastname: String! {
-        get {
-            return self.plastname
-        }
-        set {
-            self.plastname = newValue
-        }
-    }
-    
-    var firstname: String! {
-        get {
-            return self.pfirstname
-        }
-        set {
-            self.pfirstname = newValue
-        }
-    }
-    
-    var phone: String! {
-        get {
-            return self.pphone
-        }
-        set {
-            self.pphone = newValue
-        }
-    }
-    
-    var email: String! {
-        get {
-            return self.pemail
-        }
-        set {
-            self.pemail = newValue
-        }
-    }
-    
-    var city: String? {
-        get {
-            return self.pcity
-        }
-        set {
-            self.pcity = newValue
-        }
-    }
-    
-    var address: String? {
-        get {
-            return self.paddress
-        }
-        set {
-            self.paddress = newValue
-        }
-    }
-    
-    var zip: String? {
-        get {
-            return self.pzip
-        }
-        set {
-            self.pzip = newValue
-        }
-    }
-    
-    var travelTime: Int16! {
-        get {
-            return self.ptravelTime
-        }
-        set {
-            self.ptravelTime = newValue
-        }
-    }
     
     static func existDoctor(byEmail: String) throws -> Bool  {
         let request: NSFetchRequest<Doctor> = Doctor.fetchRequest()
-        request.predicate = NSPredicate(format: "pemail = %@", byEmail)
+        request.predicate = NSPredicate(format: "email = %@", byEmail)
         do {
             let doctors = try request.execute()
             if(doctors.count > 0) {
@@ -128,7 +57,7 @@ extension Doctor {
     
     static func getAll() -> [Doctor]?{
         let request: NSFetchRequest<Doctor> = Doctor.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Doctor.plastname), ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Doctor.lastname), ascending: true)]
         do {
             let doctors = try request.execute()
             return doctors
