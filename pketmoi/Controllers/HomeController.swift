@@ -15,6 +15,7 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var buttonProgramActivity: UIButton!
     @IBOutlet weak var buttonSynthesis: UIButton!
     @IBOutlet weak var buttonProgramDrugs: UIButton!
+    @IBOutlet weak var currentDate: UILabel!
     
     @IBOutlet weak var timeEventCollectionView: UICollectionView!
     
@@ -23,6 +24,11 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "UTC+1")
+        formatter.dateFormat = "dd/MM"
+        currentDate.text = formatter.string(from: date)
         buttonTriggerEvent.layer.borderColor = UIColor.black.cgColor
         buttonTriggerEvent.layer.borderWidth = 2
         buttonTriggerEvent.titleLabel?.textAlignment = NSTextAlignment.center
@@ -57,10 +63,23 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     private lazy var timeEventFetched: NSFetchedResultsController<TimeItem> = {
         let request: NSFetchRequest<TimeItem> = TimeItem.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key:#keyPath(TimeItem.date), ascending: false)]
+        request.predicate = predicateForDayFromDate(date: NSDate())
         let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultController.delegate = self
         return fetchedResultController
     }()
+    
+    func predicateForDayFromDate(date: NSDate) -> NSPredicate {
+        let calendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
+        var components = calendar!.components([.year, .month, .day, .hour, .minute, .second], from: date as Date)
+        let startDate = calendar!.date(from: components)
+        components.hour = 23
+        components.minute = 59
+        components.second = 59
+        let endDate = calendar!.date(from: components)
+        
+        return NSPredicate(format: "date >= %@ AND date =< %@", argumentArray: [startDate!, endDate!])
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let timeEvents = self.timeEventFetched.fetchedObjects else {
@@ -73,7 +92,29 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = timeEventCollectionView.dequeueReusableCell(withReuseIdentifier: "timeItemCell", for: indexPath) as! TimeItemCollectionViewCell
         timeItemPresenter.configureCell(forCell: cell, timeItem: timeEventFetched.object(at: indexPath))
+        cell.backgroundColor = UIColor.red
         return cell
+    }
+    
+    // MARK: - NSFetchResultController delegate protocol
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch (type) {
+        case .insert:
+            if let indexPath = newIndexPath {
+                self.timeEventCollectionView.insertItems(at: [indexPath])
+            }
+            break
+        case .delete:
+            if let indexPath = indexPath {
+                self.timeEventCollectionView.deleteItems(at: [indexPath])
+            }
+        default:
+            break
+        }
+    }
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.timeEventCollectionView.performBatchUpdates(nil)
     }
     
     

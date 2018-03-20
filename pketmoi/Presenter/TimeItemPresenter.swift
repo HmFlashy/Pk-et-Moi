@@ -32,7 +32,12 @@ class TimeItemPresenter: NSObject {
     func configureCell(forCell: TimeItemCollectionViewCell?, timeItem: TimeItem){
         self.timeItem = timeItem
         guard let cell = forCell else { return }
+        let date: Date! = timeItem.date
+        print(date.description)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm"
+        formatter.timeZone = TimeZone(abbreviation: "UTC+1")
         cell.descItemDate.text = self.descTimeItem
-        cell.timeItemDate.text = self.date
+        cell.timeItemDate.text = formatter.string(from: date)
     }
 }

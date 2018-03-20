@@ -36,7 +36,7 @@ class DoctorViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     fileprivate lazy var doctorFetched: NSFetchedResultsController<Doctor> = {
         let request: NSFetchRequest<Doctor> = Doctor.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Doctor.lastname), ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Doctor.plastname), ascending: true)]
         let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultController.delegate = self
         return fetchedResultController
