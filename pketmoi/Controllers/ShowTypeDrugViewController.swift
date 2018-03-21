@@ -43,6 +43,11 @@ class ShowTypeDrugViewController: UIViewController {
     }
     
     @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {
+        minimalDose.text = self.typeDrug.minimalDose
+        maximalDose.text = self.typeDrug.maximalDose
+        minimalIntervalDose.text = self.typeDrug.minimalIntervalDose
+        maximumFrequency.text = self.typeDrug.maximalFrequency
+        drugDescription.text = self.typeDrug.drugDescription
     }
     
     // MARK: - Navigation

@@ -35,7 +35,8 @@ class TimeItemPresenter: NSObject {
         let date: Date! = timeItem.date
         print(date.description)
         let formatter = DateFormatter()
-        formatter.dateFormat = "hh:mm"
+        formatter.dateFormat = "HH:mm"
+        print(date)
         formatter.timeZone = TimeZone(abbreviation: "UTC+1")
         cell.descItemDate.text = self.descTimeItem
         cell.timeItemDate.text = formatter.string(from: date)

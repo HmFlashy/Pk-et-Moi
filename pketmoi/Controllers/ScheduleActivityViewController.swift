@@ -31,7 +31,7 @@ class ScheduleActivityViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "container"{
-            containerView = segue.destination as! ActivityContainerViewController
+            containerView = segue.destination as? ActivityContainerViewController
             containerView?.typeActivity = self.typeActivity
         }
     }

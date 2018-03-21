@@ -32,6 +32,9 @@ class ModifyTypeDrugViewController: UIViewController {
         } catch let error as NSError {
             print(error)
         }
+        self.performSegue(withIdentifier: "validateModifSegue", sender: self)
+        /*let test = self.navigationController?.parent as! ShowTypeDrugViewController
+        test.typeDrug = self.typeDrug*/
     }
     
     override func viewDidLoad() {
@@ -46,8 +49,6 @@ class ModifyTypeDrugViewController: UIViewController {
     }
 
     
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -55,6 +56,6 @@ class ModifyTypeDrugViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

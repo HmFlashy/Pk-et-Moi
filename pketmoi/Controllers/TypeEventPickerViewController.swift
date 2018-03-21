@@ -54,8 +54,4 @@ class TypeEventPickerViewController: UIPickerView, UIPickerViewDelegate, UIPicke
         guard let typeEvents = typeEventFetched.fetchedObjects else { return }
         selectedTypeEvent = typeEvents[row]
     }
-    
-    
-    
-    
 }

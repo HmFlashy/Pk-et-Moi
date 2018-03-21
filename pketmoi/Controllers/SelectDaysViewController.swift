@@ -17,8 +17,8 @@ class SelectDaysViewController: UIViewController {
     @IBOutlet weak var FridaySwitch: UISwitch!
     @IBOutlet weak var SaturdaySwitch: UISwitch!
     @IBOutlet weak var SundaySwitch: UISwitch!
-    var startDate: Date?
-    var endDate: Date?
+    var startDate: Date!
+    var endDate: Date!
     var duration: Int!
     var HoursInterval: String!
     var typeActivity: TypeActivity!
@@ -31,29 +31,31 @@ class SelectDaysViewController: UIViewController {
     @IBAction func AddActivities(_ sender: Any) {
         var days: [String]=[]
         if MondaySwitch.isOn{
-            days.append("Monday")
+            days.append("lundi")
         }
         if TuesdaySwitch.isOn{
-            days.append("Tuesday")
+            days.append("mardi")
         }
         if WednesdaySwitch.isOn{
-            days.append("Wednesday")
+            days.append("mercredi")
         }
         if ThursdaySwitch.isOn{
-            days.append("Thursday")
+            days.append("jeudi")
         }
         if FridaySwitch.isOn{
-            days.append("Friday")
+            days.append("vendredi")
         }
         if SaturdaySwitch.isOn{
-            days.append("Saturday")
+            days.append("samedi")
         }
         if SundaySwitch.isOn{
-            days.append("Sunday")
+            days.append("dimanche")
         }
-        var tomorrow: Date = startDate!
-        while tomorrow.compare(endDate!).rawValue<0 {
-            let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm"
+        guard var tomorrow = dateFormatter.date(from: dateFormatter.string(from: startDate)) else{return}
+        guard let endDate = dateFormatter.date(from: dateFormatter.string(from: self.endDate)) else{return}
+        while tomorrow.compare(endDate).rawValue<0 {
             dateFormatter.dateFormat  = "EEEE"
             let dayInWeek = dateFormatter.string(from: tomorrow)
             if days.contains(dayInWeek){
@@ -61,15 +63,6 @@ class SelectDaysViewController: UIViewController {
             }
             tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: tomorrow)!
         }
-        // We add one more activity because the compare() is not displaying 0 when
-        // the dates are equal but 1
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat  = "EEEE"
-        let dayInWeek = dateFormatter.string(from: tomorrow)
-        if days.contains(dayInWeek){
-            print(Activity.createActivity(itemDescription: descriptionActivity, date: tomorrow, duration: Int(duration), typeActivity: typeActivity))
-        }
-        
     }
     
     /*

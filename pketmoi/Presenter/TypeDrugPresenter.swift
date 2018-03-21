@@ -27,9 +27,10 @@ class TypeDrugPresenter: NSObject {
         }
     }
     
-    func configureCell(forCell: TypeDrugTableViewCell?, typeDrug: TypeDrug){
+    func configureCell(forCell: TypeDrugTableViewCell?, typeDrug: TypeDrug, indexPath: IndexPath){
         self.typeDrug = typeDrug
         guard let cell = forCell else { return }
         cell.name.text = self.name
+        cell.button.tag = indexPath.row
     }
 }

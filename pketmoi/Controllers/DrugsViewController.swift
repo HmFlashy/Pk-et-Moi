@@ -42,7 +42,7 @@ class DrugsViewController: UIViewController, NSFetchedResultsControllerDelegate,
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = typeDrugTableView.dequeueReusableCell(withIdentifier: "typeDrugCell", for: indexPath) as! TypeDrugTableViewCell
-        typeDrugPresenter.configureCell(forCell: cell, typeDrug: typeDrugFetched.object(at: indexPath))
+        typeDrugPresenter.configureCell(forCell: cell, typeDrug: typeDrugFetched.object(at: indexPath), indexPath: indexPath)
         return cell
     }
     
@@ -98,8 +98,15 @@ class DrugsViewController: UIViewController, NSFetchedResultsControllerDelegate,
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showTypeDrug"{
             if let indexPath = self.typeDrugTableView.indexPathForSelectedRow{
-                print(segue.destination.description)
                 let destinationVC = segue.destination as! ShowTypeDrugViewController
+                destinationVC.typeDrug = self.typeDrugFetched.object(at: indexPath)
+                self.typeDrugTableView.deselectRow(at: indexPath, animated: true)
+            }
+        }
+        else if segue.identifier == "scheduleDrug"{
+            if let button = sender as? UIButton{
+                let indexPath = IndexPath(row: button.tag, section: 0)
+                let destinationVC = segue.destination as! ScheduleDrugViewController
                 destinationVC.typeDrug = self.typeDrugFetched.object(at: indexPath)
                 self.typeDrugTableView.deselectRow(at: indexPath, animated: true)
             }
