@@ -10,4 +10,15 @@ import UIKit
 
 class AppointmentCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var rdvLabel: UILabel!
+    
+    @IBOutlet weak var professionLabel: UILabel!
+    @IBOutlet weak var lastnameLabel: UILabel!
+    @IBOutlet weak var firstnameLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    override func layoutSubviews() {
+        self.layer.cornerRadius = 8
+    }
+    
 }

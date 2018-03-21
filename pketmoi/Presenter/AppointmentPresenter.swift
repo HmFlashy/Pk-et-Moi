@@ -11,46 +11,57 @@ import UIKit
 
 class AppointmentPresenter {
     
-    fileprivate var typeActivity: String = ""
-    fileprivate var duration: String = ""
+    fileprivate var profession: String = ""
+    fileprivate var lastname: String = ""
+    fileprivate var firstname: String = ""
     fileprivate var time: String = ""
     
-    fileprivate var activity: Activity? = nil {
+    fileprivate var appointment: Appointment? = nil {
         didSet {
-            if let activity = self.activity {
-                if let atype = activity.typeActivity?.name {
-                    self.typeActivity = atype
+            if let appointment = self.appointment {
+                if let aprofession = appointment.doctor?.profession?.title {
+                    self.profession = aprofession
                 } else {
-                    self.typeActivity = "unknown"
+                    self.profession = "unknown"
                 }
-                if let duration = activity.duration {
-                    self.duration = duration
+                if let alastname = appointment.doctor?.lastname {
+                    self.lastname = alastname
                 } else {
-                    self.duration = "unknown"
+                    self.lastname = "unknown"
                 }
-                if let time = activity.date {
+                if let afirstname = appointment.doctor?.firstname {
+                    self.firstname = afirstname
+                    
+                } else {
+                    self.firstname = "unknown"
+                }
+                if let atime = appointment.date {
                     let formatter = DateFormatter()
                     formatter.dateFormat = "HH:mm"
                     formatter.timeZone = TimeZone(abbreviation: "UTC+1")
-                    self.time = formatter.string(from: time)
+                    self.time = formatter.string(from: atime)
+                } else {
+                    self.time = "unknown"
                 }
             } else {
-                self.typeActivity = "NIL"
-                self.duration = "NIL"
+                self.profession = "NIL"
+                self.lastname = "NIL"
+                self.firstname = "NIL"
                 self.time = "NIL"
             }
         }
     }
     
-    func configureCollectionCell(forCollectionCell: UICollectionViewCell?, appointement: Appointment) -> UICollectionViewCell? {
+    func configureCollectionCell(forCollectionCell: UICollectionViewCell?, appointement: Appointment) -> AppointmentCollectionViewCell? {
+        self.appointment = appointement
         guard let cell: AppointmentCollectionViewCell = forCollectionCell as? AppointmentCollectionViewCell else {
             return nil
         }
-        let date: Date! = appointement.date
-        print(date.description)
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        cell.backgroundColor = UIColor.red
+        cell.professionLabel.text = self.profession
+        cell.lastnameLabel.text = self.lastname
+        cell.firstnameLabel.text = self.firstname
+        cell.timeLabel.text = self.time
+        cell.backgroundColor = UIColor(red: 0.5, green: 0.2, blue: 0.1, alpha: 0.1)
         return cell
     }
 }

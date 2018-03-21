@@ -42,15 +42,15 @@ class ActivityPresenter {
         }
     }
     
-    func configureCollectionCell(forCollectionCell: UICollectionViewCell?, activity: Activity) -> UICollectionViewCell? {
+    func configureCollectionCell(forCollectionCell: UICollectionViewCell?, activity: Activity) -> ActivityCollectionViewCell? {
+        self.activity = activity
         guard let cell: ActivityCollectionViewCell = forCollectionCell as? ActivityCollectionViewCell else {
             return nil
         }
-        let date: Date! = activity.date
-        print(date.description)
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        cell.backgroundColor = UIColor.green
+        cell.typeActivityLabel.text = typeActivity
+        cell.durationLabel.text = duration + " min"
+        cell.timeLabel.text = time
+        cell.backgroundColor = UIColor(red: 0.2, green: 0.5, blue: 0.1, alpha: 0.1)
         return cell
     }
 }

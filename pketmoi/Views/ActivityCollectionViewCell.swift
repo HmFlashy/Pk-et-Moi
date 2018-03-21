@@ -10,4 +10,12 @@ import UIKit
 
 class ActivityCollectionViewCell: UICollectionViewCell {
     
+    
+    @IBOutlet weak var typeActivityLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    override func layoutSubviews() {
+        self.layer.cornerRadius = 8
+    }
 }
