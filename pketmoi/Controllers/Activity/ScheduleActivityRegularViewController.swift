@@ -14,21 +14,14 @@ class ScheduleActivityRegularViewController: UIViewController, UITextViewDelegat
     @IBOutlet weak var dateErrorMessage: UILabel!
     @IBOutlet weak var StartDatePicker: UIDatePicker!
     @IBOutlet weak var EndDatePicker: UIDatePicker!
-    @IBOutlet weak var durationSlider: UISlider!
     @IBOutlet weak var descriptionActivity: UITextView!
-    @IBOutlet weak var durationValue: UILabel!
+    @IBOutlet weak var durationDatePicker: UIDatePicker!
+    @IBOutlet weak var startTimeDatePicker: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionActivity.delegate = self
-        durationValue.text = String(Int(durationSlider.value)) + " min"
     }
-    
-    @IBAction func sliderValueChanged(_ sender: UISlider) {
-        let currentValue = Int(sender.value)
-        durationValue.text = String(currentValue) + " min"
-    }
-    
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if(identifier == "selectDays"){
@@ -38,7 +31,7 @@ class ScheduleActivityRegularViewController: UIViewController, UITextViewDelegat
                 return false
             }
         }
-            return true
+        return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -46,9 +39,10 @@ class ScheduleActivityRegularViewController: UIViewController, UITextViewDelegat
             let selectDaysViewController = segue.destination as! SelectDaysViewController
             selectDaysViewController.startDate = StartDatePicker.date
             selectDaysViewController.endDate = EndDatePicker.date
-            selectDaysViewController.duration = Int(durationSlider.value)
             selectDaysViewController.typeActivity = typeActivity
             selectDaysViewController.descriptionActivity = descriptionActivity.text
+            selectDaysViewController.startTime = startTimeDatePicker.date
+            selectDaysViewController.duration = durationDatePicker.date
         }
     }
     

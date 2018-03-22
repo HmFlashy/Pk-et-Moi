@@ -294,39 +294,14 @@
 		6E5BA1C0203C7D0400703328 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F3FE946A205EE0AC00D77E34 /* DrugsViewController.swift */,
-				6E5F9B35205D7B950064ADF7 /* ActivityContainerViewController.swift */,
-				6E5F9B38205D7B950064ADF7 /* ActivityController.swift */,
-				6E5F9B39205D7B950064ADF7 /* AddDoctorStepOneViewController.swift */,
-				6E5F9B2E205D7B940064ADF7 /* AddDoctorStepTwoViewController.swift */,
-				6E5F9B30205D7B940064ADF7 /* DoctorViewController.swift */,
-				6E5F9B3A205D7B960064ADF7 /* EventController.swift */,
+				F38D1FEA20642B2E00C08871 /* MyData */,
+				F38D1FE920642B0800C08871 /* Doctor */,
+				F38D1FE820642ADC00C08871 /* Drug */,
+				F38D1FE720642ABC00C08871 /* Activity */,
+				F38D1FE620642A9600C08871 /* Event */,
 				6E5F9B40205D7B970064ADF7 /* HomeController.swift */,
 				6E5F9B31205D7B940064ADF7 /* OnBoardViewController.swift */,
 				6E5F9B3E205D7B970064ADF7 /* PkTabBarController.swift */,
-				6E5F9B2F205D7B940064ADF7 /* PopupTypeActivityPlanificationViewController.swift */,
-				6E5F9B36205D7B950064ADF7 /* ScheduleActivityNotRegularViewController.swift */,
-				6E5F9B3F205D7B970064ADF7 /* ScheduleActivityRegularViewController.swift */,
-				6E5F9B37205D7B950064ADF7 /* ScheduleActivityViewController.swift */,
-				6E5F9B3C205D7B960064ADF7 /* SelectDaysViewController.swift */,
-				6E5F9B32205D7B940064ADF7 /* ShowEventViewController.swift */,
-				6E5F9B3B205D7B960064ADF7 /* TriggerEventViewController.swift */,
-				6E5F9B2D205D7B940064ADF7 /* TypeActivityController.swift */,
-				6E5F9B33205D7B940064ADF7 /* TypeEventController.swift */,
-				6E5F9B3D205D7B970064ADF7 /* TypeEventPickerViewController.swift */,
-				6E5F9B34205D7B950064ADF7 /* TypeEventTableViewController.swift */,
-				6E5F4C52205FEBD800405CBE /* AddDoctorAppointmentViewController.swift */,
-				F3FE9466205E858600D77E34 /* MyDataViewController.swift */,
-				F3FE9468205EADAB00D77E34 /* AdditionalInformationViewController.swift */,
-				F35D87FB205FD22400BA06CD /* TypeDrugViewController.swift */,
-				F3AC2FD5206005260074F3C6 /* ShowTypeDrugViewController.swift */,
-				F3AC2FD7206016EE0074F3C6 /* ModifyTypeDrugViewController.swift */,
-				F3AC2FD920614C2F0074F3C6 /* DrugContainerViewController.swift */,
-				F3AC2FDB20614D360074F3C6 /* ScheduleDrugRegularViewController.swift */,
-				F3AC2FDD20614F5C0074F3C6 /* ScheduleDrugNotRegularViewController.swift */,
-				F3AC2FE120615D7F0074F3C6 /* SelectDaysDrugViewController.swift */,
-				F3AC2FE32061746D0074F3C6 /* SetDrugTimeTableViewController.swift */,
-				F39479282061CFD700C8FB02 /* ScheduleDrugViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -345,6 +320,71 @@
 				6E134FF32061533A005235C8 /* AppointmentCollectionViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F38D1FE620642A9600C08871 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				6E5F9B3A205D7B960064ADF7 /* EventController.swift */,
+				6E5F9B32205D7B940064ADF7 /* ShowEventViewController.swift */,
+				6E5F9B3B205D7B960064ADF7 /* TriggerEventViewController.swift */,
+				6E5F9B33205D7B940064ADF7 /* TypeEventController.swift */,
+				6E5F9B3D205D7B970064ADF7 /* TypeEventPickerViewController.swift */,
+				6E5F9B34205D7B950064ADF7 /* TypeEventTableViewController.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		F38D1FE720642ABC00C08871 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				6E5F9B2D205D7B940064ADF7 /* TypeActivityController.swift */,
+				6E5F9B3C205D7B960064ADF7 /* SelectDaysViewController.swift */,
+				6E5F9B35205D7B950064ADF7 /* ActivityContainerViewController.swift */,
+				6E5F9B38205D7B950064ADF7 /* ActivityController.swift */,
+				6E5F9B2F205D7B940064ADF7 /* PopupTypeActivityPlanificationViewController.swift */,
+				6E5F9B36205D7B950064ADF7 /* ScheduleActivityNotRegularViewController.swift */,
+				6E5F9B3F205D7B970064ADF7 /* ScheduleActivityRegularViewController.swift */,
+				6E5F9B37205D7B950064ADF7 /* ScheduleActivityViewController.swift */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		F38D1FE820642ADC00C08871 /* Drug */ = {
+			isa = PBXGroup;
+			children = (
+				F3FE946A205EE0AC00D77E34 /* DrugsViewController.swift */,
+				F35D87FB205FD22400BA06CD /* TypeDrugViewController.swift */,
+				F3AC2FDD20614F5C0074F3C6 /* ScheduleDrugNotRegularViewController.swift */,
+				F39479282061CFD700C8FB02 /* ScheduleDrugViewController.swift */,
+				F3AC2FE120615D7F0074F3C6 /* SelectDaysDrugViewController.swift */,
+				F3AC2FE32061746D0074F3C6 /* SetDrugTimeTableViewController.swift */,
+				F3AC2FDB20614D360074F3C6 /* ScheduleDrugRegularViewController.swift */,
+				F3AC2FD7206016EE0074F3C6 /* ModifyTypeDrugViewController.swift */,
+				F3AC2FD5206005260074F3C6 /* ShowTypeDrugViewController.swift */,
+				F3AC2FD920614C2F0074F3C6 /* DrugContainerViewController.swift */,
+			);
+			path = Drug;
+			sourceTree = "<group>";
+		};
+		F38D1FE920642B0800C08871 /* Doctor */ = {
+			isa = PBXGroup;
+			children = (
+				6E5F9B39205D7B950064ADF7 /* AddDoctorStepOneViewController.swift */,
+				6E5F9B2E205D7B940064ADF7 /* AddDoctorStepTwoViewController.swift */,
+				6E5F9B30205D7B940064ADF7 /* DoctorViewController.swift */,
+				6E5F4C52205FEBD800405CBE /* AddDoctorAppointmentViewController.swift */,
+			);
+			path = Doctor;
+			sourceTree = "<group>";
+		};
+		F38D1FEA20642B2E00C08871 /* MyData */ = {
+			isa = PBXGroup;
+			children = (
+				F3FE9466205E858600D77E34 /* MyDataViewController.swift */,
+				F3FE9468205EADAB00D77E34 /* AdditionalInformationViewController.swift */,
+			);
+			path = MyData;
 			sourceTree = "<group>";
 		};
 		F3FE25B22058401A00C269D8 /* CoreData */ = {

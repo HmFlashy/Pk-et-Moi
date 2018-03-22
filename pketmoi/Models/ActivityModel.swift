@@ -57,11 +57,11 @@ extension Activity{
         return Activity(entity: entity, insertInto: CoreDataManager.context)
     }
     
-    static func createActivity(itemDescription: String?, date: Date, duration: Int, typeActivity: TypeActivity) -> Activity {
+    static func createActivity(itemDescription: String?, date: Date, duration: String, typeActivity: TypeActivity) -> Activity {
         let newActivity = NSEntityDescription.insertNewObject(forEntityName: "Activity", into: CoreDataManager.context) as! Activity
         newActivity.itemDescription = itemDescription
         newActivity.date = date
-        newActivity.duration = String(duration)
+        newActivity.duration = duration
         newActivity.typeActivity = typeActivity
         do {
             try CoreDataManager.context.save()

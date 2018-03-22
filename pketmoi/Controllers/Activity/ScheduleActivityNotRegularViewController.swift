@@ -13,33 +13,33 @@ class ScheduleActivityNotRegularViewController: UIViewController, UITextViewDele
     var typeActivity: TypeActivity?
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var dateErrorMessage: UILabel!
-    @IBOutlet weak var durationValue: UILabel!
-    @IBOutlet weak var durationSlider: UISlider!
     @IBOutlet weak var descriptionActivity: UITextView!
+    @IBOutlet weak var durationDatePicker: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionActivity.delegate = self
-    }
-    @IBAction func sliderValueChanged(_ sender: UISlider) {
-        let currentValue = Int(sender.value)
-        durationValue.text = String(currentValue) + " min"
     }
     
     func addActivity(){
         guard let typeActivity = self.typeActivity else{
             return
         }
-        print(Activity.createActivity(itemDescription: "", date: datePicker.date, duration: Int(durationSlider.value), typeActivity: typeActivity))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        dateFormatter.locale = Locale(identifier: "fr_FR")
+        guard let date = dateFormatter.date(from: dateFormatter.string(from: datePicker.date)) else{return}
+        dateFormatter.dateFormat = "HH:mm"
+        let durationString = dateFormatter.string(from: durationDatePicker.date)
+        print(Activity.createActivity(itemDescription: "", date: date, duration: durationString, typeActivity: typeActivity))
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         self.dateErrorMessage.text = ""
-        // The current date is 2 hours before the real one, need to fix it
-        guard Date().compare(datePicker.date).rawValue>0 else{
+        /*guard Date().compare(datePicker.date).rawValue>0 else{
             self.dateErrorMessage.text = "La date ne peut pas être plus tôt qu'aujourd'hui"
             return false
-        }
+        }*/
         self.addActivity()
         return true
     }

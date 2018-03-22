@@ -61,10 +61,13 @@ class SelectDaysDrugViewController: UIViewController {
             days.append("dimanche")
             days.append("Sunday")
         }
+        // Deletion of the seconds
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         guard var tomorrow = dateFormatter.date(from: dateFormatter.string(from: startDate)) else{return}
         guard let endDate = dateFormatter.date(from: dateFormatter.string(from: self.endDate)) else{return}
+        
+        // Shaping the variables
         let intFrequency = Int(frequency)!
         print(intFrequency)
         let hourDep = Calendar.current.component(.hour, from: startHour)
@@ -80,9 +83,11 @@ class SelectDaysDrugViewController: UIViewController {
         while tomorrow.compare(endDate).rawValue<1 {
             print("jour incrémenté")
             print(tomorrow)
+            // Recuperation of the day in letter
             dateFormatter.dateFormat  = "EEEE"
             let dayInWeek = dateFormatter.string(from: tomorrow)
             if days.contains(dayInWeek){
+                // Adding the startDate to the date
                 let gregorian = Calendar(identifier: .gregorian)
                 var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute], from: tomorrow)
                 components.hour = hourDep
@@ -94,10 +99,12 @@ class SelectDaysDrugViewController: UIViewController {
                     print("date avec heure incrémenté")
                     print(tomorrowHour)
                     print(Drug.createDrug(itemDescription: drugDescription, date: tomorrowHour, dose: drugDose, typeDrug: typeDrug))
+                    // Addind the interval to the date
                     tomorrowHour = Calendar.current.date(byAdding: .hour, value: hourInterval, to: tomorrowHour)!
                     tomorrowHour = Calendar.current.date(byAdding: .minute, value: minInterval, to: tomorrowHour)!
                 }
             }
+            // Adding a day
             tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: tomorrow)!
         }
     }

@@ -19,7 +19,8 @@ class SelectDaysViewController: UIViewController {
     @IBOutlet weak var SundaySwitch: UISwitch!
     var startDate: Date!
     var endDate: Date!
-    var duration: Int!
+    var duration: Date!
+    var startTime: Date!
     var HoursInterval: String!
     var typeActivity: TypeActivity!
     var descriptionActivity: String?
@@ -51,15 +52,42 @@ class SelectDaysViewController: UIViewController {
         if SundaySwitch.isOn{
             days.append("dimanche")
         }
+        let hour = Calendar.current.component(.hour, from: startTime)
+        let min = Calendar.current.component(.minute, from: startTime)
+        let durationFormatter = DateFormatter()
+        durationFormatter.dateFormat = "HH:mm"
+        let durationString = durationFormatter.string(from: duration)
+        
+        // Deletion of the seconds
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        dateFormatter.locale = Locale(identifier: "fr_FR")
         guard var tomorrow = dateFormatter.date(from: dateFormatter.string(from: startDate)) else{return}
-        guard let endDate = dateFormatter.date(from: dateFormatter.string(from: self.endDate)) else{return}
-        while tomorrow.compare(endDate).rawValue<0 {
+        
+        // Adding the startTime to the startDate
+        let gregorian = Calendar(identifier: .gregorian)
+        var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute], from: tomorrow)
+        components.hour = hour
+        components.minute = min
+        tomorrow = gregorian.date(from: components)!
+        tomorrow = Calendar.current.date(byAdding: .hour, value: 1, to: tomorrow)!
+        print(tomorrow)
+        
+        // Adding the startTime to the endDate
+        components = gregorian.dateComponents([.year, .month, .day, .hour, .minute], from: endDate)
+        components.hour = hour
+        components.minute = min
+        endDate = gregorian.date(from: components)!
+        endDate = Calendar.current.date(byAdding: .hour, value: 1, to: endDate)!
+        print(endDate)
+        while tomorrow.compare(endDate).rawValue<1 {
+            // Getting the day in letter
             dateFormatter.dateFormat  = "EEEE"
             let dayInWeek = dateFormatter.string(from: tomorrow)
+            print(dayInWeek)
             if days.contains(dayInWeek){
-                print(Activity.createActivity(itemDescription: descriptionActivity, date: tomorrow, duration: Int(duration), typeActivity: typeActivity))
+                print(tomorrow)
+                print(Activity.createActivity(itemDescription: descriptionActivity, date: tomorrow, duration: durationString, typeActivity: typeActivity))
             }
             tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: tomorrow)!
         }
