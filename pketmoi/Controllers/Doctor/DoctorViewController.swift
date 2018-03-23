@@ -26,7 +26,6 @@ class DoctorViewController: UIViewController, NSFetchedResultsControllerDelegate
         } catch {
             print("Unable to perform Doctor fetch")
         }
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -108,6 +107,15 @@ class DoctorViewController: UIViewController, NSFetchedResultsControllerDelegate
             let button = sender as! UIButton
             guard let addAppointment: AddDoctorAppointmentViewController = segue.destination as? AddDoctorAppointmentViewController else { return }
             addAppointment.set(forDoctor: self.doctorFetched.object(at: IndexPath(row: button.tag, section: 0)))
+        } else if (segue.identifier == "infoDoctorSegue") {
+            guard let modifyDoctor: ModifyDoctorViewController = segue.destination as? ModifyDoctorViewController else {
+                return
+            }
+            guard let indexPath = doctorTableView.indexPathForSelectedRow else {
+                return
+            }
+            let doctor: Doctor = doctorFetched.object(at: indexPath)
+            modifyDoctor.set(forDoctor: doctor)
         }
     }
     

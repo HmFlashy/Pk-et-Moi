@@ -15,6 +15,7 @@
 		6E134FF42061533A005235C8 /* AppointmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E134FF32061533A005235C8 /* AppointmentCollectionViewCell.swift */; };
 		6E134FF720615473005235C8 /* AppointmentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E134FF620615473005235C8 /* AppointmentPresenter.swift */; };
 		6E134FF9206154A2005235C8 /* DrugPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E134FF8206154A2005235C8 /* DrugPresenter.swift */; };
+		6E1C3CCA2064FC9400DB6D2D /* ModifyDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C3CC92064FC9400DB6D2D /* ModifyDoctorViewController.swift */; };
 		6E5BA19B2032DD6500703328 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BA19A2032DD6500703328 /* AppDelegate.swift */; };
 		6E5BA19D2032DD6500703328 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BA19C2032DD6500703328 /* ViewController.swift */; };
 		6E5BA1A02032DD6500703328 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E5BA19E2032DD6500703328 /* Main.storyboard */; };
@@ -101,6 +102,7 @@
 		6E134FF32061533A005235C8 /* AppointmentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentCollectionViewCell.swift; sourceTree = "<group>"; };
 		6E134FF620615473005235C8 /* AppointmentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentPresenter.swift; sourceTree = "<group>"; };
 		6E134FF8206154A2005235C8 /* DrugPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugPresenter.swift; sourceTree = "<group>"; };
+		6E1C3CC92064FC9400DB6D2D /* ModifyDoctorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyDoctorViewController.swift; sourceTree = "<group>"; };
 		6E5BA1972032DD6500703328 /* pketmoi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pketmoi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E5BA19A2032DD6500703328 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E5BA19C2032DD6500703328 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				6E5F9B2E205D7B940064ADF7 /* AddDoctorStepTwoViewController.swift */,
 				6E5F9B30205D7B940064ADF7 /* DoctorViewController.swift */,
 				6E5F4C52205FEBD800405CBE /* AddDoctorAppointmentViewController.swift */,
+				6E1C3CC92064FC9400DB6D2D /* ModifyDoctorViewController.swift */,
 			);
 			path = Doctor;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				6E5F4C55206002B700405CBE /* AppointmentExtension.swift in Sources */,
 				6E134FF220615324005235C8 /* DrugCollectionViewCell.swift in Sources */,
 				6E5F9B19205D7B470064ADF7 /* TypeProfessionExtension.swift in Sources */,
+				6E1C3CCA2064FC9400DB6D2D /* ModifyDoctorViewController.swift in Sources */,
 				6E134FF020615311005235C8 /* ActivityCollectionViewCell.swift in Sources */,
 				F3AC2FE02061551D0074F3C6 /* DrugExtension.swift in Sources */,
 				6E134FF42061533A005235C8 /* AppointmentCollectionViewCell.swift in Sources */,
