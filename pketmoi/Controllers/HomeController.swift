@@ -64,12 +64,39 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     private lazy var timeEventFetched: NSFetchedResultsController<TimeItem> = {
         let request: NSFetchRequest<TimeItem> = TimeItem.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(TimeItem.date), ascending: false)]
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(TimeItem.date), ascending: true)]
         request.predicate = predicateForDayFromDate(date: NSDate())
         let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultController.delegate = self
         return fetchedResultController
     }()
+    
+    weak var timer: Timer?
+    
+    func startTimer() {
+        timer?.invalidate()   // just in case you had existing `Timer`, `invalidate` it before we lose our reference to it
+        timer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { [weak self] _ in
+            self?.refreshData()
+        }
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+    }
+    
+    // if appropriate, make sure to stop your timer in `deinit`
+    
+    deinit {
+        stopTimer()
+    }
+    
+    func refreshData(){
+        do {
+            try self.timeEventFetched.performFetch()
+        } catch {
+        }
+        self.timeEventCollectionView.reloadData()
+    }
     
     func predicateForDayFromDate(date: NSDate) -> NSPredicate {
         let calendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)

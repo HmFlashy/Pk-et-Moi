@@ -11,45 +11,46 @@ import UIKit
 
 class DrugPresenter {
     
-    fileprivate var typeActivity: String = ""
-    fileprivate var duration: String = ""
+    fileprivate var drugType: String = ""
+    fileprivate var dose: String = ""
     fileprivate var time: String = ""
     
-    fileprivate var activity: Activity? = nil {
+    fileprivate var drug: Drug? = nil {
         didSet {
-            if let activity = self.activity {
-                if let atype = activity.typeActivity?.name {
-                    self.typeActivity = atype
+            if let drug = self.drug {
+                if let dtype = drug.typeDrug?.name {
+                    self.drugType = dtype
                 } else {
-                    self.typeActivity = "unknown"
+                    self.drugType = "unknown"
                 }
-                if let duration = activity.duration {
-                    self.duration = duration
+                if let ddose = drug.dose {
+                    self.dose = ddose
                 } else {
-                    self.duration = "unknown"
+                    self.dose = "unknown"
                 }
-                if let time = activity.date {
+                if let time = drug.date {
                     let formatter = DateFormatter()
                     formatter.dateFormat = "HH:mm"
                     formatter.timeZone = TimeZone(abbreviation: "UTC+1")
                     self.time = formatter.string(from: time)
                 }
             } else {
-                self.typeActivity = "NIL"
-                self.duration = "NIL"
+                self.drugType = "NIL"
+                self.dose = "NIL"
                 self.time = "NIL"
             }
         }
     }
     
-    func configureCollectionCell(forCollectionCell: UICollectionViewCell?, drug: Drug) -> UICollectionViewCell? {
+    func configureCollectionCell(forCollectionCell: UICollectionViewCell?, drug: Drug) -> DrugCollectionViewCell? {
+        self.drug = drug
         guard let cell: DrugCollectionViewCell = forCollectionCell as? DrugCollectionViewCell else {
             return nil
         }
-        let date: Date! = drug.date
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        cell.backgroundColor = UIColor.blue
+        cell.drugLabel.text = self.drugType
+        cell.doseLabel.text = self.dose + " doses"
+        cell.timeLabel.text = self.time
+        cell.backgroundColor = UIColor(red: 0.2, green: 0.1, blue: 0.5, alpha: 0.1)
         return cell
     }
 }

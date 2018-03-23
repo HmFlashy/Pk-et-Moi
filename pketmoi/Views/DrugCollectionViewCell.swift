@@ -10,4 +10,11 @@ import UIKit
 
 class DrugCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var drugLabel: UILabel!
+    @IBOutlet weak var doseLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    override func layoutSubviews() {
+        self.layer.cornerRadius = 8
+    }
 }
