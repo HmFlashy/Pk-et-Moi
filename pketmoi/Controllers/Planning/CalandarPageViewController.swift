@@ -16,6 +16,7 @@ class CalandarPageViewController: UIPageViewController, UIPageViewControllerDele
     private var MAX_VIEW = 5
     private var CURRENT_WEEK: Int? = nil
     private var pageIsAnimating: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
@@ -23,7 +24,7 @@ class CalandarPageViewController: UIPageViewController, UIPageViewControllerDele
         let calendar = Calendar.current
         CURRENT_WEEK = calendar.component(.weekOfYear, from: Date())
         self.weekViewControllers.append(newWeekViewController(weekNumber: CURRENT_WEEK!))
-        self.setViewControllers(weekViewControllers, direction: .forward, animated: false, completion: nil)
+        self.setViewControllers(weekViewControllers, direction: .forward, animated: true, completion: nil)
         // Do any additional setup after loading the view.
     }
     
@@ -41,12 +42,10 @@ class CalandarPageViewController: UIPageViewController, UIPageViewControllerDele
     
     // Mark: - Delegate Protocols
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        pageIsAnimating = true
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if(finished || completed){
-            pageIsAnimating = false
         }
     }
 
@@ -71,7 +70,6 @@ class CalandarPageViewController: UIPageViewController, UIPageViewControllerDele
                     index -= 1
                 }
             }
-            print(weekViewControllers.count)
             return newWeekViewController
         }
         return nil
@@ -97,7 +95,6 @@ class CalandarPageViewController: UIPageViewController, UIPageViewControllerDele
                     index += 1
                 }
             }
-            print(weekViewControllers.count)
             return newWeekViewController
         }
         return nil
