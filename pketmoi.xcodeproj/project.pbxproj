@@ -16,6 +16,8 @@
 		6E134FF720615473005235C8 /* AppointmentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E134FF620615473005235C8 /* AppointmentPresenter.swift */; };
 		6E134FF9206154A2005235C8 /* DrugPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E134FF8206154A2005235C8 /* DrugPresenter.swift */; };
 		6E1C3CCA2064FC9400DB6D2D /* ModifyDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C3CC92064FC9400DB6D2D /* ModifyDoctorViewController.swift */; };
+		6E1C3CCC2066903D00DB6D2D /* CalandarPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C3CCB2066903D00DB6D2D /* CalandarPageViewController.swift */; };
+		6E1C3CCF2066919800DB6D2D /* WeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C3CCE2066919800DB6D2D /* WeekViewController.swift */; };
 		6E5BA19B2032DD6500703328 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BA19A2032DD6500703328 /* AppDelegate.swift */; };
 		6E5BA19D2032DD6500703328 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BA19C2032DD6500703328 /* ViewController.swift */; };
 		6E5BA1A02032DD6500703328 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E5BA19E2032DD6500703328 /* Main.storyboard */; };
@@ -111,6 +113,8 @@
 		6E134FF620615473005235C8 /* AppointmentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentPresenter.swift; sourceTree = "<group>"; };
 		6E134FF8206154A2005235C8 /* DrugPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugPresenter.swift; sourceTree = "<group>"; };
 		6E1C3CC92064FC9400DB6D2D /* ModifyDoctorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyDoctorViewController.swift; sourceTree = "<group>"; };
+		6E1C3CCB2066903D00DB6D2D /* CalandarPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalandarPageViewController.swift; sourceTree = "<group>"; };
+		6E1C3CCE2066919800DB6D2D /* WeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewController.swift; sourceTree = "<group>"; };
 		6E5BA1972032DD6500703328 /* pketmoi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pketmoi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E5BA19A2032DD6500703328 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E5BA19C2032DD6500703328 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +219,15 @@
 				6E134FE4206126DA005235C8 /* DAOError.swift */,
 			);
 			path = DAO;
+			sourceTree = "<group>";
+		};
+		6E1C3CCD2066917400DB6D2D /* Planning */ = {
+			isa = PBXGroup;
+			children = (
+				6E1C3CCB2066903D00DB6D2D /* CalandarPageViewController.swift */,
+				6E1C3CCE2066919800DB6D2D /* WeekViewController.swift */,
+			);
+			path = Planning;
 			sourceTree = "<group>";
 		};
 		6E287CA12046A9B90007EFC2 /* Presenter */ = {
@@ -546,6 +559,7 @@
 				6E5BA19D2032DD6500703328 /* ViewController.swift in Sources */,
 				6E5F9B48205D7B980064ADF7 /* TypeEventTableViewController.swift in Sources */,
 				6E5F9B53205D7B980064ADF7 /* ScheduleActivityRegularViewController.swift in Sources */,
+				6E1C3CCF2066919800DB6D2D /* WeekViewController.swift in Sources */,
 				6E5F9B41205D7B980064ADF7 /* TypeActivityController.swift in Sources */,
 				6E5F9B2B205D7B7F0064ADF7 /* ProfessionPickerView.swift in Sources */,
 				F314C74F2068235300AC906B /* SummaryTableViewCell.swift in Sources */,
@@ -575,6 +589,7 @@
 				6E5F9B29205D7B7F0064ADF7 /* DoctorTableViewCell.swift in Sources */,
 				F314C75620685FEF00AC906B /* SummaryDayOneViewController.swift in Sources */,
 				6E134FF720615473005235C8 /* AppointmentPresenter.swift in Sources */,
+				6E1C3CCC2066903D00DB6D2D /* CalandarPageViewController.swift in Sources */,
 				F3FE946B205EE0AC00D77E34 /* DrugsViewController.swift in Sources */,
 				6E5F9B4E205D7B980064ADF7 /* EventController.swift in Sources */,
 				6E5F9B5F205D7BB80064ADF7 /* ActivityModel.swift in Sources */,
