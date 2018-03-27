@@ -15,6 +15,7 @@
     <entity name="BeState" representedClassName="BeState" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="state" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="State" inverseName="beStates" inverseEntity="State" syncable="YES"/>
+        <relationship name="summary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Summary" inverseName="beStates" inverseEntity="Summary" syncable="YES"/>
     </entity>
     <entity name="Doctor" representedClassName="Doctor" parentEntity="Person" syncable="YES" codeGenerationType="class">
         <attribute name="travelTime" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -48,7 +49,7 @@
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="nbOversight" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="answer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Answer" inverseName="rigorousAnswer" inverseEntity="Answer" syncable="YES"/>
-        <relationship name="summary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Summary" inverseName="rigorousAnswer" inverseEntity="Summary" syncable="YES"/>
+        <relationship name="summary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Summary" inverseName="rigorousAnswers" inverseEntity="Summary" syncable="YES"/>
     </entity>
     <entity name="State" representedClassName="State" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -59,7 +60,8 @@
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="appointment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Appointment" inverseName="summary" inverseEntity="Appointment" syncable="YES"/>
-        <relationship name="rigorousAnswer" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RigorousAnswer" inverseName="summary" inverseEntity="RigorousAnswer" syncable="YES"/>
+        <relationship name="beStates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BeState" inverseName="summary" inverseEntity="BeState" syncable="YES"/>
+        <relationship name="rigorousAnswers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RigorousAnswer" inverseName="summary" inverseEntity="RigorousAnswer" syncable="YES"/>
     </entity>
     <entity name="TimeItem" representedClassName="TimeItem" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -92,7 +94,7 @@
         <element name="Activity" positionX="216" positionY="-108" width="128" height="75"/>
         <element name="Answer" positionX="108" positionY="-108" width="128" height="75"/>
         <element name="Appointment" positionX="81" positionY="-135" width="128" height="75"/>
-        <element name="BeState" positionX="99" positionY="-117" width="128" height="75"/>
+        <element name="BeState" positionX="99" positionY="-117" width="128" height="90"/>
         <element name="Doctor" positionX="160" positionY="192" width="128" height="90"/>
         <element name="Drug" positionX="99" positionY="-117" width="128" height="75"/>
         <element name="Event" positionX="-83" positionY="-84" width="128" height="90"/>
@@ -100,7 +102,7 @@
         <element name="Profession" positionX="432" positionY="-36" width="128" height="90"/>
         <element name="RigorousAnswer" positionX="117" positionY="-99" width="128" height="105"/>
         <element name="State" positionX="81" positionY="-135" width="128" height="75"/>
-        <element name="Summary" positionX="90" positionY="-126" width="128" height="120"/>
+        <element name="Summary" positionX="90" positionY="-126" width="128" height="135"/>
         <element name="TimeItem" positionX="79" positionY="-279" width="128" height="75"/>
         <element name="TypeActivity" positionX="396" positionY="117" width="128" height="90"/>
         <element name="TypeDrug" positionX="81" positionY="-135" width="128" height="165"/>

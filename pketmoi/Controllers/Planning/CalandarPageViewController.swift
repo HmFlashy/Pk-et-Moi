@@ -64,7 +64,7 @@ class CalandarPageViewController: UIPageViewController, UIPageViewControllerDele
             let newWeekViewController : WeekViewController = self.newWeekViewController(weekNumber: week)
             weekViewControllers.insert(weekViewController, at: 0)
             if(weekViewControllers.count > MAX_VIEW) {
-                weekViewControllers.remove(at: MAX_VIEW)
+                weekViewControllers.remove(at: MAX_VIEW-1)
             } else {
                 if(index != 0){
                     index -= 1
@@ -87,7 +87,7 @@ class CalandarPageViewController: UIPageViewController, UIPageViewControllerDele
             let weekViewController: WeekViewController = viewController as! WeekViewController
             let week = weekViewController.getWeek() + 1
             let newWeekViewController : WeekViewController = self.newWeekViewController(weekNumber: week)
-            weekViewControllers.append(newWeekViewController)
+            weekViewControllers.insert(newWeekViewController, at: index+1)
             if(weekViewControllers.count > MAX_VIEW) {
                 weekViewControllers.remove(at: 0)
             } else {

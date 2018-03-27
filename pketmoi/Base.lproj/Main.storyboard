@@ -292,12 +292,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTG-PT-dRy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3342.0289855072465" y="2586.684782608696"/>
+            <point key="canvasLocation" x="-3342" y="2446"/>
         </scene>
-        <!--Summary Day One View Controller-->
+        <!--Summary Day View Controller-->
         <scene sceneID="3cY-0W-q8o">
             <objects>
-                <viewController storyboardIdentifier="SummaryDayOne" id="MsJ-sC-ssI" customClass="SummaryDayOneViewController" customModule="pketmoi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SummaryDayOne" id="MsJ-sC-ssI" customClass="SummaryDayViewController" customModule="pketmoi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O2m-ux-8AS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="578"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -307,7 +307,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DayOneCell" id="KjO-BX-4YN" customClass="SummaryDayOneTableViewCell" customModule="pketmoi" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DayCell" id="KjO-BX-4YN" customClass="SummaryDayTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KjO-BX-4YN" id="CZM-ck-ddq">
@@ -358,8 +358,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Jour 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMe-UF-aj7">
-                                <rect key="frame" x="186" y="15" width="46" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Jour n" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMe-UF-aj7">
+                                <rect key="frame" x="176" y="18" width="63" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -373,7 +373,8 @@
                     <connections>
                         <outlet property="answerLabel" destination="WMG-9G-9Jm" id="OQU-tr-xxm"/>
                         <outlet property="dateLabel" destination="yyQ-lw-BUh" id="a1P-0c-vP4"/>
-                        <outlet property="dayOneTableView" destination="beo-wi-ZE8" id="BL6-g1-2VV"/>
+                        <outlet property="dayLabel" destination="fMe-UF-aj7" id="XJV-GL-ZTe"/>
+                        <outlet property="dayTableView" destination="beo-wi-ZE8" id="ev0-wE-oHM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L6N-Ze-NxE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1584,7 +1585,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkx-HW-KMU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3779.7101449275365" y="844.56521739130437"/>
+            <point key="canvasLocation" x="4348" y="942"/>
         </scene>
         <!--Médecins-->
         <scene sceneID="jtt-DD-xl2">

@@ -15,8 +15,32 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
     let summaryPresenter = SummaryPresenter()
     let summary: [String] = ["2018-03-15","2018-01-12"]
     
+    fileprivate lazy var summaryFetched: NSFetchedResultsController<Summary> = {
+        let request: NSFetchRequest<Summary> = Summary.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Summary.appointment.date), ascending: true)]
+        let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultController.delegate = self
+        return fetchedResultController
+    }()
+    
+    // Adding a summary manually
+    fileprivate lazy var stateFetched: NSFetchedResultsController<State> = {
+        let request: NSFetchRequest<State> = State.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(State.name), ascending: true)]
+        let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultController
+    }()
+    
+    fileprivate lazy var appointmentFetched: NSFetchedResultsController<State> = {
+        let request: NSFetchRequest<State> = State.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(State.name), ascending: true)]
+        let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultController
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         do{
             try summaryFetched.performFetch()
         }catch {
@@ -25,14 +49,6 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         summaryTableView.dataSource = self
         summaryTableView.delegate = self
     }
-    
-    fileprivate lazy var summaryFetched: NSFetchedResultsController<Summary> = {
-        let request: NSFetchRequest<Summary> = Summary.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Summary.appointment.date), ascending: true)]
-        let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultController.delegate = self
-        return fetchedResultController
-    }()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         /*guard let summaries = summaryFetched.fetchedObjects else { return 0 }

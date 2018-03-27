@@ -1,5 +1,5 @@
 //
-//  SummaryDayTableViewCell.swift
+//  SummaryDayTwoTableViewCell.swift
 //  pketmoi
 //
 //  Created by Loris Zirah on 26/03/2018.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class SummaryDayTableViewCell: UITableViewCell {
-
+class SummaryDayTwoTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
     
@@ -17,10 +17,12 @@ class SummaryDayTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
+    
 }
+
