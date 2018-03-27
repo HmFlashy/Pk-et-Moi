@@ -33,10 +33,8 @@ class OnBoardViewController: UIViewController {
         preparationTimeDisplay.text = String(currentValue) + " min"
     }
     @IBAction func validateFirstTimeAction(_ sender: Any) {
-        let typeProfession = TypeProfession.fillDatabase()
-        let profession = Profession.fillDatabase()
-        profession[0].typeProfession = typeProfession[0]
-        profession[1].typeProfession = typeProfession[1]
+        let typeProfessions = TypeProfession.fillDatabase()
+        let profession = Profession.fillDatabase(typeProfessions: typeProfessions)
         do {
             try CoreDataManager.context.save()
         } catch {

@@ -26,8 +26,12 @@ extension TypeProfession {
         var typeProfession: [TypeProfession] = []
         typeProfession.append(TypeProfession(entity: entity, insertInto: CoreDataManager.context))
         typeProfession.append(TypeProfession(entity: entity, insertInto: CoreDataManager.context))
-        typeProfession[0].title = "Test"
-        typeProfession[1].title = "Test2"
+        typeProfession.append(TypeProfession(entity: entity, insertInto: CoreDataManager.context))
+        typeProfession.append(TypeProfession(entity: entity, insertInto: CoreDataManager.context))
+        typeProfession[0].title = "Medicaux"
+        typeProfession[1].title = "Para-Médicaux"
+        typeProfession[2].title = "Autres Para-Médicaux"
+        typeProfession[3].title = "Autres"
         return typeProfession
     }
 }
