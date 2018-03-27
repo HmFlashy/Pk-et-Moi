@@ -53,4 +53,16 @@ class ActivityPresenter {
         cell.backgroundColor = UIColor(red: 0.2, green: 0.5, blue: 0.1, alpha: 0.1)
         return cell
     }
+    
+    func configureTableViewCell(forTableViewCell: UITableViewCell?, activity: Activity) -> ActivityTableViewCell? {
+        self.activity = activity
+        guard let cell: ActivityTableViewCell = forTableViewCell as? ActivityTableViewCell else {
+            return nil
+        }
+        cell.activityLabel.text = typeActivity
+        cell.durationLabel.text = duration + " min"
+        cell.hourLabel.text = time
+        cell.backgroundColor = UIColor(red: 0.2, green: 0.5, blue: 0.1, alpha: 0.1)
+        return cell
+    }
 }

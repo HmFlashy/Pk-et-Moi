@@ -17,6 +17,10 @@ class WeekViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private var week: Int!
     
+    private var drugPresenter: DrugPresenter = DrugPresenter()
+    private var appointmentPresenter: AppointmentPresenter = AppointmentPresenter()
+    private var activityPresenter: ActivityPresenter = ActivityPresenter()
+    
     fileprivate var timeItemFetched: NSFetchedResultsController<TimeItem>!
     
     func getFirstDay(weekNumber:Int)->NSDate!{
@@ -90,16 +94,21 @@ class WeekViewController: UIViewController, UITableViewDelegate, UITableViewData
         return self.week!
     }
     
-    // Mark: - WeekTableView
-    let sections = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
+    // MARK: - WeekTableView
+    private let sections = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
+    private var rawForSection: [Int] = [0, 0, 0, 0, 0, 0, 0]
     
-    // Mark: - TableView DataSource
+    // MARK: - TableView DataSource
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
+        return 60
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -113,10 +122,11 @@ class WeekViewController: UIViewController, UITableViewDelegate, UITableViewData
         var nbItems = 0
         for timeItem in timeItems {
             let weekday = Calendar.current.component(.weekday, from: timeItem.date!)
-            if(weekday == section + 1){
+            if(weekday == ((section + 1) % 7) + 1){
                 nbItems += 1
             }
         }
+        rawForSection[section] = nbItems
         return nbItems
     }
     
@@ -125,28 +135,72 @@ class WeekViewController: UIViewController, UITableViewDelegate, UITableViewData
             return UITableViewCell()
         }
         var cell = UITableViewCell()
-        if(timeItems[indexPath.row].isKind(of: Activity.self)){
-            var activity: Activity = timeItems[indexPath.row] as! Activity
-            cell.backgroundColor = UIColor.brown
-            var label: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
-            label.text = activity.typeActivity?.name
-            cell.addSubview(label)
-        } else if(timeItems[indexPath.row].isKind(of: Drug.self)){
-            var drug: Drug = timeItems[indexPath.row] as! Drug
-            cell.backgroundColor = UIColor.brown
-            var label: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
-            label.text = drug.typeDrug?.name
-            cell.addSubview(label)
-            cell.backgroundColor = UIColor.green
-        } else if(timeItems[indexPath.row].isKind(of: Appointment.self)){
-            var appointment: Appointment = timeItems[indexPath.row] as! Appointment
-            cell.backgroundColor = UIColor.brown
-            var label: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
-            label.text = appointment.doctor?.profession?.title
-            cell.addSubview(label)
-            cell.backgroundColor = UIColor.blue
+        var index: Int = indexPath.row
+        if(indexPath.section > 0){
+            for nb in 0...indexPath.section - 1 {
+                index += rawForSection[nb]
+            }
+        }
+        if(timeItems[index].isKind(of: Activity.self)){
+            let activity: Activity = timeItems[index] as! Activity
+            cell = weekTableView.dequeueReusableCell(withIdentifier: "ActivityTableViewCell", for: indexPath) as! ActivityTableViewCell
+            cell = activityPresenter.configureTableViewCell(forTableViewCell: cell, activity: activity)!
+        } else if(timeItems[index].isKind(of: Drug.self)){
+            let drug: Drug = timeItems[index] as! Drug
+            cell = weekTableView.dequeueReusableCell(withIdentifier: "DrugTableViewCell", for: indexPath) as! DrugTableViewCell
+            cell = drugPresenter.configureTableViewCell(forTableViewCell: cell, drug: drug)!
+        } else if(timeItems[index].isKind(of: Appointment.self)){
+            let appointment: Appointment = timeItems[index] as! Appointment
+            cell = weekTableView.dequeueReusableCell(withIdentifier: "AppointmentTableViewCell", for: indexPath) as! AppointmentTableViewCell
+            cell = appointmentPresenter.configureTableViewCell(forTableViewCell: cell, appointment: appointment)!
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            let event = timeItemFetched.object(at: indexPath)
+            CoreDataManager.context.delete(event)
+            do {
+                try CoreDataManager.context.save()
+            } catch let error as NSError {
+                print("Error saving context after delete: \(error.localizedDescription)")
+            }
+            break
+        default:break
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    // MARK: - NSFetchResultController delegate protocol
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch (type) {
+        case .insert:
+            if let indexPath = newIndexPath {
+                self.weekTableView.insertRows(at: [indexPath], with: .fade)
+                self.weekTableView.reloadData()
+            }
+            break
+        case .delete:
+            if let indexPath = indexPath {
+                self.weekTableView.deleteRows(at: [indexPath], with: .automatic)
+                self.weekTableView.reloadData()
+            }
+        default:
+            break
+        }
+    }
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.weekTableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.weekTableView.endUpdates()
     }
     
 

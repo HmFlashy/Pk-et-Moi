@@ -12,8 +12,6 @@ import Foundation
 class CalandarPageViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
     private var weekViewControllers: [WeekViewController]! = []
-    private var index: Int = 0
-    private var MAX_VIEW = 5
     private var CURRENT_WEEK: Int? = nil
     private var pageIsAnimating: Bool = false
     
@@ -24,7 +22,9 @@ class CalandarPageViewController: UIPageViewController, UIPageViewControllerDele
         let calendar = Calendar.current
         CURRENT_WEEK = calendar.component(.weekOfYear, from: Date())
         self.weekViewControllers.append(newWeekViewController(weekNumber: CURRENT_WEEK!))
-        self.setViewControllers(weekViewControllers, direction: .forward, animated: true, completion: nil)
+        self.setViewControllers(weekViewControllers, direction: .forward, animated: false, completion: nil)
+        self.weekViewControllers.append(newWeekViewController(weekNumber: CURRENT_WEEK! + 1))
+        self.weekViewControllers.append(newWeekViewController(weekNumber: CURRENT_WEEK! + 2))
         // Do any additional setup after loading the view.
     }
     
@@ -42,62 +42,24 @@ class CalandarPageViewController: UIPageViewController, UIPageViewControllerDele
     
     // Mark: - Delegate Protocols
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        print("lol")
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        if(finished || completed){
-        }
+        print("mdr")
     }
 
     // MARK: - Data Source Protocols
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        if (pageIsAnimating){
-            return nil
-        }
-        if(index != 0){
-            index -= 1
-            return weekViewControllers[index]
-        }
-        else if viewController.isKind(of: WeekViewController.self){
-            let weekViewController: WeekViewController = viewController as! WeekViewController
-            let week = weekViewController.getWeek() - 1
-            let newWeekViewController : WeekViewController = self.newWeekViewController(weekNumber: week)
-            weekViewControllers.insert(weekViewController, at: 0)
-            if(weekViewControllers.count > MAX_VIEW) {
-                weekViewControllers.remove(at: MAX_VIEW)
-            } else {
-                if(index != 0){
-                    index -= 1
-                }
-            }
-            return newWeekViewController
-        }
-        return nil
+        let weekViewController: WeekViewController = viewController as! WeekViewController
+        let week = weekViewController.getWeek() - 1
+        return self.newWeekViewController(weekNumber: week)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        if (pageIsAnimating){
-            return nil
-        }
-        if(index != weekViewControllers.count - 1){
-            index += 1
-            return weekViewControllers[index]
-        }
-        else if viewController.isKind(of: WeekViewController.self){
-            let weekViewController: WeekViewController = viewController as! WeekViewController
-            let week = weekViewController.getWeek() + 1
-            let newWeekViewController : WeekViewController = self.newWeekViewController(weekNumber: week)
-            weekViewControllers.append(newWeekViewController)
-            if(weekViewControllers.count > MAX_VIEW) {
-                weekViewControllers.remove(at: 0)
-            } else {
-                if(index != MAX_VIEW - 1){
-                    index += 1
-                }
-            }
-            return newWeekViewController
-        }
-        return nil
+        let weekViewController: WeekViewController = viewController as! WeekViewController
+        let week = weekViewController.getWeek() + 1
+        return self.newWeekViewController(weekNumber: week)
     }
     
     /*

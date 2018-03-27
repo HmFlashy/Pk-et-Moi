@@ -52,8 +52,8 @@ class AppointmentPresenter {
         }
     }
     
-    func configureCollectionCell(forCollectionCell: UICollectionViewCell?, appointement: Appointment) -> AppointmentCollectionViewCell? {
-        self.appointment = appointement
+    func configureCollectionCell(forCollectionCell: UICollectionViewCell?, appointment: Appointment) -> AppointmentCollectionViewCell? {
+        self.appointment = appointment
         guard let cell: AppointmentCollectionViewCell = forCollectionCell as? AppointmentCollectionViewCell else {
             return nil
         }
@@ -61,6 +61,18 @@ class AppointmentPresenter {
         cell.lastnameLabel.text = self.lastname
         cell.firstnameLabel.text = self.firstname
         cell.timeLabel.text = self.time
+        cell.backgroundColor = UIColor(red: 0.5, green: 0.2, blue: 0.1, alpha: 0.1)
+        return cell
+    }
+    
+    func configureTableViewCell(forTableViewCell: UITableViewCell?, appointment: Appointment) -> AppointmentTableViewCell? {
+        self.appointment = appointment
+        guard let cell: AppointmentTableViewCell = forTableViewCell as? AppointmentTableViewCell else {
+            return nil
+        }
+        cell.professionLabel.text = self.profession
+        cell.doctorNameLabel.text = self.lastname + " " + self.firstname
+        cell.hourLabel.text = self.time
         cell.backgroundColor = UIColor(red: 0.5, green: 0.2, blue: 0.1, alpha: 0.1)
         return cell
     }
