@@ -13,25 +13,6 @@ class ActivityController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var typeActivityTableView: UITableView!
 
-    /*@IBAction func showPopup(_ sender: Any) {
-        
-        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            self.backgroundButton.alpha = 0.5
-        })
-    }
-    
-    @IBAction func closePopup(_ sender: Any) {
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-            self.backgroundButton.alpha = 0
-        })
-    }*/
-    
     fileprivate lazy var typeActivityFetched: NSFetchedResultsController<TypeActivity> = {
         let request: NSFetchRequest<TypeActivity> = TypeActivity.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key:#keyPath(TypeActivity.name), ascending: true)]
