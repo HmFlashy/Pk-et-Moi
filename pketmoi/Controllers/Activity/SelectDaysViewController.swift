@@ -70,7 +70,7 @@ class SelectDaysViewController: UIViewController {
         components.hour = hour
         components.minute = min
         tomorrow = gregorian.date(from: components)!
-        tomorrow = Calendar.current.date(byAdding: .hour, value: 1, to: tomorrow)!
+        //tomorrow = Calendar.current.date(byAdding: .hour, value: 1, to: tomorrow)!
         print(tomorrow)
         
         // Adding the startTime to the endDate
@@ -78,8 +78,8 @@ class SelectDaysViewController: UIViewController {
         components.hour = hour
         components.minute = min
         endDate = gregorian.date(from: components)!
-        endDate = Calendar.current.date(byAdding: .hour, value: 1, to: endDate)!
-        print(endDate)
+        //endDate = Calendar.current.date(byAdding: .hour, value: 1, to: endDate)!
+        print(endDate) 
         while tomorrow.compare(endDate).rawValue<1 {
             // Getting the day in letter
             dateFormatter.dateFormat  = "EEEE"

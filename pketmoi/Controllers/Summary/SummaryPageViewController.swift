@@ -8,62 +8,38 @@
 
 import UIKit
 
-class SummaryPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate {
+class SummaryPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     var summary: Summary!
-    
-    lazy var viewControllerList:[UIViewController] = {
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        
-        let vc1 = sb.instantiateViewController(withIdentifier: "SummaryDayOne") as! SummaryDayOneViewController
-        vc1.summary = self.summary
-        let vc2 = sb.instantiateViewController(withIdentifier: "SummaryDayTwo") as! SummaryDayTwoViewController
-        vc2.summary = self.summary
-        
-        return [vc1, vc2]
-    }()
+    var day: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let sb = UIStoryboard(name: "Main", bundle: nil)
         
-        if let firstViewController = viewControllerList.first{
-            self.setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
-        }
-        self.dataSource = self
-        self.delegate = self
-        if let firstVC = viewControllerList.first{
-            setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
-        }
-        for subView in view.subviews {
-            if subView is UIScrollView {
-                (subView as! UIScrollView).delegate = self
-            }
-        }
+        let vc = sb.instantiateViewController(withIdentifier: "SummaryDay") as! SummaryDayViewController
+        vc.summary = self.summary
+        vc.day = self.day
+        setViewControllers([vc], direction: .forward, animated: true, completion: nil)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let vcIndex = viewControllerList.index(of: viewController) else {return nil}
-        let previousIndex = vcIndex - 1
-        guard previousIndex >= 0 else {return nil}
-        guard viewControllerList.count > previousIndex else{return nil}
-        return viewControllerList[previousIndex]
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "SummaryDay") as! SummaryDayViewController
+        vc.summary = self.summary
+        self.day = self.day - 1
+        vc.day = self.day
+        return vc
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let vcIndex = viewControllerList.index(of: viewController) else {return nil}
-        let nextIndex = vcIndex + 1
-        guard viewControllerList.count > nextIndex else {return nil}
-        return viewControllerList[nextIndex]
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "SummaryDay") as! SummaryDayViewController
+        vc.summary = self.summary
+        self.day = self.day + 1
+        vc.day = self.day
+        return vc
     }
-
-// MARK: - Scroll View Delegate
-
-public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    let point = scrollView.contentOffset
-    var percentComplete: CGFloat
-    percentComplete = fabs(point.x - view.frame.size.width)/view.frame.size.width
-}
-    
 
     /*
     // MARK: - Navigation
