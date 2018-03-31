@@ -37,6 +37,7 @@ class AddDoctorAppointmentViewController: UIViewController {
 
     @IBAction func addAppointmentAction(_ sender: Any) {
         let appointment: Appointment = Appointment.CreateAppointment(date: self.appointmentDatePicker.date, doctor: self.doctor!)!
+        NotificationManager.addTimeItemNotification(forDate: self.appointmentDatePicker.date, using: appointment)
         print(appointment.date?.description ?? "")
         self.dismiss(animated: true, completion: nil)
     }

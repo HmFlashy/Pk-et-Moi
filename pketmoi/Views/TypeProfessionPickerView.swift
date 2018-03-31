@@ -18,7 +18,7 @@ class TypeProfessionPickerView: UIPickerView, UIPickerViewDelegate, UIPickerView
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.delegate = self
+        self.delegate = self    
         self.dataSource = self
         do {
             try self.typeProfessionFetched.performFetch()
