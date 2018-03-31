@@ -18,7 +18,7 @@ class TypeProfessionPickerView: UIPickerView, UIPickerViewDelegate, UIPickerView
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.delegate = self
+        self.delegate = self    
         self.dataSource = self
         do {
             try self.typeProfessionFetched.performFetch()
@@ -29,7 +29,7 @@ class TypeProfessionPickerView: UIPickerView, UIPickerViewDelegate, UIPickerView
     
     public lazy var typeProfessionFetched: NSFetchedResultsController<TypeProfession> = {
         let request: NSFetchRequest<TypeProfession> = TypeProfession.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(TypeProfession.title), ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(TypeProfession.objectID), ascending: true)]
         let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultController.delegate = self
         return fetchedResultController

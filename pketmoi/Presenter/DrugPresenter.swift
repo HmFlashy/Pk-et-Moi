@@ -53,5 +53,17 @@ class DrugPresenter {
         cell.backgroundColor = UIColor(red: 0.2, green: 0.1, blue: 0.5, alpha: 0.1)
         return cell
     }
+    
+    func configureTableViewCell(forTableViewCell: UITableViewCell?, drug: Drug) -> DrugTableViewCell? {
+        self.drug = drug
+        guard let cell: DrugTableViewCell = forTableViewCell as? DrugTableViewCell else {
+            return nil
+        }
+        cell.drugNameLabel.text = self.drugType
+        cell.doseLabel.text = self.dose + " doses"
+        cell.drugHourLabel.text = self.time
+        cell.backgroundColor = UIColor(red: 0.2, green: 0.1, blue: 0.5, alpha: 0.1)
+        return cell
+    }
 }
 
