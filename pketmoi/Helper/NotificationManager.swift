@@ -35,7 +35,7 @@ class NotificationManager {
         // add notification for Mondays at 11:00 a.m.
         let calendar = Calendar.current
         var dateComponents = DateComponents()
-        dateComponents.timeZone = TimeZone(abbreviation: "UTC+2")
+        dateComponents.timeZone = TimeZone(abbreviation: "UTC")
         dateComponents.month = calendar.component(.month, from: forDate)
         dateComponents.day =  calendar.component(.day, from: forDate)
         dateComponents.hour =  calendar.component(.hour, from: forDate)
