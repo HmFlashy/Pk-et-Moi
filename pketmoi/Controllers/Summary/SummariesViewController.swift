@@ -31,37 +31,109 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         return fetchedResultController
     }()
     
-    fileprivate lazy var appointmentFetched: NSFetchedResultsController<State> = {
-        let request: NSFetchRequest<State> = State.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(State.name), ascending: true)]
+    fileprivate lazy var appointmentFetched: NSFetchedResultsController<Appointment> = {
+        let request: NSFetchRequest<Appointment> = Appointment.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Appointment.date), ascending: true)]
         let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedResultController
     }()
     
+    fileprivate lazy var answerFetched: NSFetchedResultsController<Answer> = {
+        let request: NSFetchRequest<Answer> = Answer.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Answer.name), ascending: true)]
+        let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultController
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+//        _ = State.createState(name: "ON")
+//        _ = State.createState(name: "OFF")
+//        _ = Answer.createAnswer(name: "Toutes les prises")
+//        _ = Answer.createAnswer(name: "La plupart des prises")
+        
         
         do{
-            try summaryFetched.performFetch()
+            try stateFetched.performFetch()
+            try appointmentFetched.performFetch()
+            try answerFetched.performFetch()
         }catch {
             print("Unable to perfom Summary fetch")
         }
+        
+        do{
+            try summaryFetched.performFetch()
+        } catch {
+            print("Unable to perfom Summary fetch")
+        }
+        
+//        print("creating summary")
+//        // Creating summary
+//        let appointment = appointmentFetched.object(at: IndexPath(row: 0, section: 0))
+//        print(appointment)
+//        let date = appointment.date!
+//        var startDate = Calendar.current.date(byAdding: .day, value: -5, to: date)
+//        let endDate = Calendar.current.date(byAdding: .day, value: -1, to: date)
+//        let summary = Summary.createSummary(askingInterval: "1", endDate: endDate!, startDate: startDate!, appointment: appointment)
+//        print(summary)
+        let summary = self.summaryFetched.object(at: IndexPath(row: 0, section: 0))
+        var endDate = summary.endDate
+        var startDate = summary.startDate
+        
+//        
+//        print("creating rigorous answers")
+//        // Creating rigorousAnswers
+//        let answer = answerFetched.object(at: IndexPath(row: 0, section: 0))
+//        let answer2 = answerFetched.object(at: IndexPath(row: 1, section: 0))
+//        let rigorousAnswer = RigorousAnswer.createRigorousAnswer(date: startDate, nbOversight: "0", summary: summary, answer: answer)
+//        print(rigorousAnswer)
+//        let startDatePlus = Calendar.current.date(byAdding: .day, value: 1, to: startDate!)
+//        let rigorousAnswer2 = RigorousAnswer.createRigorousAnswer(date: startDatePlus, nbOversight: "0", summary: summary, answer: answer2)
+//        print(rigorousAnswer2)
+//        
+        // Creating BeStates for the first day
+        /*let state = stateFetched.object(at: IndexPath(row: 0, section: 0))
+        let state2 = stateFetched.object(at: IndexPath(row: 1, section: 0))
+        var gregorian = Calendar(identifier: .gregorian)
+        var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute], from: startDate!)
+        components.hour = 8
+        components.minute = 0
+        var startDateState = gregorian.date(from: components)!
+        var beState: BeState?
+        for _ in 1...10 {
+            beState = BeState.createBeState(date: startDateState, state: state, summary: summary)
+            print(beState)
+            startDateState = Calendar.current.date(byAdding: .hour, value: 1, to: startDateState)!
+        }
+        
+        // Creating BeStates for the second day
+        gregorian = Calendar(identifier: .gregorian)
+        startDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate!)
+        components = gregorian.dateComponents([.year, .month, .day, .hour, .minute], from: startDate!)
+        components.hour = 8
+        components.minute = 0
+        startDateState = gregorian.date(from: components)!
+        
+        for _ in 1...10 {
+            beState = BeState.createBeState(date: startDateState, state: state, summary: summary)
+            print(beState)
+            startDateState = Calendar.current.date(byAdding: .hour, value: 1, to: startDateState)!
+        }*/
+        
         summaryTableView.dataSource = self
         summaryTableView.delegate = self
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        /*guard let summaries = summaryFetched.fetchedObjects else { return 0 }
-        return summaries.count*/
-        return 2
+        guard let summaries = summaryFetched.fetchedObjects else { return 0 }
+        return summaries.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = summaryTableView.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath) as! SummaryTableViewCell
-        //let summary: Summary = summaryFetched.object(at: indexPath)
-       //self.summaryPresenter.configureCell(forCell: cell, summary: summary)
-        cell.dateLabel.text = self.summary[indexPath.row]
-        cell.nameLabel.text = "Synthèse " + String(indexPath.row + 1)
+        let summary: Summary = summaryFetched.object(at: indexPath)
+        self.summaryPresenter.configureCell(forCell: cell, summary: summary)
         return cell
     }
     
@@ -111,8 +183,7 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         if segue.identifier == "showSummarySegue"{
             if let indexPath = summaryTableView.indexPathForSelectedRow {
                 let vc = segue.destination as! ShowSummaryViewController
-                vc.date = summary[indexPath.row]
-                //vc.summary = self.summaryFetched.object(at: indexPath)
+                vc.summary = self.summaryFetched.object(at: indexPath)
             }
         }
     }

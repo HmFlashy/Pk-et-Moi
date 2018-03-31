@@ -56,7 +56,7 @@
         <relationship name="beStates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BeState" inverseName="state" inverseEntity="BeState" syncable="YES"/>
     </entity>
     <entity name="Summary" representedClassName="Summary" syncable="YES" codeGenerationType="class">
-        <attribute name="askingInterval" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="askingInterval" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="appointment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Appointment" inverseName="summary" inverseEntity="Appointment" syncable="YES"/>

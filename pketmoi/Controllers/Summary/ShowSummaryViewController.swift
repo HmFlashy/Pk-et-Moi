@@ -19,20 +19,17 @@ class ShowSummaryViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.locale = Locale(identifier: "fr_FR")
-        /*if let date = self.summary.appointment?.date {
-            self.dateLabel.text = dateFormatter.string(from: date)
-        }*/
-        self.summaryLabel.text = "Synthèse du " + date
+        if let date = self.summary.appointment?.date {
+            self.summaryLabel.text = "Synthèse du " + dateFormatter.string(from: date)
+        }
     }
-
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "pageViewSegue" {
+            let vc = segue.destination as! SummaryPageViewController
+            vc.summary = self.summary
+        }
     }
-    */
-
 }

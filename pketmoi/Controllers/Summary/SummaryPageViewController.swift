@@ -11,7 +11,7 @@ import UIKit
 class SummaryPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     var summary: Summary!
-    var day: Int = 1
+    var currentDay: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,25 +19,34 @@ class SummaryPageViewController: UIPageViewController, UIPageViewControllerDataS
         
         let vc = sb.instantiateViewController(withIdentifier: "SummaryDay") as! SummaryDayViewController
         vc.summary = self.summary
-        vc.day = self.day
+        vc.setDay(day: self.currentDay)
+        
         setViewControllers([vc], direction: .forward, animated: true, completion: nil)
+        self.delegate = self
+        self.dataSource = self
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        if self.currentDay-1 <= 0 {
+            return nil
+        }
+        self.currentDay = self.currentDay - 1
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "SummaryDay") as! SummaryDayViewController
         vc.summary = self.summary
-        self.day = self.day - 1
-        vc.day = self.day
+        vc.setDay(day: self.currentDay)
         return vc
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        if self.currentDay+1 >= 6 {
+            return nil
+        }
+        self.currentDay = self.currentDay + 1
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "SummaryDay") as! SummaryDayViewController
         vc.summary = self.summary
-        self.day = self.day + 1
-        vc.day = self.day
+        vc.setDay(day: self.currentDay)
         return vc
     }
 

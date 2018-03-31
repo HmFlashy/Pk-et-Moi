@@ -18,33 +18,29 @@ class SummaryDayViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var dayTableView: UITableView!
     @IBOutlet weak var dayLabel: UILabel!
     
-    var valuesBis: [BeState]?
-    let values: [[String]] = [["8h","OFF"],["9h","ON"],["10h","ON"],["11h","ON"],["12h","OFF"],["13h","ON"],["14h","Dyskynésie"],["15h","ON"],["16h","ON"],["17h","ON"],["18h","ON"],["19h","ON"]]
+    var valuesBis: [BeState] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("view Did Load " + String(self.day))
         dayTableView.dataSource = self
         dayTableView.delegate = self
-        //self.dateLabel.text = "Lundi 9 mars"
-        //self.answerLabel.text = "La plupart des prises"
-    }
-    
-    func setDay(day: Int){
-        //self.dayLabel.text = self.day
-        self.day = day
-        guard let summaryDay = summary.appointment?.date else{return}
+        self.dayLabel.text = "Jour " + String(self.day)
+        guard let appointment = summary.appointment else{return}
+        guard let summaryDay = appointment.date else{return}
         let date = Calendar.current.date(byAdding: .day, value: -(5-day+1), to: summaryDay)
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE dd MM"
+        dateFormatter.dateFormat = "EEEE dd MMMM"
         dateFormatter.locale = Locale(identifier: "fr_FR")
         self.dateLabel.text = dateFormatter.string(from: date!)
         for beState in (summary.beStates?.allObjects)! as! [BeState]{
             let beStateDate = dateFormatter.string(from: beState.date!)
-            let summaryDate = dateFormatter.string(from: summaryDay)
+            let summaryDate = dateFormatter.string(from: date!)
             if beStateDate == summaryDate{
-                valuesBis?.append(beState)
+                valuesBis.append(beState)
             }
         }
+        valuesBis = valuesBis.sorted(by: { $0.date! < $1.date!})
         let rigorousAnswers = (summary.rigorousAnswers)?.allObjects
         var i = 0
         var found = false
@@ -58,20 +54,22 @@ class SummaryDayViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    func setDay(day: Int){
+        self.day = day
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let values = valuesBis else { return 0 }
-         return values.count
-        //return values.count
+         return valuesBis.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = dayTableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as! SummaryDayTableViewCell
-        guard let values = valuesBis else {return cell}
-        let beState: BeState = values[indexPath.row]
+        guard valuesBis.count>0 else {return cell}
+        let beState: BeState = valuesBis[indexPath.row]
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH"
         dateFormatter.locale = Locale(identifier: "fr_FR")
-        cell.hourLabel.text = dateFormatter.string(from: beState.date!)
+        cell.hourLabel.text = dateFormatter.string(from: beState.date!) + "h"
         cell.stateLabel.text = beState.state?.name
         return cell
     }

@@ -25,7 +25,7 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString)
         let date = Date()
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(abbreviation: "UTC+1")
