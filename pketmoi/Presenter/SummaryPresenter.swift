@@ -29,7 +29,7 @@ class SummaryPresenter: NSObject {
         }
     }
     
-    func configureCell(forCell: SummaryTableViewCell?, summary: Summary){
+    func configureCell(forCell: SummaryTableViewCell?, summary: Summary, row: Int){
         self.summary = summary
         guard let cell = forCell else { return }
         if let summary = self.summary{
@@ -44,7 +44,7 @@ class SummaryPresenter: NSObject {
                 }
             }
         }
-        cell.nameLabel.text = "Synthèse"
+        cell.nameLabel.text = "Synthèse " + String(row+1)
         cell.dateLabel.text = self.date
     }
 }

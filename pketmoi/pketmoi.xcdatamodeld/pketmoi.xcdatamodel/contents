@@ -13,9 +13,9 @@
         <relationship name="summary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Summary" inverseName="appointment" inverseEntity="Summary" syncable="YES"/>
     </entity>
     <entity name="BeState" representedClassName="BeState" syncable="YES" codeGenerationType="class">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="state" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="State" inverseName="beStates" inverseEntity="State" syncable="YES"/>
-        <relationship name="summary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Summary" inverseName="beStates" inverseEntity="Summary" syncable="YES"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="state" maxCount="1" deletionRule="Nullify" destinationEntity="State" inverseName="beStates" inverseEntity="State" syncable="YES"/>
+        <relationship name="summary" maxCount="1" deletionRule="Nullify" destinationEntity="Summary" inverseName="beStates" inverseEntity="Summary" syncable="YES"/>
     </entity>
     <entity name="Doctor" representedClassName="Doctor" parentEntity="Person" syncable="YES" codeGenerationType="class">
         <attribute name="travelTime" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>

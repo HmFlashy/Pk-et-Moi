@@ -48,8 +48,9 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        _ = State.createState(name: "ON")
-//        _ = State.createState(name: "OFF")
+        let stateBis = State.createState(name: "ON")
+        let stateBis2 = State.createState(name: "OFF")
+        let stateBis3 = State.createState(name: "DYSKINESIES")
 //        _ = Answer.createAnswer(name: "Toutes les prises")
 //        _ = Answer.createAnswer(name: "La plupart des prises")
         
@@ -76,22 +77,22 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         var startDate = Calendar.current.date(byAdding: .day, value: -5, to: date)
         let endDate = Calendar.current.date(byAdding: .day, value: -1, to: date)
         let summary = Summary.createSummary(askingInterval: "1", endDate: endDate!, startDate: startDate!, appointment: appointment)
-//        var endDate = summary.endDate
-//        var startDate = summary.startDate
+        //var endDate = summary.endDate
+       // var startDate = summary.startDate
         
-//        
-//        print("creating rigorous answers")
-//        // Creating rigorousAnswers
-//        let answer = answerFetched.object(at: IndexPath(row: 0, section: 0))
-//        let answer2 = answerFetched.object(at: IndexPath(row: 1, section: 0))
-//        let rigorousAnswer = RigorousAnswer.createRigorousAnswer(date: startDate, nbOversight: "0", summary: summary, answer: answer)
-//        print(rigorousAnswer)
-//        let startDatePlus = Calendar.current.date(byAdding: .day, value: 1, to: startDate!)
-//        let rigorousAnswer2 = RigorousAnswer.createRigorousAnswer(date: startDatePlus, nbOversight: "0", summary: summary, answer: answer2)
-//        print(rigorousAnswer2)
-//        
+        
+        print("creating rigorous answers")
+        // Creating rigorousAnswers
+        let answer = answerFetched.object(at: IndexPath(row: 0, section: 0))
+        let answer2 = answerFetched.object(at: IndexPath(row: 1, section: 0))
+        let rigorousAnswer = RigorousAnswer.createRigorousAnswer(date: startDate, nbOversight: "0", summary: summary, answer: answer)
+        print(rigorousAnswer)
+        let startDatePlus = Calendar.current.date(byAdding: .day, value: 1, to: startDate!)
+        let rigorousAnswer2 = RigorousAnswer.createRigorousAnswer(date: startDatePlus, nbOversight: "0", summary: summary, answer: answer2)
+        print(rigorousAnswer2)
+        
         // Creating BeStates for the first day
-        /*let state = stateFetched.object(at: IndexPath(row: 0, section: 0))
+        let state = stateFetched.object(at: IndexPath(row: 0, section: 0))
         let state2 = stateFetched.object(at: IndexPath(row: 1, section: 0))
         var gregorian = Calendar(identifier: .gregorian)
         var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute], from: startDate!)
@@ -100,7 +101,7 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         var startDateState = gregorian.date(from: components)!
         var beState: BeState?
         for _ in 1...10 {
-            beState = BeState.createBeState(date: startDateState, state: state, summary: summary)
+            beState = BeState.createBeState(date: startDateState, state: stateBis, summary: summary)
             print(beState)
             startDateState = Calendar.current.date(byAdding: .hour, value: 1, to: startDateState)!
         }
@@ -114,10 +115,10 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         startDateState = gregorian.date(from: components)!
         
         for _ in 1...10 {
-            beState = BeState.createBeState(date: startDateState, state: state, summary: summary)
+            beState = BeState.createBeState(date: startDateState, state: stateBis3, summary: summary)
             print(beState)
             startDateState = Calendar.current.date(byAdding: .hour, value: 1, to: startDateState)!
-        }*/
+        }
         
         summaryTableView.dataSource = self
         summaryTableView.delegate = self
@@ -140,7 +141,7 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = summaryTableView.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath) as! SummaryTableViewCell
         let summary: Summary = summaryFetched.object(at: indexPath)
-        self.summaryPresenter.configureCell(forCell: cell, summary: summary)
+        self.summaryPresenter.configureCell(forCell: cell, summary: summary, row: indexPath.row)
         return cell
     }
     

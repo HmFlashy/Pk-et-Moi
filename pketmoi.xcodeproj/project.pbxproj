@@ -194,7 +194,7 @@
 		F333A7082069135500631594 /* CalandarPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalandarPageViewController.swift; sourceTree = "<group>"; };
 		F333A7092069135500631594 /* WeekViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekViewController.swift; sourceTree = "<group>"; };
 		F346CD812065186C0060F764 /* SummaryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPageViewController.swift; sourceTree = "<group>"; };
-		F346CD8520657DCC0060F764 /* SummariesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummariesViewController.swift; sourceTree = "<group>"; };
+		F346CD8520657DCC0060F764 /* SummariesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummariesViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
 		F35B35322071302000E83B9A /* NeurologistQuestionPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeurologistQuestionPageViewController.swift; sourceTree = "<group>"; };
 		F35B35342071424100E83B9A /* NeurologistQuestionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeurologistQuestionExtension.swift; sourceTree = "<group>"; };
 		F35B35362071499200E83B9A /* NeurologistLastQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeurologistLastQuestionViewController.swift; sourceTree = "<group>"; };

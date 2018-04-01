@@ -70,7 +70,21 @@ class SummaryDayViewController: UIViewController, UITableViewDataSource, UITable
         dateFormatter.dateFormat = "HH"
         dateFormatter.locale = Locale(identifier: "fr_FR")
         cell.hourLabel.text = dateFormatter.string(from: beState.date!) + "h"
-        cell.stateLabel.text = beState.state?.name
+        guard let stateName = beState.state?.name else{return cell}
+        cell.stateLabel.text = stateName
+        switch stateName {
+        case "ON":
+            cell.stateLabel.backgroundColor = .green
+            break
+        case "OFF":
+            cell.stateLabel.backgroundColor = .red
+            break
+        case "DYSKINESIES":
+            cell.stateLabel.backgroundColor = .yellow
+            break
+        default:
+            cell.stateLabel.backgroundColor = .white
+        }
         return cell
     }
     
