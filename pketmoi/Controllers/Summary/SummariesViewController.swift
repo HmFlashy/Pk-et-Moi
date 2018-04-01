@@ -59,7 +59,7 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
             try appointmentFetched.performFetch()
             try answerFetched.performFetch()
         }catch {
-            print("Unable to perfom Summary fetch")
+            print("Unable to perform fetch")
         }
         
         do{
@@ -67,19 +67,17 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         } catch {
             print("Unable to perfom Summary fetch")
         }
-        
-//        print("creating summary")
-//        // Creating summary
-//        let appointment = appointmentFetched.object(at: IndexPath(row: 0, section: 0))
-//        print(appointment)
-//        let date = appointment.date!
-//        var startDate = Calendar.current.date(byAdding: .day, value: -5, to: date)
-//        let endDate = Calendar.current.date(byAdding: .day, value: -1, to: date)
-//        let summary = Summary.createSummary(askingInterval: "1", endDate: endDate!, startDate: startDate!, appointment: appointment)
-//        print(summary)
-        let summary = self.summaryFetched.object(at: IndexPath(row: 0, section: 0))
-        var endDate = summary.endDate
-        var startDate = summary.startDate
+
+        print("creating summary")
+        // Creating summary
+        let appointment = appointmentFetched.object(at: IndexPath(row: 0, section: 0))
+        print(appointment)
+        let date = appointment.date!
+        var startDate = Calendar.current.date(byAdding: .day, value: -5, to: date)
+        let endDate = Calendar.current.date(byAdding: .day, value: -1, to: date)
+        let summary = Summary.createSummary(askingInterval: "1", endDate: endDate!, startDate: startDate!, appointment: appointment)
+//        var endDate = summary.endDate
+//        var startDate = summary.startDate
         
 //        
 //        print("creating rigorous answers")
@@ -125,6 +123,15 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         summaryTableView.delegate = self
     }
     
+    func refreshFetched(){
+        do{
+            try summaryFetched.performFetch()
+        } catch {
+            print("Unable to perfom Summary fetch")
+        }
+        self.summaryTableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let summaries = summaryFetched.fetchedObjects else { return 0 }
         return summaries.count
@@ -152,7 +159,7 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    // MARK: - NSFetchResultController delegate protocol
+    // MARK: - NSFetchResultController delegate protocol -
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch (type) {
         case .insert:
@@ -177,7 +184,7 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.summaryTableView.endUpdates()
     }
 
-    // MARK: - Navigation
+    // MARK: - Navigation -
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSummarySegue"{

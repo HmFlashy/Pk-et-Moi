@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D102" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Activity" representedClassName="Activity" parentEntity="TimeItem" syncable="YES" codeGenerationType="class">
         <attribute name="duration" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="typeActivity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TypeActivity" inverseName="activities" inverseEntity="TypeActivity" syncable="YES"/>
@@ -31,6 +31,17 @@
         <attribute name="itemDescription" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="typeEvent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TypeEvent" inverseName="events" inverseEntity="TypeEvent" syncable="YES"/>
     </entity>
+    <entity name="NeurologistAnswer" representedClassName="NeurologistAnswer" syncable="YES" codeGenerationType="class">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="neurologistQuestion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NeurologistQuestion" inverseName="neurologistAnswers" inverseEntity="NeurologistQuestion" syncable="YES"/>
+        <relationship name="summary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Summary" inverseName="neurologistAnswers" inverseEntity="Summary" syncable="YES"/>
+    </entity>
+    <entity name="NeurologistQuestion" representedClassName="NeurologistQuestion" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="neurologistAnswers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NeurologistAnswer" inverseName="neurologistQuestion" inverseEntity="NeurologistAnswer" syncable="YES"/>
+    </entity>
     <entity name="Person" representedClassName="Person" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
@@ -59,8 +70,10 @@
         <attribute name="askingInterval" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="verified" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="appointment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Appointment" inverseName="summary" inverseEntity="Appointment" syncable="YES"/>
         <relationship name="beStates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BeState" inverseName="summary" inverseEntity="BeState" syncable="YES"/>
+        <relationship name="neurologistAnswers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NeurologistAnswer" inverseName="summary" inverseEntity="NeurologistAnswer" syncable="YES"/>
         <relationship name="rigorousAnswers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RigorousAnswer" inverseName="summary" inverseEntity="RigorousAnswer" syncable="YES"/>
     </entity>
     <entity name="TimeItem" representedClassName="TimeItem" isAbstract="YES" syncable="YES" codeGenerationType="class">
@@ -98,11 +111,13 @@
         <element name="Doctor" positionX="160" positionY="192" width="128" height="90"/>
         <element name="Drug" positionX="99" positionY="-117" width="128" height="75"/>
         <element name="Event" positionX="-83" positionY="-84" width="128" height="90"/>
+        <element name="NeurologistAnswer" positionX="90" positionY="-126" width="128" height="105"/>
+        <element name="NeurologistQuestion" positionX="81" positionY="-135" width="128" height="90"/>
         <element name="Person" positionX="79" positionY="75" width="128" height="150"/>
         <element name="Profession" positionX="432" positionY="-36" width="128" height="90"/>
         <element name="RigorousAnswer" positionX="117" positionY="-99" width="128" height="105"/>
         <element name="State" positionX="81" positionY="-135" width="128" height="75"/>
-        <element name="Summary" positionX="90" positionY="-126" width="128" height="135"/>
+        <element name="Summary" positionX="90" positionY="-126" width="128" height="165"/>
         <element name="TimeItem" positionX="79" positionY="-279" width="128" height="75"/>
         <element name="TypeActivity" positionX="396" positionY="117" width="128" height="90"/>
         <element name="TypeDrug" positionX="81" positionY="-135" width="128" height="165"/>

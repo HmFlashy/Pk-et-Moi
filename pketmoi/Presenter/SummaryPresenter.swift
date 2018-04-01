@@ -32,6 +32,18 @@ class SummaryPresenter: NSObject {
     func configureCell(forCell: SummaryTableViewCell?, summary: Summary){
         self.summary = summary
         guard let cell = forCell else { return }
+        if let summary = self.summary{
+            if summary.verified {
+                if let image = UIImage(named: "icons8-ok-24"){
+                    cell.questionnaireImageView.image = image
+                }
+            }
+            else{
+                if let image = UIImage(named: "icons8-annuler-24"){
+                    cell.questionnaireImageView.image = image
+                }
+            }
+        }
         cell.nameLabel.text = "Synthèse"
         cell.dateLabel.text = self.date
     }

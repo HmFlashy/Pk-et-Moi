@@ -14,6 +14,8 @@ class AdditionalInformationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let defaults = UserDefaults.standard
+        textArea.text = defaults.string(forKey: "AdditionalInformation")
     }
     
     @IBAction func saveData(_ sender: Any) {
