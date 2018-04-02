@@ -11,7 +11,7 @@ import CoreData
 
 extension Doctor {
     
-    static func createDoctor(lastname: String, firstname: String, phone: String?, email: String?, address: String?, city: String?, zip: String?, travelTime: Int16?) -> Doctor {
+    static func createDoctor(lastname: String, firstname: String, phone: String?, email: String?, address: String?, city: String?, zip: String?, travelTime: Int16) -> Doctor {
         guard let newDoctor = NSEntityDescription.insertNewObject(forEntityName: "Doctor", into: CoreDataManager.context) as? Doctor else{
             print("Doctor does not exists in the database")
             fatalError()
