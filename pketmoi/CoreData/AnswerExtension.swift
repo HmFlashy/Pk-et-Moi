@@ -20,4 +20,12 @@ extension Answer{
         CoreDataManager.save()
         return newAnswer
     }
+    
+    static func fillDatabase(){
+        _ = Answer.createAnswer(name: "Toutes les prises")
+        _ = Answer.createAnswer(name: "La plupart des prises")
+        _ = Answer.createAnswer(name: "Quelques prises")
+        _ = Answer.createAnswer(name: "Aucune des prises")
+        _ = Answer.createAnswer(name: "J'ai oublié x prises")
+    }
 }

@@ -48,12 +48,6 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let stateDyski = stateFetched.object(at: IndexPath(row: 0, section: 0))
-        let stateOff = stateFetched.object(at: IndexPath(row: 1, section: 0))
-        let stateOn = stateFetched.object(at: IndexPath(row: 2, section: 0))
-//        _ = Answer.createAnswer(name: "Toutes les prises")
-//        _ = Answer.createAnswer(name: "La plupart des prises")
-        
         
         do{
             try stateFetched.performFetch()
@@ -62,6 +56,10 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         }catch {
             print("Unable to perform fetch")
         }
+        
+        let stateDyski = stateFetched.object(at: IndexPath(row: 0, section: 0))
+        let stateOff = stateFetched.object(at: IndexPath(row: 1, section: 0))
+        let stateOn = stateFetched.object(at: IndexPath(row: 2, section: 0))
         
         do{
             try summaryFetched.performFetch()
