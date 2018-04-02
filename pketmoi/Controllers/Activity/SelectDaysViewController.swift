@@ -87,7 +87,8 @@ class SelectDaysViewController: UIViewController {
             print(dayInWeek)
             if days.contains(dayInWeek){
                 print(tomorrow)
-                print(Activity.createActivity(itemDescription: descriptionActivity, date: tomorrow, duration: durationString, typeActivity: typeActivity))
+                let activity = Activity.createActivity(itemDescription: descriptionActivity, date: tomorrow, duration: durationString, typeActivity: typeActivity)
+                NotificationManager.addTimeItemNotification(forDate: tomorrow, using: activity)
             }
             tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: tomorrow)!
         }

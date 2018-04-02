@@ -31,7 +31,8 @@ class ScheduleActivityNotRegularViewController: UIViewController, UITextViewDele
         guard let date = dateFormatter.date(from: dateFormatter.string(from: datePicker.date)) else{return}
         dateFormatter.dateFormat = "HH:mm"
         let durationString = dateFormatter.string(from: durationDatePicker.date)
-        print(Activity.createActivity(itemDescription: "", date: date, duration: durationString, typeActivity: typeActivity))
+        let activity = Activity.createActivity(itemDescription: "", date: date, duration: durationString, typeActivity: typeActivity)
+        NotificationManager.addTimeItemNotification(forDate: date, using: activity)
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {

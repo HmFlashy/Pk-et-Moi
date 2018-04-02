@@ -21,7 +21,9 @@ class ScheduleDrugNotRegularViewController: UIViewController, UITextViewDelegate
     }
     
     func addDrug(){
-        print(Drug.createDrug(itemDescription: drugDescription.text, date: date.date, dose: drugDose.text!, typeDrug: typeDrug))
+        let drug = Drug.createDrug(itemDescription: drugDescription.text, date: date.date, dose: drugDose.text!, typeDrug: typeDrug)
+        NotificationManager.addTimeItemNotification(forDate: date.date, using: drug)
+        
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
