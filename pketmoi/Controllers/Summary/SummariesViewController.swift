@@ -98,7 +98,7 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         var beState: BeState?
         for _ in 1...10 {
             beState = BeState.createBeState(date: startDateState, state: stateOn, summary: summary)
-            print(beState)
+            print(beState!)
             startDateState = Calendar.current.date(byAdding: .hour, value: 1, to: startDateState)!
         }
         
@@ -112,7 +112,7 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         for _ in 1...10 {
             beState = BeState.createBeState(date: startDateState, state: stateDyski, summary: summary)
-            print(beState)
+            print(beState!)
             startDateState = Calendar.current.date(byAdding: .hour, value: 1, to: startDateState)!
         }
         

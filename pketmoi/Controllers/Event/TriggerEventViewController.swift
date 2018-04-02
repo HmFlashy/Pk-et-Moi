@@ -24,7 +24,7 @@ class TriggerEventViewController: UIViewController, NSFetchedResultsControllerDe
     
     @IBAction func addTriggerEvent(_ sender: Any) {
         guard let typeEvent = typeEventPickerView.selectedTypeEvent else {return}
-        Event.createEvent(itemDescription: descriptionTextArea.text, date: datePicker.date, typeEvent: typeEvent)
+        _ = Event.createEvent(itemDescription: descriptionTextArea.text, date: datePicker.date, typeEvent: typeEvent)
     }
     
     // MARK : - TextViewDelegate
