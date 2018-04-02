@@ -33,7 +33,7 @@ class TypeDrugViewController: UIViewController {
     
     @IBAction func addTypeDrug(_ sender: Any) {
         if checkData(){
-            TypeDrug.createTypeDrug(name: name.text!, minimalDose: minimalDose.text!, maximalDose: maximalDose.text!, minimalIntervalDose: intervalDose.text!, maximalFrequency: maximalFrequency.text!, url: url.text, drugDescription: drugDescription.text)
+            _ = TypeDrug.createTypeDrug(name: name.text!, minimalDose: minimalDose.text!, maximalDose: maximalDose.text!, minimalIntervalDose: intervalDose.text!, maximalFrequency: maximalFrequency.text!, url: url.text, drugDescription: drugDescription.text)
         }
     }
     

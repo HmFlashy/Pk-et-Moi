@@ -29,7 +29,7 @@ class TypeActivityController: UIViewController{
         }
         let typeActivityName: String = typeActivity.text!
         let descriptionTA: String = descriptionTypeActivity.text
-        TypeActivity.createTypeActivity(name: typeActivityName, description: descriptionTA)
+        _ = TypeActivity.createTypeActivity(name: typeActivityName, description: descriptionTA)
         typeActivity.text = ""
         self.removeAnimate()
     }
