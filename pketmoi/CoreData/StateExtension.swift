@@ -11,14 +11,19 @@ import CoreData
 
 extension State{
     static func createState(name: String) -> State {
-        let newState = NSEntityDescription.insertNewObject(forEntityName: "State", into: CoreDataManager.context) as! State
+        guard let newState = NSEntityDescription.insertNewObject(forEntityName: "State", into: CoreDataManager.context) as? State else{
+            print("State does not exists in the database")
+            fatalError()
+        }
         newState.name = name
         
-        do {
-            try CoreDataManager.context.save()
-        } catch let error as NSError {
-            print(error)
-        }
+        CoreDataManager.save()
         return newState
+    }
+    
+    static func fillDatabase(){
+        _ = State.createState(name: "DYSKINESIES")
+        _ = State.createState(name: "ON")
+        _ = State.createState(name: "OFF")
     }
 }

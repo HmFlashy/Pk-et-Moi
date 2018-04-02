@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D102" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Activity" representedClassName="Activity" parentEntity="TimeItem" syncable="YES" codeGenerationType="class">
-        <attribute name="duration" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="typeActivity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TypeActivity" inverseName="activities" inverseEntity="TypeActivity" syncable="YES"/>
+        <attribute name="duration" attributeType="String" syncable="YES"/>
+        <relationship name="typeActivity" maxCount="1" deletionRule="Nullify" destinationEntity="TypeActivity" inverseName="activities" inverseEntity="TypeActivity" syncable="YES"/>
     </entity>
     <entity name="Answer" representedClassName="Answer" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="rigorousAnswer" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RigorousAnswer" inverseName="answer" inverseEntity="RigorousAnswer" syncable="YES"/>
     </entity>
     <entity name="Appointment" representedClassName="Appointment" parentEntity="TimeItem" syncable="YES" codeGenerationType="class">
-        <relationship name="doctor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Doctor" inverseName="appointments" inverseEntity="Doctor" syncable="YES"/>
+        <relationship name="doctor" maxCount="1" deletionRule="Nullify" destinationEntity="Doctor" inverseName="appointments" inverseEntity="Doctor" syncable="YES"/>
         <relationship name="summary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Summary" inverseName="appointment" inverseEntity="Summary" syncable="YES"/>
     </entity>
     <entity name="BeState" representedClassName="BeState" syncable="YES" codeGenerationType="class">
@@ -18,71 +18,71 @@
         <relationship name="summary" maxCount="1" deletionRule="Nullify" destinationEntity="Summary" inverseName="beStates" inverseEntity="Summary" syncable="YES"/>
     </entity>
     <entity name="Doctor" representedClassName="Doctor" parentEntity="Person" syncable="YES" codeGenerationType="class">
-        <attribute name="travelTime" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="travelTime" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="doctor" inverseEntity="Appointment" syncable="YES"/>
-        <relationship name="profession" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profession" inverseName="doctors" inverseEntity="Profession" syncable="YES"/>
+        <relationship name="profession" maxCount="1" deletionRule="Nullify" destinationEntity="Profession" inverseName="doctors" inverseEntity="Profession" syncable="YES"/>
     </entity>
     <entity name="Drug" representedClassName="Drug" parentEntity="TimeItem" syncable="YES" codeGenerationType="class">
-        <attribute name="dose" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="typeDrug" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TypeDrug" inverseName="drugs" inverseEntity="TypeDrug" syncable="YES"/>
+        <attribute name="dose" attributeType="String" syncable="YES"/>
+        <relationship name="typeDrug" maxCount="1" deletionRule="Nullify" destinationEntity="TypeDrug" inverseName="drugs" inverseEntity="TypeDrug" syncable="YES"/>
     </entity>
     <entity name="Event" representedClassName="Event" syncable="YES" codeGenerationType="class">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="itemDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="typeEvent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TypeEvent" inverseName="events" inverseEntity="TypeEvent" syncable="YES"/>
+        <relationship name="typeEvent" maxCount="1" deletionRule="Nullify" destinationEntity="TypeEvent" inverseName="events" inverseEntity="TypeEvent" syncable="YES"/>
     </entity>
     <entity name="NeurologistAnswer" representedClassName="NeurologistAnswer" syncable="YES" codeGenerationType="class">
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="neurologistQuestion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NeurologistQuestion" inverseName="neurologistAnswers" inverseEntity="NeurologistQuestion" syncable="YES"/>
-        <relationship name="summary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Summary" inverseName="neurologistAnswers" inverseEntity="Summary" syncable="YES"/>
+        <relationship name="neurologistQuestion" maxCount="1" deletionRule="Nullify" destinationEntity="NeurologistQuestion" inverseName="neurologistAnswers" inverseEntity="NeurologistQuestion" syncable="YES"/>
+        <relationship name="summary" maxCount="1" deletionRule="Nullify" destinationEntity="Summary" inverseName="neurologistAnswers" inverseEntity="Summary" syncable="YES"/>
     </entity>
     <entity name="NeurologistQuestion" representedClassName="NeurologistQuestion" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="number" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="neurologistAnswers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NeurologistAnswer" inverseName="neurologistQuestion" inverseEntity="NeurologistAnswer" syncable="YES"/>
     </entity>
     <entity name="Person" representedClassName="Person" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="firstname" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lastname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstname" attributeType="String" syncable="YES"/>
+        <attribute name="lastname" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Profession" representedClassName="Profession" syncable="YES" codeGenerationType="class">
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
         <relationship name="doctors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Doctor" inverseName="profession" inverseEntity="Doctor" syncable="YES"/>
-        <relationship name="typeProfession" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TypeProfession" inverseName="professions" inverseEntity="TypeProfession" syncable="YES"/>
+        <relationship name="typeProfession" maxCount="1" deletionRule="Nullify" destinationEntity="TypeProfession" inverseName="professions" inverseEntity="TypeProfession" syncable="YES"/>
     </entity>
     <entity name="RigorousAnswer" representedClassName="RigorousAnswer" syncable="YES" codeGenerationType="class">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="nbOversight" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="answer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Answer" inverseName="rigorousAnswer" inverseEntity="Answer" syncable="YES"/>
-        <relationship name="summary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Summary" inverseName="rigorousAnswers" inverseEntity="Summary" syncable="YES"/>
+        <relationship name="answer" maxCount="1" deletionRule="Nullify" destinationEntity="Answer" inverseName="rigorousAnswer" inverseEntity="Answer" syncable="YES"/>
+        <relationship name="summary" maxCount="1" deletionRule="Nullify" destinationEntity="Summary" inverseName="rigorousAnswers" inverseEntity="Summary" syncable="YES"/>
     </entity>
     <entity name="State" representedClassName="State" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="beStates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BeState" inverseName="state" inverseEntity="BeState" syncable="YES"/>
     </entity>
     <entity name="Summary" representedClassName="Summary" syncable="YES" codeGenerationType="class">
         <attribute name="askingInterval" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="endDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="startDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="verified" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="appointment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Appointment" inverseName="summary" inverseEntity="Appointment" syncable="YES"/>
+        <relationship name="appointment" maxCount="1" deletionRule="Nullify" destinationEntity="Appointment" inverseName="summary" inverseEntity="Appointment" syncable="YES"/>
         <relationship name="beStates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BeState" inverseName="summary" inverseEntity="BeState" syncable="YES"/>
         <relationship name="neurologistAnswers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NeurologistAnswer" inverseName="summary" inverseEntity="NeurologistAnswer" syncable="YES"/>
         <relationship name="rigorousAnswers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RigorousAnswer" inverseName="summary" inverseEntity="RigorousAnswer" syncable="YES"/>
     </entity>
     <entity name="TimeItem" representedClassName="TimeItem" isAbstract="YES" syncable="YES" codeGenerationType="class">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="itemDescription" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="TypeActivity" representedClassName="TypeActivity" syncable="YES" codeGenerationType="class">
         <attribute name="descriptionTypeActivity" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="activities" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Activity" inverseName="typeActivity" inverseEntity="Activity" syncable="YES"/>
     </entity>
     <entity name="TypeDrug" representedClassName="TypeDrug" syncable="YES" codeGenerationType="class">
@@ -91,16 +91,16 @@
         <attribute name="maximalFrequency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="minimalDose" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="minimalIntervalDose" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="drugs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Drug" inverseName="typeDrug" inverseEntity="Drug" syncable="YES"/>
     </entity>
     <entity name="TypeEvent" representedClassName="TypeEvent" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="typeEvent" inverseEntity="Event" syncable="YES"/>
     </entity>
     <entity name="TypeProfession" representedClassName="TypeProfession" syncable="YES" codeGenerationType="class">
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
         <relationship name="professions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Profession" inverseName="typeProfession" inverseEntity="Profession" syncable="YES"/>
     </entity>
     <elements>
@@ -121,7 +121,7 @@
         <element name="TimeItem" positionX="79" positionY="-279" width="128" height="75"/>
         <element name="TypeActivity" positionX="396" positionY="117" width="128" height="90"/>
         <element name="TypeDrug" positionX="81" positionY="-135" width="128" height="165"/>
-        <element name="TypeEvent" positionX="-117" positionY="59" width="128" height="73"/>
+        <element name="TypeEvent" positionX="-117" positionY="59" width="128" height="75"/>
         <element name="TypeProfession" positionX="367" positionY="-279" width="128" height="75"/>
     </elements>
 </model>

@@ -11,27 +11,21 @@ import CoreData
 
 extension TypeProfession {
     
-    static func getNewTypeProfessionDAO() -> TypeProfession? {
-        guard let entity = NSEntityDescription.entity(forEntityName: "TypeProfession", in: CoreDataManager.context) else {
-            return nil
-        }
-        return TypeProfession(entity: entity, insertInto: CoreDataManager.context)
-    }
-    
-    static func fillDatabase() -> [TypeProfession] {
-        guard let entity = NSEntityDescription.entity(forEntityName: "TypeProfession", in: CoreDataManager.context) else {
-            print("TypeProfession does not exist in database")
+    static func createTypeProfession(title: String) -> TypeProfession{
+        guard let newTypeProfession = NSEntityDescription.insertNewObject(forEntityName: "TypeProfession", into: CoreDataManager.context) as? TypeProfession else{
+            print("TypeProfession does not exists in the database")
             fatalError()
         }
-        var typeProfession: [TypeProfession] = []
-        typeProfession.append(TypeProfession(entity: entity, insertInto: CoreDataManager.context))
-        typeProfession.append(TypeProfession(entity: entity, insertInto: CoreDataManager.context))
-        typeProfession.append(TypeProfession(entity: entity, insertInto: CoreDataManager.context))
-        typeProfession.append(TypeProfession(entity: entity, insertInto: CoreDataManager.context))
-        typeProfession[0].title = "Medicaux"
-        typeProfession[1].title = "Para-Médicaux"
-        typeProfession[2].title = "Autres Para-Médicaux"
-        typeProfession[3].title = "Autres"
-        return typeProfession
+        newTypeProfession.title = title
+        
+        CoreDataManager.save()
+        return newTypeProfession
+    }
+    
+    static func fillDatabase(){
+        _ = TypeProfession.createTypeProfession(title: "Medicaux")
+        _ = TypeProfession.createTypeProfession(title: "Para-Médicaux")
+        _ = TypeProfession.createTypeProfession(title: "Autres Para-Médicaux")
+        _ = TypeProfession.createTypeProfession(title: "Autres")
     }
 }

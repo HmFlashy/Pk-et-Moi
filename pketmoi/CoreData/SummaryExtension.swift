@@ -11,17 +11,16 @@ import CoreData
 
 extension Summary{
     static func createSummary(askingInterval: String?, endDate: Date, startDate: Date, appointment: Appointment) -> Summary {
-        let newSummary = NSEntityDescription.insertNewObject(forEntityName: "Summary", into: CoreDataManager.context) as! Summary
+        guard let newSummary = NSEntityDescription.insertNewObject(forEntityName: "Summary", into: CoreDataManager.context) as? Summary else{
+            print("Summary does not exists in the database")
+            fatalError()
+        }
         newSummary.askingInterval = askingInterval
         newSummary.endDate = endDate
         newSummary.startDate = startDate
         newSummary.appointment = appointment
-        appointment.summary = newSummary
-        do {
-            try CoreDataManager.context.save()
-        } catch let error as NSError {
-            print(error)
-        }
+        
+        CoreDataManager.save()
         return newSummary
     }
 }

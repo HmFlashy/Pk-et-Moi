@@ -11,17 +11,16 @@ import CoreData
 
 extension NeurologistAnswer{
     static func createNeurologistAnswer(status: Bool, comment: String?, summary: Summary, neurologistQuestion: NeurologistQuestion) -> NeurologistAnswer {
-        let newNeurologistAnswer = NSEntityDescription.insertNewObject(forEntityName: "NeurologistAnswer", into: CoreDataManager.context) as! NeurologistAnswer
+        guard let newNeurologistAnswer = NSEntityDescription.insertNewObject(forEntityName: "NeurologistAnswer", into: CoreDataManager.context) as? NeurologistAnswer else{
+            print("NeurologistAnswer does not exists in the database")
+            fatalError()
+        }
         newNeurologistAnswer.status = status
         newNeurologistAnswer.comment = comment
         newNeurologistAnswer.summary = summary
         newNeurologistAnswer.neurologistQuestion = neurologistQuestion
         
-        do {
-            try CoreDataManager.context.save()
-        } catch let error as NSError {
-            print(error)
-        }
+        CoreDataManager.save()
         return newNeurologistAnswer
     }
 }

@@ -11,14 +11,13 @@ import CoreData
 
 extension Answer{
     static func createAnswer(name: String) -> Answer {
-        let newAnswer = NSEntityDescription.insertNewObject(forEntityName: "Answer", into: CoreDataManager.context) as! Answer
+        guard let newAnswer = NSEntityDescription.insertNewObject(forEntityName: "Answer", into: CoreDataManager.context) as? Answer else{
+            print("Answer does not exists in the database")
+            fatalError()
+        }
         newAnswer.name = name
         
-        do {
-            try CoreDataManager.context.save()
-        } catch let error as NSError {
-            print(error)
-        }
+        CoreDataManager.save()
         return newAnswer
     }
 }
