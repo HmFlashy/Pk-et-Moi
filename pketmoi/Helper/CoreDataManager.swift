@@ -17,8 +17,9 @@ class CoreDataManager {
         do{
             try CoreDataManager.context.save()
         }
-        catch{
-            print("error")
+        catch let err as NSError{
+            print(err)
+            print("error while performing the save")
         }
     }
 }

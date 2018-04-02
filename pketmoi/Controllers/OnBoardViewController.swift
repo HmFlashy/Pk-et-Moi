@@ -19,7 +19,7 @@ class OnBoardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.fillDatabase()
         // Do any additional setup after loading the view.
     }
 
@@ -33,8 +33,6 @@ class OnBoardViewController: UIViewController {
         preparationTimeDisplay.text = String(currentValue) + " min"
     }
     @IBAction func validateFirstTimeAction(_ sender: Any) {
-        let typeProfessions = TypeProfession.fillDatabase()
-        _ = Profession.fillDatabase(typeProfessions: typeProfessions)
         CoreDataManager.save()
         UserDefaults.standard.set("false", forKey: "firstLaunch")
         UserDefaults.standard.set(nameOutlet.text, forKey: "LastName")
@@ -42,6 +40,17 @@ class OnBoardViewController: UIViewController {
         UserDefaults.standard.set(birthDateOutlet.date, forKey: "BirthDate")
         UserDefaults.standard.set(preparationTimeOutlet.value, forKey: "PreparationTime")
         performSegue(withIdentifier: "toMainView", sender: sender)
+    }
+    
+    private func fillDatabase(){
+        State.fillDatabase()
+        Profession.fillDatabase(typeProfessions: TypeProfession.fillDatabase())
+        TypeDrug.fillDatabase()
+        State.fillDatabase()
+        TypeActivity.fillDatabase()
+        TypeEvent.fillDatabase()
+        NeurologistQuestion.fillDatabase()
+        Answer.fillDatabase()
     }
     
     /*

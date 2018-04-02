@@ -18,7 +18,6 @@ class ShowSummaryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.locale = Locale(identifier: "fr_FR")
@@ -35,14 +34,6 @@ class ShowSummaryViewController: UIViewController {
             if let image = UIImage(named: "icons8-annuler-48"){
                 verifiedSummary.setImage(image, for: .normal)
             }
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if self.isMovingToParentViewController {
-            let parent = self.parent as! SummariesViewController
-            parent.refreshFetched()
         }
     }
     

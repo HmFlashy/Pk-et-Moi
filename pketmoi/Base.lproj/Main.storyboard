@@ -2083,9 +2083,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="748"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="nmb-rX-iyY">
-                                <rect key="frame" x="206" y="392" width="208" height="154"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="nmb-rX-iyY">
+                                <rect key="frame" x="206" y="391" width="208" height="154"/>
                                 <color key="backgroundColor" red="0.65740488340000003" green="0.66879857509999996" blue="0.63954693939999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Gérer ses activités">
@@ -2096,9 +2095,8 @@
                                     <segue destination="HQe-0a-f1E" kind="show" id="7Ld-GK-L2D"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Z0V-O8-7Ta">
-                                <rect key="frame" x="0.0" y="392" width="207" height="154"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Z0V-O8-7Ta">
+                                <rect key="frame" x="0.0" y="391" width="207" height="154"/>
                                 <color key="backgroundColor" red="0.65740488335671221" green="0.66879857512953367" blue="0.63954693937075258" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="154" id="eps-nO-9Ye"/>
@@ -2120,9 +2118,8 @@
                                     <segue destination="Plq-7e-RlI" kind="show" id="L0p-fR-XkE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="5jq-00-rm3">
-                                <rect key="frame" x="0.0" y="545" width="207" height="154"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="5jq-00-rm3">
+                                <rect key="frame" x="0.0" y="544" width="207" height="154"/>
                                 <color key="backgroundColor" red="0.65740488340000003" green="0.66879857509999996" blue="0.63954693939999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="154" id="4gM-sK-djX"/>
@@ -2136,9 +2133,8 @@
                                     <segue destination="Qn5-z7-1FL" kind="show" id="1IP-O5-FfV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="a9H-jh-hLw">
-                                <rect key="frame" x="206" y="545" width="208" height="154"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="a9H-jh-hLw">
+                                <rect key="frame" x="206" y="544" width="208" height="154"/>
                                 <color key="backgroundColor" red="0.65740488340000003" green="0.66879857509999996" blue="0.63954693939999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Gérer ses médicaments">
@@ -3492,7 +3488,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Cwh-S0-pgc">
-                                <rect key="frame" x="236" y="157" width="49" height="31"/>
+                                <rect key="frame" x="236" y="157" width="51" height="31"/>
                                 <connections>
                                     <action selector="changeValue:" destination="J7Q-Mh-U2b" eventType="valueChanged" id="iV0-CC-6YL"/>
                                 </connections>

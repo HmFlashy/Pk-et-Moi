@@ -58,7 +58,7 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         let stateDyski = stateFetched.object(at: IndexPath(row: 0, section: 0))
-        let stateOff = stateFetched.object(at: IndexPath(row: 1, section: 0))
+        //let stateOff = stateFetched.object(at: IndexPath(row: 1, section: 0))
         let stateOn = stateFetched.object(at: IndexPath(row: 2, section: 0))
         
         do{
@@ -120,15 +120,6 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         summaryTableView.delegate = self
     }
     
-    func refreshFetched(){
-        do{
-            try summaryFetched.performFetch()
-        } catch {
-            print("Unable to perfom Summary fetch")
-        }
-        self.summaryTableView.reloadData()
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let summaries = summaryFetched.fetchedObjects else { return 0 }
         return summaries.count
@@ -164,10 +155,14 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.summaryTableView.insertRows(at: [indexPath], with: .fade)
             }
             break
+        case .update:
+            self.summaryTableView.reloadData()
+            break
         case .delete:
             if let indexPath = indexPath {
                 self.summaryTableView.deleteRows(at: [indexPath], with: .automatic)
             }
+            break
         default:
             break
         }
