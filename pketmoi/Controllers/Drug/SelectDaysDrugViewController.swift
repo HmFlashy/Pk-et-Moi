@@ -98,7 +98,9 @@ class SelectDaysDrugViewController: UIViewController {
                 for _ in 1...intFrequency{
                     print("date avec heure incrémenté")
                     print(tomorrowHour)
-                    print(Drug.createDrug(itemDescription: drugDescription, date: tomorrowHour, dose: drugDose, typeDrug: typeDrug))
+                    let drug = Drug.createDrug(itemDescription: drugDescription, date: tomorrowHour, dose: drugDose, typeDrug: typeDrug)
+                    print(drug)
+                    NotificationManager.addTimeItemNotification(forDate: tomorrowHour, using: drug)
                     // Addind the interval to the date
                     tomorrowHour = Calendar.current.date(byAdding: .hour, value: hourInterval, to: tomorrowHour)!
                     tomorrowHour = Calendar.current.date(byAdding: .minute, value: minInterval, to: tomorrowHour)!
