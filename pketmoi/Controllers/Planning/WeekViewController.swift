@@ -70,6 +70,22 @@ class WeekViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
+    func createRequest() {
+        let request: NSFetchRequest<TimeItem> = TimeItem.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(TimeItem.date), ascending: true)]
+        request.predicate = predicateForWeekFromDate(date: getFirstDay(weekNumber: self.week))
+        timeItemFetched = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+        timeItemFetched!.delegate = self
+        do {
+            try timeItemFetched.performFetch()
+        } catch {
+            print("error performing fetched for time items")
+        }
+        DispatchQueue.main.async {
+            self.weekTableView.reloadData()
+        };
+    }
+    
     func setWeek(number: Int){
         self.week = number
         let date: Date = Date()
@@ -87,17 +103,7 @@ class WeekViewController: UIViewController, UITableViewDelegate, UITableViewData
         let dimancheString = dateFormatter.string(from: dimanche!)
         let text: String! = lundiString + " au " + dimancheString
         self.weekLabel.text = text
-        let request: NSFetchRequest<TimeItem> = TimeItem.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(TimeItem.date), ascending: true)]
-        request.predicate = predicateForWeekFromDate(date: getFirstDay(weekNumber: self.week))
-        timeItemFetched = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
-        timeItemFetched!.delegate = self
-        do {
-            try timeItemFetched.performFetch()
-        } catch {
-            print("error performing fetched for time items")
-        }
-        self.weekTableView.reloadData()
+        createRequest()
         
     }
     
@@ -130,6 +136,7 @@ class WeekViewController: UIViewController, UITableViewDelegate, UITableViewData
         guard let timeItems = self.timeItemFetched.fetchedObjects else {
             return 0
         }
+        print(timeItems.count)
         var nbItems = 0
         for timeItem in timeItems {
             let weekday = Calendar.current.component(.weekday, from: timeItem.date!)
