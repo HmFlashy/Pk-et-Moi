@@ -19,7 +19,7 @@ class AddDoctorStepTwoViewController: UIViewController {
     @IBOutlet weak var zipTextField: UITextField!
     @IBOutlet weak var streetNameTextField: UITextField!
     
-    private var doctor: Doctor?
+    private var profession: Profession!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,24 +32,13 @@ class AddDoctorStepTwoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func set(forDoctor: Doctor){
-        self.doctor = forDoctor
+    func set(forProfession: Profession){
+        self.profession = forProfession
     }
 
     
     @IBAction func addDoctorAction(_ sender: Any) {
-        self.doctor?.lastname = lastnameTextField.text
-        self.doctor?.firstname = firstnameTextField.text
-        self.doctor?.email = mailTextField.text
-        self.doctor?.phone = phoneTextField.text
-        self.doctor?.city = cityTextField.text
-        self.doctor?.zip = zipTextField.text
-        self.doctor?.address = streetNameTextField.text
-        do {
-            try CoreDataManager.context.save()
-        } catch {
-            print("Erreur lors de l'ajout")
-        }
+        _ = Doctor.createDoctor(lastname: lastnameTextField.text!, firstname: firstnameTextField.text!, phone: phoneTextField.text, email: mailTextField.text, address: streetNameTextField.text, city: cityTextField.text, zip: zipTextField.text, travelTime: 0)
         performSegue(withIdentifier: "unwindToDoctorsView", sender: sender)
         
     }

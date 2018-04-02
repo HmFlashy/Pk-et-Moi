@@ -19,11 +19,7 @@ class DoctorPresenter {
     fileprivate var doctor: Doctor? = nil {
         didSet {
             if let doctor = self.doctor {
-                if let fullname = doctor.fullname {
-                    self.fullname = fullname
-                } else {
-                    self.fullname = "unknown"
-                }
+                self.fullname = doctor.fullname
                 if let profession = doctor.profession?.title {
                     self.profession = profession
                 } else {

@@ -24,7 +24,6 @@ class ModifyDoctorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(doctor?.fullname ?? "Mdr")
         if doctor != nil {
             lastnameTextField.text = doctor?.lastname
             firstnameTextField.text = doctor?.firstname

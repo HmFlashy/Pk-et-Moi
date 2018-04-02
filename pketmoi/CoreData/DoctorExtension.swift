@@ -28,4 +28,10 @@ extension Doctor {
         CoreDataManager.save()
         return newDoctor
     }
+    
+    var fullname: String {
+        get {
+            return self.firstname! + " " + self.lastname!
+        }
+    }
 }
