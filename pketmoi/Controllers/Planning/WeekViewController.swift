@@ -26,12 +26,10 @@ class WeekViewController: UIViewController, UITableViewDelegate, UITableViewData
     func getFirstDay(weekNumber:Int)->NSDate!{
         let Calendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
         let dayComponent = NSDateComponents()
-        print(dayComponent.year)
         dayComponent.weekOfYear = weekNumber
         dayComponent.year = Calendar.component(.year, from: Date())
         dayComponent.weekday = 3
         var date = Calendar.date(from: dayComponent as DateComponents)
-        print(date ?? "")
         if(weekNumber == 1 && Calendar.components(.month, from: date!).month != 1){
             dayComponent.year = dayComponent.weekOfYear - 1
             date = Calendar.date(from: dayComponent as DateComponents)
@@ -74,7 +72,20 @@ class WeekViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func setWeek(number: Int){
         self.week = number
-        let text: String! = "Semaine " + String(self.week)
+        let date: Date = Date()
+        var dateComponent: DateComponents = DateComponents()
+        dateComponent.year = Calendar.current.component(.year, from: date)
+        dateComponent.weekday = 2
+        dateComponent.weekOfYear = number
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM"
+        let lundi = Calendar.current.date(from: dateComponent)
+        let lundiString = dateFormatter.string(from: lundi!)
+        dateComponent.weekday = 1
+        dateComponent.weekOfYear = number + 1
+        let dimanche = Calendar.current.date(from: dateComponent)
+        let dimancheString = dateFormatter.string(from: dimanche!)
+        let text: String! = lundiString + " au " + dimancheString
         self.weekLabel.text = text
         let request: NSFetchRequest<TimeItem> = TimeItem.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key:#keyPath(TimeItem.date), ascending: true)]
