@@ -30,19 +30,15 @@ class AddDoctorStepOneViewController: UIViewController {
     
     
     @IBAction func choseProfessionAction(_ sender: Any) {
-        doctor = Doctor.getNewDoctorDAO()
-        guard let professions = professionPicker.professionsFetched else { return }
-        doctor?.profession = professions[professionPicker.selectedRow(inComponent: 0)]
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toStepTwo" {
             let stepTwoController: AddDoctorStepTwoViewController = segue.destination as! AddDoctorStepTwoViewController
-            guard let doctor = self.doctor else {
-                return
-            }
-            stepTwoController.set(forDoctor: doctor)
+            guard let professions = professionPicker.professionsFetched else { return }
+            let profession = professions[professionPicker.selectedRow(inComponent: 0)]
+            stepTwoController.set(forProfession: profession)
         }
     }
     

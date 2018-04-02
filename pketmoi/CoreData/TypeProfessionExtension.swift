@@ -22,10 +22,12 @@ extension TypeProfession {
         return newTypeProfession
     }
     
-    static func fillDatabase(){
-        _ = TypeProfession.createTypeProfession(title: "Medicaux")
-        _ = TypeProfession.createTypeProfession(title: "Para-Médicaux")
-        _ = TypeProfession.createTypeProfession(title: "Autres Para-Médicaux")
-        _ = TypeProfession.createTypeProfession(title: "Autres")
+    static func fillDatabase() -> [TypeProfession]{
+        var typeProfessions: [TypeProfession] = []
+        typeProfessions.append(TypeProfession.createTypeProfession(title: "Medicaux"))
+        typeProfessions.append(TypeProfession.createTypeProfession(title: "Para-Médicaux"))
+        typeProfessions.append(TypeProfession.createTypeProfession(title: "Autres Para-Médicaux"))
+        typeProfessions.append(TypeProfession.createTypeProfession(title: "Autres"))
+        return typeProfessions
     }
 }

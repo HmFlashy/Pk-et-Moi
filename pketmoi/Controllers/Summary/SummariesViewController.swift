@@ -85,10 +85,10 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         // Creating rigorousAnswers
         let answer = answerFetched.object(at: IndexPath(row: 0, section: 0))
         let answer2 = answerFetched.object(at: IndexPath(row: 1, section: 0))
-        let rigorousAnswer = RigorousAnswer.createRigorousAnswer(date: startDate, nbOversight: "0", summary: summary, answer: answer)
+        let rigorousAnswer = RigorousAnswer.createRigorousAnswer(date: startDate!, nbOversight: "0", summary: summary, answer: answer)
         print(rigorousAnswer)
         let startDatePlus = Calendar.current.date(byAdding: .day, value: 1, to: startDate!)
-        let rigorousAnswer2 = RigorousAnswer.createRigorousAnswer(date: startDatePlus, nbOversight: "0", summary: summary, answer: answer2)
+        let rigorousAnswer2 = RigorousAnswer.createRigorousAnswer(date: startDatePlus!, nbOversight: "0", summary: summary, answer: answer2)
         print(rigorousAnswer2)
         
         // Creating BeStates for the first day

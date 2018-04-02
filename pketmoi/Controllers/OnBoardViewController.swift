@@ -34,13 +34,8 @@ class OnBoardViewController: UIViewController {
     }
     @IBAction func validateFirstTimeAction(_ sender: Any) {
         let typeProfessions = TypeProfession.fillDatabase()
-        let profession = Profession.fillDatabase(typeProfessions: typeProfessions)
-        do {
-            try CoreDataManager.context.save()
-        } catch {
-            print("Error saving context")
-            fatalError()
-        }
+        _ = Profession.fillDatabase(typeProfessions: typeProfessions)
+        CoreDataManager.save()
         UserDefaults.standard.set("false", forKey: "firstLaunch")
         UserDefaults.standard.set(nameOutlet.text, forKey: "LastName")
         UserDefaults.standard.set(firstnameOutlet.text, forKey: "FirstName")
