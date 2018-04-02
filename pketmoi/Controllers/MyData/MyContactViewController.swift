@@ -1,28 +1,23 @@
 //
-//  EventController.swift
+//  MyContactViewController.swift
 //  pketmoi
 //
-//  Created by Hugo Maitre on 21/02/2018.
+//  Created by Loris Zirah on 02/04/2018.
 //  Copyright © 2018 Hugo Maitre. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class EventController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UITextViewDelegate {
+class MyContactViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
 
-    @IBOutlet weak var buttonTriggerEvent: UIButton!
-    @IBOutlet weak var buttonAddEvent: UIButton!
+    @IBOutlet weak var myContactTableView: UITableView!
     
-    @IBOutlet weak var eventTableView: UITableView!
+    let contactPresenter = ContactPresenter()
     
-    let segueShowEvent = "showEvent"
-    
-    let eventPresenter = EventPresenter()
-    
-    fileprivate lazy var eventFetched: NSFetchedResultsController<Event> = {
-        let request: NSFetchRequest<Event> = Event.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Event.date), ascending: false)]
+    fileprivate lazy var contactFetched: NSFetchedResultsController<Contact> = {
+        let request: NSFetchRequest<Contact> = Contact.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Contact.firstname), ascending: false)]
         let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultController.delegate = self
         return fetchedResultController
@@ -30,30 +25,31 @@ class EventController: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        eventTableView.dataSource = self
-        eventTableView.delegate = self
-        do {
-            try self.eventFetched.performFetch()
+        
+        do{
+            try contactFetched.performFetch()
         } catch {
-            print("Unable to perform event fetch")
+            print("Unable to perform contact fetch")
         }
-        buttonTriggerEvent.layer.cornerRadius = 8
-        buttonAddEvent.layer.cornerRadius = 8
+        
+        self.myContactTableView.delegate = self
+        self.myContactTableView.dataSource = self
     }
     
-    @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {
+    @IBAction func unwindToMyContactViewController(segue: UIStoryboardSegue) {
+        self.myContactTableView.reloadData()
     }
     
     // MARK: - UITableViewDataSource required protocol
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let events = eventFetched.fetchedObjects else { return 0 }
-        return events.count
+        guard let contacts = contactFetched.fetchedObjects else { return 0 }
+        return contacts.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = eventTableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
-        eventPresenter.configureCell(forCell: cell, event: eventFetched.object(at: indexPath))
+        let cell = myContactTableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as! ContactTableViewCell
+        contactPresenter.configureCell(forCell: cell, contact: contactFetched.object(at: indexPath))
         return cell
     }
     
@@ -64,8 +60,8 @@ class EventController: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-            let event = eventFetched.object(at: indexPath)
-            CoreDataManager.context.delete(event)
+            let contact = contactFetched.object(at: indexPath)
+            CoreDataManager.context.delete(contact)
             do {
                 try CoreDataManager.context.save()
             } catch let error as NSError {
@@ -81,12 +77,12 @@ class EventController: UIViewController, UITableViewDelegate, UITableViewDataSou
         switch (type) {
         case .insert:
             if let indexPath = newIndexPath {
-                self.eventTableView.insertRows(at: [indexPath], with: .fade)
+                self.myContactTableView.insertRows(at: [indexPath], with: .fade)
             }
             break
         case .delete:
             if let indexPath = indexPath {
-                self.eventTableView.deleteRows(at: [indexPath], with: .automatic)
+                self.myContactTableView.deleteRows(at: [indexPath], with: .automatic)
             }
         default:
             break
@@ -94,21 +90,21 @@ class EventController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.eventTableView.beginUpdates()
+        self.myContactTableView.beginUpdates()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.eventTableView.endUpdates()
+        self.myContactTableView.endUpdates()
     }
     
+    /*
     // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == self.segueShowEvent{
-            if let indexPath = self.eventTableView.indexPathForSelectedRow{
-                let showEventViewController = segue.destination as! ShowEventViewController
-                showEventViewController.event = self.eventFetched.object(at: indexPath)
-                self.eventTableView.deselectRow(at: indexPath, animated: true)
-            }
-        }
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
+    */
+
 }

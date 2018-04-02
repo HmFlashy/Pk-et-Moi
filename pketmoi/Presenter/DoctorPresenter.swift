@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 
 class DoctorPresenter {
-    
-    
+
     fileprivate var fullname: String = ""
     fileprivate var profession: String = ""
     

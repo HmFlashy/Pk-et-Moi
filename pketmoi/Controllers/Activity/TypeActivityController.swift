@@ -23,15 +23,19 @@ class TypeActivityController: UIViewController{
     }
     
     @IBAction func addTypeActivity(_ sender: Any) {
-        guard typeActivity.text != "" else {
-            self.removeAnimate()
-            return
+        var errors = false
+        if typeActivity.text!.isEmpty {
+            errors = true
+            typeActivity.layer.borderWidth = 1
+            typeActivity.layer.borderColor = UIColor.red.cgColor
         }
-        let typeActivityName: String = typeActivity.text!
-        let descriptionTA: String = descriptionTypeActivity.text
-        TypeActivity.createTypeActivity(name: typeActivityName, description: descriptionTA)
-        typeActivity.text = ""
-        self.removeAnimate()
+        else {
+            typeActivity.layer.borderWidth = 0
+        }
+        if !errors{
+            _ = TypeActivity.createTypeActivity(name: typeActivity.text!, description: descriptionTypeActivity.text)
+            self.removeAnimate()
+        }
     }
     
     func showAnimate()
