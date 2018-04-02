@@ -26,4 +26,9 @@ extension TypeDrug{
         CoreDataManager.save()
         return newTypeDrug
     }
+    
+    static func fillDatabase(){
+        _ = TypeDrug.createTypeDrug(name: "Doliprane", minimalDose: "1", maximalDose: "1", minimalIntervalDose: "4", maximalFrequency: "2", url: "http://base-donnees-publique.medicaments.gouv.fr/affichageDoc.php?typedoc=N&specid=69309629", drugDescription: "Paracétamol")
+        _ = TypeDrug.createTypeDrug(name: "Levodopa", minimalDose: "400", maximalDose: "1600", minimalIntervalDose: "4", maximalFrequency: "3", url: "http://base-donnees-publique.medicaments.gouv.fr/affichageDoc.php?specid=64573354&typedoc=R", drugDescription: "Comprimé à libération prolongée")
+    }
 }

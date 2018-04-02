@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E134FE5206126DA005235C8 /* DAOError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E134FE4206126DA005235C8 /* DAOError.swift */; };
 		6E134FEC20613961005235C8 /* DoctorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E134FEB20613961005235C8 /* DoctorExtension.swift */; };
 		6E134FEE20614F38005235C8 /* ActivityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E134FED20614F38005235C8 /* ActivityPresenter.swift */; };
 		6E134FF020615311005235C8 /* ActivityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E134FEF20615311005235C8 /* ActivityCollectionViewCell.swift */; };
@@ -116,7 +115,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6E134FE4206126DA005235C8 /* DAOError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOError.swift; sourceTree = "<group>"; };
 		6E134FEB20613961005235C8 /* DoctorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorExtension.swift; sourceTree = "<group>"; };
 		6E134FED20614F38005235C8 /* ActivityPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPresenter.swift; sourceTree = "<group>"; };
 		6E134FEF20615311005235C8 /* ActivityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -237,14 +235,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6E134FDF20611319005235C8 /* DAO */ = {
-			isa = PBXGroup;
-			children = (
-				6E134FE4206126DA005235C8 /* DAOError.swift */,
-			);
-			path = DAO;
-			sourceTree = "<group>";
-		};
 		6E287CA12046A9B90007EFC2 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,14 +289,12 @@
 		6E5BA1992032DD6500703328 /* pketmoi */ = {
 			isa = PBXGroup;
 			children = (
-				6E134FDF20611319005235C8 /* DAO */,
 				F3FE25B22058401A00C269D8 /* CoreData */,
 				6E3893D7204B016D0052DCD6 /* Helper */,
 				6E287CA12046A9B90007EFC2 /* Presenter */,
 				6E463B032041DE0000F7332F /* Data */,
 				6E5BA1C1203C7D2300703328 /* Views */,
 				6E5BA1C0203C7D0400703328 /* Controllers */,
-				6E5BA1BF203C7CE300703328 /* Models */,
 				6E5BA19A2032DD6500703328 /* AppDelegate.swift */,
 				6E5BA19E2032DD6500703328 /* Main.storyboard */,
 				6E5BA1A42032DD6500703328 /* Assets.xcassets */,
@@ -324,15 +312,6 @@
 				6E5BA1B42032DD6500703328 /* Info.plist */,
 			);
 			path = pketmoiTests;
-			sourceTree = "<group>";
-		};
-		6E5BA1BF203C7CE300703328 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				F377EDE3207061040031ED5E /* CustomRadioButton.swift */,
-				6E5F9B5B205D7BB80064ADF7 /* Empty.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		6E5BA1C0203C7D0400703328 /* Controllers */ = {
@@ -356,6 +335,8 @@
 		6E5BA1C1203C7D2300703328 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6E5F9B5B205D7BB80064ADF7 /* Empty.swift */,
+				F377EDE3207061040031ED5E /* CustomRadioButton.swift */,
 				F377EDDD207014FB0031ED5E /* ActivityTableViewCell.swift */,
 				F377EDDF2070150A0031ED5E /* AppointmentTableViewCell.swift */,
 				F377EDE1207015170031ED5E /* DrugTableViewCell.swift */,
@@ -660,7 +641,6 @@
 				F387933C206AF55200559918 /* AnswerExtension.swift in Sources */,
 				6E5F4C53205FEBD800405CBE /* AddDoctorAppointmentViewController.swift in Sources */,
 				6E5F9B20205D7B6D0064ADF7 /* EventPresenter.swift in Sources */,
-				6E134FE5206126DA005235C8 /* DAOError.swift in Sources */,
 				F3AC2FDE20614F5C0074F3C6 /* ScheduleDrugNotRegularViewController.swift in Sources */,
 				6E5F9B63205D7BB80064ADF7 /* Empty.swift in Sources */,
 				F3AC2FE42061746D0074F3C6 /* SetDrugTimeTableViewController.swift in Sources */,
