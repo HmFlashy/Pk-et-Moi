@@ -48,9 +48,9 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let stateBis = State.createState(name: "ON")
-        let stateBis2 = State.createState(name: "OFF")
-        let stateBis3 = State.createState(name: "DYSKINESIES")
+        let stateDyski = stateFetched.object(at: IndexPath(row: 0, section: 0))
+        let stateOff = stateFetched.object(at: IndexPath(row: 1, section: 0))
+        let stateOn = stateFetched.object(at: IndexPath(row: 2, section: 0))
 //        _ = Answer.createAnswer(name: "Toutes les prises")
 //        _ = Answer.createAnswer(name: "La plupart des prises")
         
@@ -92,8 +92,6 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         print(rigorousAnswer2)
         
         // Creating BeStates for the first day
-        let state = stateFetched.object(at: IndexPath(row: 0, section: 0))
-        let state2 = stateFetched.object(at: IndexPath(row: 1, section: 0))
         var gregorian = Calendar(identifier: .gregorian)
         var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute], from: startDate!)
         components.hour = 8
@@ -101,7 +99,7 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         var startDateState = gregorian.date(from: components)!
         var beState: BeState?
         for _ in 1...10 {
-            beState = BeState.createBeState(date: startDateState, state: stateBis, summary: summary)
+            beState = BeState.createBeState(date: startDateState, state: stateOn, summary: summary)
             print(beState)
             startDateState = Calendar.current.date(byAdding: .hour, value: 1, to: startDateState)!
         }
@@ -115,7 +113,7 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         startDateState = gregorian.date(from: components)!
         
         for _ in 1...10 {
-            beState = BeState.createBeState(date: startDateState, state: stateBis3, summary: summary)
+            beState = BeState.createBeState(date: startDateState, state: stateDyski, summary: summary)
             print(beState)
             startDateState = Calendar.current.date(byAdding: .hour, value: 1, to: startDateState)!
         }

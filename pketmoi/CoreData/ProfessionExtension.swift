@@ -25,40 +25,27 @@ extension Profession {
         return fetchedResultController.object(at: IndexPath(row: 0, section: 0))
     }
     
-    static func fillDatabase(typeProfessions: [TypeProfession]) -> [Profession] {
-        guard let entity = NSEntityDescription.entity(forEntityName: "Profession", in: CoreDataManager.context) else {
-            print("Profession does not exist in database")
+    static func createProfession(title: String, typeProfession: TypeProfession) -> Profession{
+        guard let newProfession = NSEntityDescription.insertNewObject(forEntityName: "Profession", into: CoreDataManager.context) as? Profession else{
+            print("Profession does not exists in the database")
             fatalError()
         }
-        var profession: [Profession] = []
-        profession.append(Profession(entity: entity, insertInto: CoreDataManager.context))
-        profession.append(Profession(entity: entity, insertInto: CoreDataManager.context))
-        profession.append(Profession(entity: entity, insertInto: CoreDataManager.context))
-        profession.append(Profession(entity: entity, insertInto: CoreDataManager.context))
-        profession.append(Profession(entity: entity, insertInto: CoreDataManager.context))
-        profession.append(Profession(entity: entity, insertInto: CoreDataManager.context))
-        profession.append(Profession(entity: entity, insertInto: CoreDataManager.context))
-        profession.append(Profession(entity: entity, insertInto: CoreDataManager.context))
-        profession.append(Profession(entity: entity, insertInto: CoreDataManager.context))
-        profession[0].title = "Neurologue"
-        profession[0].typeProfession = typeProfessions[0]
-        profession[1].title = "Medecin Généraliste"
-        profession[1].typeProfession = typeProfessions[0]
-        profession[2].title = "Psychiatre"
-        profession[2].typeProfession = typeProfessions[0]
-        profession[3].title = "Kinésithérapeute"
-        profession[3].typeProfession = typeProfessions[1]
-        profession[4].title = "Ortophoniste"
-        profession[4].typeProfession = typeProfessions[1]
-        profession[5].title = "Ergothérapeute"
-        profession[5].typeProfession = typeProfessions[2]
-        profession[6].title = "Psychomotricien"
-        profession[6].typeProfession = typeProfessions[2]
-        profession[7].title = "Assistant Service Social"
-        profession[7].typeProfession = typeProfessions[3]
-        profession[8].title = "Personnels transport sanitaire"
-        profession[8].typeProfession = typeProfessions[3]
-        return profession
+        newProfession.title = title
+        newProfession.typeProfession = typeProfession
+        
+        CoreDataManager.save()
+        return newProfession
     }
     
+    static func fillDatabase(typeProfessions: [TypeProfession]) {
+        _ = Profession.createProfession(title: "Neurologue", typeProfession: typeProfessions[0])
+        _ = Profession.createProfession(title: "Medecin Généraliste", typeProfession: typeProfessions[0])
+        _ = Profession.createProfession(title: "Psychiatre", typeProfession: typeProfessions[0])
+        _ = Profession.createProfession(title: "Kinésithérapeute", typeProfession: typeProfessions[1])
+        _ = Profession.createProfession(title: "Ortophoniste", typeProfession: typeProfessions[1])
+        _ = Profession.createProfession(title: "Ergothérapeute", typeProfession: typeProfessions[2])
+        _ = Profession.createProfession(title: "Psychomotricien", typeProfession: typeProfessions[2])
+        _ = Profession.createProfession(title: "Assistant Service Social", typeProfession: typeProfessions[3])
+        _ = Profession.createProfession(title: "Personnels transport sanitaire", typeProfession: typeProfessions[3])
+    }
 }

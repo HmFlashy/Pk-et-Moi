@@ -11,16 +11,14 @@ import CoreData
 
 extension Appointment {
     static func CreateAppointment(date: Date, doctor: Doctor) -> Appointment? {
-        guard let appointment = NSEntityDescription.insertNewObject(forEntityName: "Appointment", into: CoreDataManager.context) as? Appointment else{
-            return nil
+        guard let newAppointment = NSEntityDescription.insertNewObject(forEntityName: "Appointment", into: CoreDataManager.context) as? Appointment else{
+            print("AppoAppointment does not exists in the database")
+            fatalError()
         }
-        appointment.doctor = doctor
-        appointment.date = date
-        do {
-            try CoreDataManager.context.save()
-        } catch {
-            print("Problem during the insertion of an appointment")
-        }
-        return appointment
+        newAppointment.doctor = doctor
+        newAppointment.date = date
+        
+        CoreDataManager.save()
+        return newAppointment
     }
 }

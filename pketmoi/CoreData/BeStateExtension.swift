@@ -10,17 +10,16 @@ import Foundation
 import CoreData
 
 extension BeState{
-    static func createBeState(date: Date?, state: State, summary: Summary) -> BeState {
-        let newBeState = NSEntityDescription.insertNewObject(forEntityName: "BeState", into: CoreDataManager.context) as! BeState
+    static func createBeState(date: Date, state: State, summary: Summary) -> BeState {
+        guard let newBeState = NSEntityDescription.insertNewObject(forEntityName: "BeBeState", into: CoreDataManager.context) as? BeState else{
+            print("BeState does not exists in the database")
+            fatalError()
+        }
         newBeState.date = date
         newBeState.state = state
         newBeState.summary = summary
         
-        do {
-            try CoreDataManager.context.save()
-        } catch let error as NSError {
-            print(error)
-        }
+        CoreDataManager.save()
         return newBeState
     }
 }

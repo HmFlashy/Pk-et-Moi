@@ -24,18 +24,6 @@ class NeurologistQuestionPageViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(summary)
-        // Creating neurologistQuestion
-//        _ = NeurologistQuestion.createNeurologistQuestion(name: "Akinésies de début de dose", number: 1)
-//        _ = NeurologistQuestion.createNeurologistQuestion(name: "Akinésies de fin de dose", number: 2)
-//        _ = NeurologistQuestion.createNeurologistQuestion(name: "Dystonie du gros orteil", number: 3)
-//        _ = NeurologistQuestion.createNeurologistQuestion(name: "Dyskinésies invalidantes", number: 4)
-//        _ = NeurologistQuestion.createNeurologistQuestion(name: "Effet On/Off", number: 5)
-//        _ = NeurologistQuestion.createNeurologistQuestion(name: "Fluctuations non motrices", number: 6)
-//        _ = NeurologistQuestion.createNeurologistQuestion(name: "Hallucinations", number: 7)
-//        _ = NeurologistQuestion.createNeurologistQuestion(name: "Freezing", number: 8)
-
-        
         do{
             try neurologistQuestionFetched.performFetch()
         } catch {

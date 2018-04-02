@@ -11,15 +11,26 @@ import CoreData
 
 extension NeurologistQuestion{
     static func createNeurologistQuestion(name: String, number: Int16) -> NeurologistQuestion {
-        let newNeurologistQuestion = NSEntityDescription.insertNewObject(forEntityName: "NeurologistQuestion", into: CoreDataManager.context) as! NeurologistQuestion
+        guard let newNeurologistQuestion = NSEntityDescription.insertNewObject(forEntityName: "NeurologistQuestion", into: CoreDataManager.context) as? NeurologistQuestion else{
+            print("NeurologistQuestion does not exists in the database")
+            fatalError()
+        }
         newNeurologistQuestion.name = name
         newNeurologistQuestion.number = number
         
-        do {
-            try CoreDataManager.context.save()
-        } catch let error as NSError {
-            print(error)
-        }
+        CoreDataManager.save()
         return newNeurologistQuestion
+    }
+    
+    static func fillDatabase(){
+        _ = NeurologistQuestion.createNeurologistQuestion(name: "Akinésies de début de dose", number: 1)
+        _ = NeurologistQuestion.createNeurologistQuestion(name: "Akinésies de fin de dose", number: 2)
+        _ = NeurologistQuestion.createNeurologistQuestion(name: "Dystonie du gros orteil", number: 3)
+        _ = NeurologistQuestion.createNeurologistQuestion(name: "Dyskinésies invalidantes", number: 4)
+        _ = NeurologistQuestion.createNeurologistQuestion(name: "Effet On/Off", number: 5)
+        _ = NeurologistQuestion.createNeurologistQuestion(name: "Fluctuations non motrices", number: 6)
+        _ = NeurologistQuestion.createNeurologistQuestion(name: "Hallucinations", number: 7)
+        _ = NeurologistQuestion.createNeurologistQuestion(name: "Freezing", number: 8)
+
     }
 }
