@@ -17,6 +17,13 @@
         <relationship name="state" maxCount="1" deletionRule="Nullify" destinationEntity="State" inverseName="beStates" inverseEntity="State" syncable="YES"/>
         <relationship name="summary" maxCount="1" deletionRule="Nullify" destinationEntity="Summary" inverseName="beStates" inverseEntity="Summary" syncable="YES"/>
     </entity>
+    <entity name="Contact" representedClassName="Contact" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstname" attributeType="String" syncable="YES"/>
+        <attribute name="lastname" attributeType="String" syncable="YES"/>
+        <attribute name="phone" attributeType="String" syncable="YES"/>
+        <attribute name="status" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Doctor" representedClassName="Doctor" parentEntity="Person" syncable="YES" codeGenerationType="class">
         <attribute name="travelTime" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="doctor" inverseEntity="Appointment" syncable="YES"/>
@@ -123,5 +130,6 @@
         <element name="TypeDrug" positionX="81" positionY="-135" width="128" height="165"/>
         <element name="TypeEvent" positionX="-117" positionY="59" width="128" height="75"/>
         <element name="TypeProfession" positionX="367" positionY="-279" width="128" height="75"/>
+        <element name="Contact" positionX="81" positionY="-135" width="128" height="120"/>
     </elements>
 </model>

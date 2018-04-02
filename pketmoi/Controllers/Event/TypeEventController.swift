@@ -19,10 +19,21 @@ class TypeEventController: UIViewController {
     }
     
     @IBAction func addTypeEvent(_ sender: Any) {
-        guard let typeEventName = typeEventTextArea.text else{return}
-        guard !typeEventName.isEmpty else {return}
-        _ = TypeEvent.createTypeEvent(name: typeEventName)
+        var errors = false
+        if typeEventTextArea.text!.isEmpty{
+            errors = true
+            typeEventTextArea.layer.borderWidth = 1
+            typeEventTextArea.layer.borderColor = UIColor.red.cgColor
+        }
+        else {
+            typeEventTextArea.layer.borderWidth = 0
+        }
+        guard !errors else {
+            return
+        }
+        _ = TypeEvent.createTypeEvent(name: typeEventTextArea.text!)
         typeEventTextArea.text = ""
+        typeEventTextArea.layer.borderColor = UIColor.white.cgColor
     }
 }
 
