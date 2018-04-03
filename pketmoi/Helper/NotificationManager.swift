@@ -49,6 +49,19 @@ class NotificationManager {
             content.body = "Commencez à vous préparer pour votre rendez-vous à " + hours
             identifier = "appointment" + (appointment.date?.description)!
             let time = Int(UserDefaults.standard.float(forKey: "PreparationTime")) + Int((appointment.doctor?.travelTime)!)
+            let calendar = Calendar.current
+            var dateComponents = DateComponents()
+            date = Calendar.current.date(byAdding: .minute,value: (-Int((appointment.doctor?.travelTime)!)), to: date)!
+            dateComponents.month = calendar.component(.month, from: date)
+            dateComponents.day =  calendar.component(.day, from: date)
+            dateComponents.hour =  calendar.component(.hour, from: date)
+            dateComponents.minute = calendar.component(.minute, from: date)
+            let notificationTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            
+            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: notificationTrigger)
+            print(request.description)
+            UNUserNotificationCenter.current().delegate = UIApplication.shared.delegate as! AppDelegate
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             print(time)
             date = Calendar.current.date(byAdding: .minute,value: (-time), to: date)!
         } else if (using.isKind(of: Drug.self)) {
@@ -64,7 +77,6 @@ class NotificationManager {
         notificationNumber += 1
         content.badge = notificationNumber as NSNumber
         
-        // add notification for Mondays at 11:00 a.m.
         let calendar = Calendar.current
         var dateComponents = DateComponents()
         dateComponents.month = calendar.component(.month, from: date)
