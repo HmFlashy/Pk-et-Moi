@@ -18,15 +18,6 @@ class ShowTypeDrugViewController: UIViewController {
     @IBOutlet weak var maximumFrequency: UILabel!
     @IBOutlet weak var drugDescription: UITextView!
     
-    @IBAction func sendToDrugUrl(_ sender: Any) {
-        if let urlString = typeDrug.url{
-            let url = URL(string: urlString)!
-            if UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url, options: [:])
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         nameButton.setTitle(typeDrug.name, for: UIControlState.normal)
@@ -35,6 +26,15 @@ class ShowTypeDrugViewController: UIViewController {
         minimalIntervalDose.text = self.typeDrug.minimalIntervalDose
         maximumFrequency.text = self.typeDrug.maximalFrequency
         drugDescription.text = self.typeDrug.drugDescription
+    }
+    
+    @IBAction func sendToDrugUrl(_ sender: Any) {
+        if let urlString = typeDrug.url{
+            let url = URL(string: urlString)!
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:])
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,7 +50,7 @@ class ShowTypeDrugViewController: UIViewController {
         drugDescription.text = self.typeDrug.drugDescription
     }
     
-    // MARK: - Navigation
+    // MARK: - Navigation -
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "modifyTypeDrug"{

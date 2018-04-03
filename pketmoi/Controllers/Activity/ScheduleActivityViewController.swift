@@ -29,6 +29,8 @@ class ScheduleActivityViewController: UIViewController {
         }
     }
     
+    // MARK: - Navigation -
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "container"{
             containerView = segue.destination as? ActivityContainerViewController

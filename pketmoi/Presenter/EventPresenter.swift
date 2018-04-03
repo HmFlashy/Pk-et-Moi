@@ -37,11 +37,19 @@ class EventPresenter: NSObject {
         }
     }
     
-    func configureCell(forCell: UITableViewCell?, event: Event){
+    
+    /// Configure the cell with the given event
+    ///
+    /// - Parameters:
+    ///   - forCell: the cell to configure
+    ///   - event: the event linked to the cell
+    /// - Returns: the cell configured
+    func configureCell(forCell: EventTableViewCell?, event: Event) -> EventTableViewCell? {
         self.event = event
-        guard let cell: EventTableViewCell = forCell as? EventTableViewCell else { return }
+        guard let cell: EventTableViewCell = forCell else { return nil }
         cell.dateEvent.text = self.date
         cell.typeEventTitle.text = self.typeEventName
+        return cell
     }
     
     

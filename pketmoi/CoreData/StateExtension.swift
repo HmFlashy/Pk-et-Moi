@@ -10,6 +10,11 @@ import Foundation
 import CoreData
 
 extension State{
+    
+    /// Create a state
+    ///
+    /// - Parameter name: the name of the state
+    /// - Returns: an instance of the class State with the given paramaters
     static func createState(name: String) -> State {
         guard let newState = NSEntityDescription.insertNewObject(forEntityName: "State", into: CoreDataManager.context) as? State else{
             print("State does not exists in the database")
@@ -21,6 +26,7 @@ extension State{
         return newState
     }
     
+    /// Fill the database with some states
     static func fillDatabase(){
         _ = State.createState(name: "DYSKINESIES")
         _ = State.createState(name: "ON")

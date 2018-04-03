@@ -34,7 +34,7 @@ class TypeEventPickerViewController: UIPickerView, UIPickerViewDelegate, UIPicke
         return fetchedResultController
     }()
     
-    // UIPickerViewDataSource required protocol
+    // UIPickerView DataSource required protocol -
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -44,7 +44,7 @@ class TypeEventPickerViewController: UIPickerView, UIPickerViewDelegate, UIPicke
         return typeEvents.count
     }
     
-    // UIPickerViewDelegate optional protocol
+    // UIPickerView Delegate optional protocol -
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         guard let typeEvents = typeEventFetched.fetchedObjects else { return ""}
         return typeEvents[row].name

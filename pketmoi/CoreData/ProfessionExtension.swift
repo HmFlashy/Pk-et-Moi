@@ -12,6 +12,10 @@ import CoreData
 
 extension Profession {
     
+    /// Get a profession
+    ///
+    /// - Parameter forTitle: the title of thes profession
+    /// - Returns: an instanec of the class Profession with the given title
     static func getProfession(forTitle: String) -> Profession? {
         let professionFetched: NSFetchRequest<Profession> = Profession.fetchRequest()
         professionFetched.predicate = NSPredicate(format: "title == %@", forTitle)
@@ -25,6 +29,12 @@ extension Profession {
         return fetchedResultController.object(at: IndexPath(row: 0, section: 0))
     }
     
+    /// Create a profession
+    ///
+    /// - Parameters:
+    ///   - title: the title of the prossefion
+    ///   - typeProfession: the type of the profession
+    /// - Returns: the profession with the given parameters
     static func createProfession(title: String, typeProfession: TypeProfession) -> Profession{
         guard let newProfession = NSEntityDescription.insertNewObject(forEntityName: "Profession", into: CoreDataManager.context) as? Profession else{
             print("Profession does not exists in the database")
@@ -37,6 +47,9 @@ extension Profession {
         return newProfession
     }
     
+    /// Fill the database with some professions
+    ///
+    /// - Parameter typeProfessions: an array of typeProfession
     static func fillDatabase(typeProfessions: [TypeProfession]) {
         _ = Profession.createProfession(title: "Neurologue", typeProfession: typeProfessions[0])
         _ = Profession.createProfession(title: "Medecin Généraliste", typeProfession: typeProfessions[0])

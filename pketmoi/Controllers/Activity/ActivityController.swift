@@ -33,7 +33,8 @@ class ActivityController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    // MARK: - UITableViewDataSource required protocol
+    // MARK: - UITableView DataSource required protocol -
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let typesActivities = typeActivityFetched.fetchedObjects else { return 0 }
         return typesActivities.count
@@ -66,7 +67,8 @@ class ActivityController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    // MARK: - NSFetchResultController delegate protocol
+    // MARK: - NSFetchResultController delegate protocol -
+    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch (type) {
         case .insert:
@@ -83,9 +85,6 @@ class ActivityController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {
-    }
-    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.typeActivityTableView.beginUpdates()
     }
@@ -94,7 +93,11 @@ class ActivityController: UIViewController, UITableViewDelegate, UITableViewData
         self.typeActivityTableView.endUpdates()
     }
     
-    // MARK: - Navigation
+    // MARK: - Navigation -
+    
+    @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ScheduleActivity" {
             if let button = sender as? UIButton{

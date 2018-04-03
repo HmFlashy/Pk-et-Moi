@@ -18,7 +18,8 @@ class SummaryDayViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var dayTableView: UITableView!
     @IBOutlet weak var dayLabel: UILabel!
     
-    var valuesBis: [BeState] = []
+    var beStates: [BeState] = []
+    var beStatePresenter = BeStatePresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +38,10 @@ class SummaryDayViewController: UIViewController, UITableViewDataSource, UITable
             let beStateDate = dateFormatter.string(from: beState.date!)
             let summaryDate = dateFormatter.string(from: date!)
             if beStateDate == summaryDate{
-                valuesBis.append(beState)
+                beStates.append(beState)
             }
         }
-        valuesBis = valuesBis.sorted(by: { $0.date! < $1.date!})
+        beStates = beStates.sorted(by: { $0.date! < $1.date!})
         let rigorousAnswers = (summary.rigorousAnswers)?.allObjects
         var i = 0
         var found = false
@@ -58,44 +59,81 @@ class SummaryDayViewController: UIViewController, UITableViewDataSource, UITable
         self.day = day
     }
     
+    // MARK: - TableView Data Source protocol - 
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return valuesBis.count
+         return beStates.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = dayTableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as! SummaryDayTableViewCell
-        guard valuesBis.count>0 else {return cell}
-        let beState: BeState = valuesBis[indexPath.row]
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH"
-        dateFormatter.locale = Locale(identifier: "fr_FR")
-        cell.hourLabel.text = dateFormatter.string(from: beState.date!) + "h"
-        guard let stateName = beState.state?.name else{return cell}
-        cell.stateLabel.text = stateName
-        switch stateName {
-        case "ON":
-            cell.stateLabel.backgroundColor = .green
-            break
-        case "OFF":
-            cell.stateLabel.backgroundColor = .red
-            break
-        case "DYSKINESIES":
-            cell.stateLabel.backgroundColor = .yellow
-            break
-        default:
-            cell.stateLabel.backgroundColor = .white
-        }
+        let beState: BeState = beStates[indexPath.row]
+        beStatePresenter.configureCell(forCell: cell, beState: beState)
         return cell
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - NSFetchResultController delegate protocol -
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch (type) {
+        case .insert:
+            if let indexPath = newIndexPath {
+                self.dayTableView.insertRows(at: [indexPath], with: .fade)
+            }
+            break
+        case .update:
+            self.dayTableView.reloadData()
+            break
+        case .delete:
+            if let indexPath = indexPath {
+                self.dayTableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+            break
+        default:
+            break
+        }
     }
-    */
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.dayTableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.dayTableView.endUpdates()
+    }
+    
+    @IBAction func unwindToSummaryDayViewController(segue: UIStoryboardSegue) {
+        self.dayTableView.reloadData()
+    }
 
+    // MARK: - Navigation -
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "addBeStateSegue"{
+            let cell = sender as! SummaryDayTableViewCell
+            if let stateName = cell.beState.state?.name{
+                return true
+            }
+            else{
+                if cell.beState.date! <= Date() {
+                    return true
+                }
+                else{
+                    return false
+                }
+            }
+        }
+        else{
+            return false
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addBeStateSegue" {
+            if let indexPath = self.dayTableView.indexPathForSelectedRow{
+                let vc = segue.destination as! AddBeStateViewController
+                vc.beState = beStates[indexPath.row]
+            }
+        }
+    }
 }

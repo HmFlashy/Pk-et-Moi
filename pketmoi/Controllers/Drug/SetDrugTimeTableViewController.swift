@@ -31,7 +31,7 @@ class SetDrugTimeTableViewController: UIViewController, UIPickerViewDelegate, UI
         frequencyPickerView.dataSource = self
     }
 
-    // MARK: - UIPickerViewDataSource required protocol -
+    // MARK: - UIPickerView DataSource required protocol -
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -40,7 +40,7 @@ class SetDrugTimeTableViewController: UIViewController, UIPickerViewDelegate, UI
         return frequencyTab.count
     }
     
-    // MARK : - UIPickerViewDelegate optional protocol -
+    // MARK : - UIPickerView Delegate optional protocol -
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return String(frequencyTab[row])
     }
@@ -49,7 +49,7 @@ class SetDrugTimeTableViewController: UIViewController, UIPickerViewDelegate, UI
         frequencySelected = String(frequencyTab[row])
     }
     
-    // MARK: - Navigation
+    // MARK: - Navigation -
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectDays"{

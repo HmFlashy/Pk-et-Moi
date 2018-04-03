@@ -27,7 +27,7 @@ class TriggerEventViewController: UIViewController, NSFetchedResultsControllerDe
         _ = Event.createEvent(itemDescription: descriptionTextArea.text, date: datePicker.date, typeEvent: typeEvent)
     }
     
-    // MARK : - TextViewDelegate
+    // MARK : - TextView Delegate protocol -
     
     // Start Editing The Text Field
     func textViewDidBeginEditing(_ textView: UITextView) {

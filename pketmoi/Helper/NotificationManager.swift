@@ -10,15 +10,23 @@ import Foundation
 import UserNotifications
 import UIKit
 
+/// A class that helps to manage notification
 class NotificationManager {
     
+    /// <#Description#>
     private static var notificationNumber = 0
     
+    /// <#Description#>
     public static func resetBadge(){
         notificationNumber = 0
         UIApplication.shared.applicationIconBadgeNumber = notificationNumber
     }
     
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - forDate: <#forDate description#>
+    ///   - using: <#using description#>
     public static func addTimeItemNotification(forDate: Date, using: TimeItem) {
         let content = UNMutableNotificationContent()
         var identifier = ""

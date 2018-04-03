@@ -40,8 +40,8 @@ class TypeEventTableViewController : UITableView, UITableViewDataSource, NSFetch
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = dequeueReusableCell(withIdentifier: "TypeEventCell", for: indexPath)
-        typeEventPresenter.configureCell(forCell: cell, typeEvent: typeEventFetched.object(at: indexPath))
+        var cell: UITableViewCell! = dequeueReusableCell(withIdentifier: "TypeEventCell", for: indexPath)
+        cell = typeEventPresenter.configureCell(forCell: cell, typeEvent: typeEventFetched.object(at: indexPath))
         return cell
     }
     
@@ -64,7 +64,7 @@ class TypeEventTableViewController : UITableView, UITableViewDataSource, NSFetch
         }
     }
     
-    // MARK: - NSFetchResultController delegate protocol
+    // MARK: - NSFetchResultController delegate protocol -
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch (type) {
         case .insert:
@@ -88,11 +88,4 @@ class TypeEventTableViewController : UITableView, UITableViewDataSource, NSFetch
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.endUpdates()
     }
-    
-    // MARK: - Action Handler
-    func deleteHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void{
-        let typeEvent = self.typeEventFetched.object(at: indexPath)
-        CoreDataManager.context.delete(typeEvent)
-    }
-    
 }

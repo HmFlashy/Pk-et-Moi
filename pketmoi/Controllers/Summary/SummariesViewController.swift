@@ -111,7 +111,35 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         startDateState = gregorian.date(from: components)!
         
         for _ in 1...10 {
-            beState = BeState.createBeState(date: startDateState, state: stateDyski, summary: summary)
+            beState = BeState.createBeState(date: startDateState, state: nil, summary: summary)
+            print(beState!)
+            startDateState = Calendar.current.date(byAdding: .hour, value: 1, to: startDateState)!
+        }
+        
+        // Creating BeStates for the third day
+        gregorian = Calendar(identifier: .gregorian)
+        startDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate!)
+        components = gregorian.dateComponents([.year, .month, .day, .hour, .minute], from: startDate!)
+        components.hour = 8
+        components.minute = 0
+        startDateState = gregorian.date(from: components)!
+
+        for _ in 1...10 {
+            beState = BeState.createBeState(date: startDateState, state: nil, summary: summary)
+            print(beState!)
+            startDateState = Calendar.current.date(byAdding: .hour, value: 1, to: startDateState)!
+        }
+
+        // Creating BeStates for the fouth day
+        gregorian = Calendar(identifier: .gregorian)
+        startDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate!)
+        components = gregorian.dateComponents([.year, .month, .day, .hour, .minute], from: startDate!)
+        components.hour = 8
+        components.minute = 0
+        startDateState = gregorian.date(from: components)!
+
+        for _ in 1...10 {
+            beState = BeState.createBeState(date: startDateState, state: nil, summary: summary)
             print(beState!)
             startDateState = Calendar.current.date(byAdding: .hour, value: 1, to: startDateState)!
         }

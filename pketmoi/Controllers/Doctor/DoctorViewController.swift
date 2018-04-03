@@ -124,6 +124,4 @@ class DoctorViewController: UIViewController, NSFetchedResultsControllerDelegate
         self.view.addSubview(self.addAppointmentView)
         addAppointmentView.center = self.view.center
     }
-    
-
 }

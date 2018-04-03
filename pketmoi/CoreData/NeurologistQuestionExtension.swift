@@ -10,6 +10,13 @@ import Foundation
 import CoreData
 
 extension NeurologistQuestion{
+    
+    /// Create a neurologistQuestion
+    ///
+    /// - Parameters:
+    ///   - name: the name of the question of the neurologist
+    ///   - number: the number corresponding
+    /// - Returns: an instance of the class NeurologistQuestion with the given parameters
     static func createNeurologistQuestion(name: String, number: Int16) -> NeurologistQuestion {
         guard let newNeurologistQuestion = NSEntityDescription.insertNewObject(forEntityName: "NeurologistQuestion", into: CoreDataManager.context) as? NeurologistQuestion else{
             print("NeurologistQuestion does not exists in the database")

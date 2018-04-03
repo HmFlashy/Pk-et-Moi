@@ -29,9 +29,16 @@ class SummaryPresenter: NSObject {
         }
     }
     
-    func configureCell(forCell: SummaryTableViewCell?, summary: Summary, row: Int){
+    /// Configure the cell with the given summary and the given row
+    ///
+    /// - Parameters:
+    ///   - forCell: the cell to configure
+    ///   - summary: the summary linked to the cell
+    ///   - row: the row of the cell
+    /// - Returns: the cell configured
+    func configureCell(forCell: SummaryTableViewCell?, summary: Summary, row: Int) -> SummaryTableViewCell?{
         self.summary = summary
-        guard let cell = forCell else { return }
+        guard let cell = forCell else { return nil }
         if let summary = self.summary{
             if summary.verified {
                 if let image = UIImage(named: "icons8-ok-24"){
@@ -46,6 +53,7 @@ class SummaryPresenter: NSObject {
         }
         cell.nameLabel.text = "Synthèse " + String(row+1)
         cell.dateLabel.text = self.date
+        return cell
     }
 }
 

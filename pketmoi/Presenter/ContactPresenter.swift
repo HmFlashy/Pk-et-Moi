@@ -28,11 +28,18 @@ class ContactPresenter {
         }
     }
     
-    func configureCell(forCell: UITableViewCell?, contact: Contact){
+    /// Configure the cell with the given contact
+    ///
+    /// - Parameters:
+    ///   - forCell: the cell to configure
+    ///   - contact: the contact linked to the cell
+    /// - Returns: the cell configured
+    func configureCell(forCell: ContactTableViewCell?, contact: Contact) -> ContactTableViewCell? {
         self.contact = contact
-        guard let cell: ContactTableViewCell = forCell as? ContactTableViewCell else { return }
+        guard let cell = forCell else { return nil }
         cell.contact = self.contact
         cell.fullnameLabel.text = self.fullname
         cell.statusLabel.text = self.status
+        return cell
     }
 }

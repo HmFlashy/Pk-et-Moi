@@ -27,9 +27,17 @@ class TypeEventPresenter: NSObject {
         }
     }
     
-    func configureCell(forCell: UITableViewCell?, typeEvent: TypeEvent){
+    
+    /// Configure the cell with the given typeEvent
+    ///
+    /// - Parameters:
+    ///   - forCell: the cell to configure
+    ///   - typeEvent: the typeEvent linked to the cell
+    /// - Returns: the cell configured
+    func configureCell(forCell: UITableViewCell?, typeEvent: TypeEvent) -> UITableViewCell? {
         self.typeEvent = typeEvent
-        guard let cell = forCell else { return }
+        guard let cell = forCell else { return nil }
         cell.textLabel?.text = self.name
+        return cell
     }
 }

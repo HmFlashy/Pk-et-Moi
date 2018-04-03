@@ -10,6 +10,13 @@ import Foundation
 import CoreData
 
 extension Appointment {
+    
+    /// Create an appointment
+    ///
+    /// - Parameters:
+    ///   - date: the date of the appointment
+    ///   - doctor: the doctor linked to the appointment
+    /// - Returns: an instance of the class Appointment with the given parameters
     static func CreateAppointment(date: Date, doctor: Doctor) -> Appointment? {
         guard let newAppointment = NSEntityDescription.insertNewObject(forEntityName: "Appointment", into: CoreDataManager.context) as? Appointment else{
             print("AppoAppointment does not exists in the database")

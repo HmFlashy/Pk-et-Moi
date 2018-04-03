@@ -45,7 +45,7 @@ class ScheduleActivityNotRegularViewController: UIViewController, UITextViewDele
         return true
     }
     
-    // MARK : - TextViewDelegate
+    // MARK : - TextView Delegate protocol - 
     
     // Start Editing The Text Field
     func textViewDidBeginEditing(_ textView: UITextView) {

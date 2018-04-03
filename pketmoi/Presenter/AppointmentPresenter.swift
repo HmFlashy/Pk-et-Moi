@@ -52,6 +52,12 @@ class AppointmentPresenter {
         }
     }
     
+    /// Configure the cell with the given appointment
+    ///
+    /// - Parameters:
+    ///   - forCollectionCell: the cell to configure
+    ///   - appointment: the appointment linked to the cell
+    /// - Returns: the cell configured
     func configureCollectionCell(forCollectionCell: UICollectionViewCell?, appointment: Appointment) -> AppointmentCollectionViewCell? {
         self.appointment = appointment
         guard let cell: AppointmentCollectionViewCell = forCollectionCell as? AppointmentCollectionViewCell else {
@@ -65,6 +71,12 @@ class AppointmentPresenter {
         return cell
     }
     
+    /// Configure the cell with the given appointment
+    ///
+    /// - Parameters:
+    ///   - forTableViewCell: the cell to configure
+    ///   - appointment: the appointment linked to the cell
+    /// - Returns: the cell configured
     func configureTableViewCell(forTableViewCell: UITableViewCell?, appointment: Appointment) -> AppointmentTableViewCell? {
         self.appointment = appointment
         guard let cell: AppointmentTableViewCell = forTableViewCell as? AppointmentTableViewCell else {

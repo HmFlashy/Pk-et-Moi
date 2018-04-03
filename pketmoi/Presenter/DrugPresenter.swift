@@ -42,6 +42,12 @@ class DrugPresenter {
         }
     }
     
+    /// Confighre the cell with the given drug
+    ///
+    /// - Parameters:
+    ///   - forCollectionCell: the cell to configure
+    ///   - drug: the drug linked to the cell
+    /// - Returns: the cell configured
     func configureCollectionCell(forCollectionCell: UICollectionViewCell?, drug: Drug) -> DrugCollectionViewCell? {
         self.drug = drug
         guard let cell: DrugCollectionViewCell = forCollectionCell as? DrugCollectionViewCell else {
@@ -54,6 +60,12 @@ class DrugPresenter {
         return cell
     }
     
+    /// The cell configured with the given drug
+    ///
+    /// - Parameters:
+    ///   - forTableViewCell: the cell to configure
+    ///   - drug: the drug linked to the cell
+    /// - Returns: the cell configured
     func configureTableViewCell(forTableViewCell: UITableViewCell?, drug: Drug) -> DrugTableViewCell? {
         self.drug = drug
         guard let cell: DrugTableViewCell = forTableViewCell as? DrugTableViewCell else {

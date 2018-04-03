@@ -42,6 +42,12 @@ class ActivityPresenter {
         }
     }
     
+    /// Configure the cell with the given activity
+    ///
+    /// - Parameters:
+    ///   - forCollectionCell: the cell to configure
+    ///   - activity: the activity linked to the cell
+    /// - Returns: the cell configured
     func configureCollectionCell(forCollectionCell: UICollectionViewCell?, activity: Activity) -> ActivityCollectionViewCell? {
         self.activity = activity
         guard let cell: ActivityCollectionViewCell = forCollectionCell as? ActivityCollectionViewCell else {
@@ -54,6 +60,12 @@ class ActivityPresenter {
         return cell
     }
     
+    /// Configure the TableViewcell with the given activity
+    ///
+    /// - Parameters:
+    ///   - forTableViewCell: the cell to configure
+    ///   - activity: the activity linked to the cell
+    /// - Returns: the cell configured
     func configureTableViewCell(forTableViewCell: UITableViewCell?, activity: Activity) -> ActivityTableViewCell? {
         self.activity = activity
         guard let cell: ActivityTableViewCell = forTableViewCell as? ActivityTableViewCell else {

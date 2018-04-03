@@ -12,6 +12,7 @@ class SummaryDayTableViewCell: UITableViewCell {
 
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
+    var beState: BeState!
     
     override func awakeFromNib() {
         super.awakeFromNib()

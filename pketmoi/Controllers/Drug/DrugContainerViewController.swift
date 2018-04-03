@@ -33,6 +33,8 @@ class DrugContainerViewController: UIViewController {
         }
     }
     
+    // MARK: - Navigation -
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueIdentifier{
             //Avoids creation of a stack of view controllers

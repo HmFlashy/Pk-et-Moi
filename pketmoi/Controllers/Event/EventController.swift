@@ -52,8 +52,8 @@ class EventController: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = eventTableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
-        eventPresenter.configureCell(forCell: cell, event: eventFetched.object(at: indexPath))
+        var cell: EventTableViewCell! = eventTableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventTableViewCell
+        cell = eventPresenter.configureCell(forCell: cell, event: eventFetched.object(at: indexPath))
         return cell
     }
     
@@ -76,7 +76,7 @@ class EventController: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
     }
     
-    // MARK: - NSFetchResultController delegate protocol
+    // MARK: - NSFetchResultController delegate protocol -
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch (type) {
         case .insert:
@@ -101,7 +101,7 @@ class EventController: UIViewController, UITableViewDelegate, UITableViewDataSou
         self.eventTableView.endUpdates()
     }
     
-    // MARK: - Navigation
+    // MARK: - Navigation -
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == self.segueShowEvent{
             if let indexPath = self.eventTableView.indexPathForSelectedRow{

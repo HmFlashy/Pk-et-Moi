@@ -18,6 +18,10 @@ class TypeDrugViewController: UIViewController {
     @IBOutlet weak var url: UITextField!
     @IBOutlet weak var drugDescription: UITextView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         return checkData()
     }
@@ -35,10 +39,6 @@ class TypeDrugViewController: UIViewController {
         if checkData(){
             _ = TypeDrug.createTypeDrug(name: name.text!, minimalDose: minimalDose.text!, maximalDose: maximalDose.text!, minimalIntervalDose: intervalDose.text!, maximalFrequency: maximalFrequency.text!, url: url.text, drugDescription: drugDescription.text)
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
 
     /*

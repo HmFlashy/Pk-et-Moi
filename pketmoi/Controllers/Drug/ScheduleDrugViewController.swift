@@ -28,22 +28,12 @@ class ScheduleDrugViewController: UIViewController {
         }
     }
     
+    // MARK: - Navigation -
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "container"{
             containerView = segue.destination as? DrugContainerViewController
             containerView?.typeDrug = self.typeDrug
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

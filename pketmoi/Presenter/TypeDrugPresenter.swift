@@ -27,10 +27,18 @@ class TypeDrugPresenter: NSObject {
         }
     }
     
-    func configureCell(forCell: TypeDrugTableViewCell?, typeDrug: TypeDrug, indexPath: IndexPath){
+    /// Configure the cell with the given typeDrug and the given indexPath
+    ///
+    /// - Parameters:
+    ///   - forCell: the cell to configure
+    ///   - typeDrug: the typeDrug linked to the cell
+    ///   - indexPath: the indexPath of the cell
+    /// - Returns: the cell configured
+    func configureCell(forCell: TypeDrugTableViewCell?, typeDrug: TypeDrug, indexPath: IndexPath) -> TypeDrugTableViewCell? {
         self.typeDrug = typeDrug
-        guard let cell = forCell else { return }
+        guard let cell = forCell else { return nil }
         cell.name.text = self.name
         cell.button.tag = indexPath.row
+        return cell
     }
 }

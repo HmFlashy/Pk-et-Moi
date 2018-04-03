@@ -11,6 +11,20 @@ import CoreData
 
 extension Doctor {
     
+    
+    /// Create a doctor
+    ///
+    /// - Parameters:
+    ///   - lastname: the lastname of the doctor
+    ///   - firstname: the firstname of the doctor
+    ///   - phone: the phone of the doctor
+    ///   - email: the email of the doctor
+    ///   - address: the address of the doctor
+    ///   - city: the city of the doctor
+    ///   - zip: the cip of the doctor
+    ///   - travelTime: the travelTime to the doctor
+    ///   - profession: the profession of the doctor
+    /// - Returns: an instance of the class Doctor with the given paremeters
     static func createDoctor(lastname: String, firstname: String, phone: String?, email: String?, address: String?, city: String?, zip: String?, travelTime: Int16, profession: Profession) -> Doctor {
         guard let newDoctor = NSEntityDescription.insertNewObject(forEntityName: "Doctor", into: CoreDataManager.context) as? Doctor else{
             print("Doctor does not exists in the database")
@@ -30,6 +44,8 @@ extension Doctor {
         return newDoctor
     }
     
+    
+    /// The fullname of the doctor
     var fullname: String {
         get {
             return self.firstname! + " " + self.lastname!
