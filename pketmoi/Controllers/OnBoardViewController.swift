@@ -50,6 +50,7 @@ class OnBoardViewController: UIViewController {
         TypeEvent.fillDatabase()
         NeurologistQuestion.fillDatabase()
         Answer.fillDatabase()
+        Doctor.fillDatabase()
     }
     
     /*

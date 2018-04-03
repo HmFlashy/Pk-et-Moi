@@ -28,11 +28,8 @@ extension Activity{
         newActivity.date = date
         newActivity.duration = duration
         newActivity.typeActivity = typeActivity
-        do {
-            try CoreDataManager.context.save()
-        } catch let error as NSError {
-            print(error)
-        }
+        print(newActivity)
+        CoreDataManager.save()
         return newActivity
     }
 }

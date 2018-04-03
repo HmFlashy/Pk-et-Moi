@@ -31,7 +31,7 @@ class ScheduleActivityNotRegularViewController: UIViewController, UITextViewDele
         guard let date = dateFormatter.date(from: dateFormatter.string(from: datePicker.date)) else{return}
         dateFormatter.dateFormat = "HH:mm"
         let durationString = dateFormatter.string(from: durationDatePicker.date)
-        let activity = Activity.createActivity(itemDescription: "", date: date, duration: durationString, typeActivity: typeActivity)
+        let activity = Activity.createActivity(itemDescription: descriptionActivity.text, date: date, duration: durationString, typeActivity: typeActivity)
         NotificationManager.addTimeItemNotification(forDate: date, using: activity)
     }
     

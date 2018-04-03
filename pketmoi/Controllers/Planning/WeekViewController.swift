@@ -22,7 +22,7 @@ class WeekViewController: UIViewController, UITableViewDelegate, UITableViewData
     private var activityPresenter: ActivityPresenter = ActivityPresenter()
     
     fileprivate var timeItemFetched: NSFetchedResultsController<TimeItem>!
-    
+
     func getFirstDay(weekNumber:Int)->NSDate!{
         let Calendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
         let dayComponent = NSDateComponents()
@@ -175,21 +175,6 @@ class WeekViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        switch editingStyle {
-        case .delete:
-            let event = timeItemFetched.object(at: indexPath)
-            CoreDataManager.context.delete(event)
-            do {
-                try CoreDataManager.context.save()
-            } catch let error as NSError {
-                print("Error saving context after delete: \(error.localizedDescription)")
-            }
-            break
-        default:break
-        }
-    }
-    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -198,16 +183,15 @@ class WeekViewController: UIViewController, UITableViewDelegate, UITableViewData
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch (type) {
         case .insert:
-            if let indexPath = newIndexPath {
+            if var indexPath = newIndexPath {
+                let timeItem: TimeItem = anObject as! TimeItem
+                let weekDay: Int = Calendar.current.component(.weekday, from: timeItem.date!)
+                indexPath.section = (weekDay + 5) % 7
+                indexPath.row = rawForSection[indexPath.section]
                 self.weekTableView.insertRows(at: [indexPath], with: .fade)
                 self.weekTableView.reloadData()
             }
             break
-        case .delete:
-            if let indexPath = indexPath {
-                self.weekTableView.deleteRows(at: [indexPath], with: .automatic)
-                self.weekTableView.reloadData()
-            }
         default:
             break
         }

@@ -51,4 +51,9 @@ extension Doctor {
             return self.firstname! + " " + self.lastname!
         }
     }
+    
+    static func fillDatabase(){
+        var profession = Profession.getProfession(forTitle: "Neurologue")
+        _ = Doctor.createDoctor(lastname: "Depaillat", firstname: "Marc", phone: nil, email: nil, address: nil, city: nil, zip: nil, travelTime: 0, profession: profession!)
+    }
 }

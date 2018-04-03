@@ -19,7 +19,7 @@ extension Profession {
     static func getProfession(forTitle: String) -> Profession? {
         let professionFetched: NSFetchRequest<Profession> = Profession.fetchRequest()
         professionFetched.predicate = NSPredicate(format: "title == %@", forTitle)
-        
+        professionFetched.sortDescriptors = [NSSortDescriptor(key:#keyPath(Profession.title), ascending: true)]
         let fetchedResultController = NSFetchedResultsController(fetchRequest: professionFetched, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         do {
             try fetchedResultController.performFetch()

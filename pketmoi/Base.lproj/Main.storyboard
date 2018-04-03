@@ -335,7 +335,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVc-pi-YEi">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVc-pi-YEi">
                                                     <rect key="frame" x="188" y="11" width="146" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -383,7 +383,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.87798602048336882" green="1" blue="0.9563444893486901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="GAK-PD-aTm"/>
                     </view>
                     <size key="freeformSize" width="414" height="578"/>
@@ -1174,12 +1174,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="748"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIQ-cY-sNe">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIQ-cY-sNe">
                                 <rect key="frame" x="0.0" y="64" width="414" height="684"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r2f-eG-JoC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r2f-eG-JoC">
                                 <rect key="frame" x="36" y="100" width="342" height="513"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TypeActivityPlanifierCell" id="f9Z-6w-VgN" customClass="TypeActivityTableViewCell" customModule="pketmoi" customModuleProvider="target">
@@ -1218,8 +1220,9 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRz-fA-6P8">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRz-fA-6P8">
                                 <rect key="frame" x="114" y="637" width="187" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Ajouter un type activité"/>
                                 <connections>
@@ -1230,18 +1233,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="r2f-eG-JoC" firstAttribute="centerX" secondItem="SRz-fA-6P8" secondAttribute="centerX" id="1g7-Cz-ia7"/>
-                            <constraint firstItem="SRz-fA-6P8" firstAttribute="top" secondItem="r2f-eG-JoC" secondAttribute="bottom" constant="24" id="1mn-PO-Nmq"/>
-                            <constraint firstItem="Auu-j3-6mx" firstAttribute="bottom" secondItem="SRz-fA-6P8" secondAttribute="bottom" constant="28" id="8iB-Uf-zXh"/>
-                            <constraint firstAttribute="trailing" secondItem="KIQ-cY-sNe" secondAttribute="trailing" id="HUd-9F-JHv"/>
-                            <constraint firstItem="KIQ-cY-sNe" firstAttribute="leading" secondItem="1hU-Ha-oYG" secondAttribute="leading" id="MVV-JD-Kon"/>
-                            <constraint firstItem="r2f-eG-JoC" firstAttribute="leading" secondItem="Auu-j3-6mx" secondAttribute="leading" constant="36" id="R79-oc-E2H"/>
-                            <constraint firstItem="KIQ-cY-sNe" firstAttribute="centerX" secondItem="SRz-fA-6P8" secondAttribute="centerX" id="eFW-3t-n2l"/>
-                            <constraint firstAttribute="bottom" secondItem="KIQ-cY-sNe" secondAttribute="bottom" id="ja1-BL-mjt"/>
-                            <constraint firstItem="r2f-eG-JoC" firstAttribute="top" secondItem="Auu-j3-6mx" secondAttribute="top" constant="36" id="xyu-rO-biM"/>
-                            <constraint firstItem="KIQ-cY-sNe" firstAttribute="top" secondItem="Auu-j3-6mx" secondAttribute="top" id="yku-eR-U94"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Auu-j3-6mx"/>
                     </view>
                     <navigationItem key="navigationItem" title="Activités" id="OWR-cD-vQg"/>
