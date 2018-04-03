@@ -14,16 +14,19 @@ class SummaryDayViewController: UIViewController, UITableViewDataSource, UITable
     var summary: Summary!
     var day: Int!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var answerLabel: UILabel!
+    @IBOutlet weak var answerButton: UIButton!
     @IBOutlet weak var dayTableView: UITableView!
     @IBOutlet weak var dayLabel: UILabel!
     
     var beStates: [BeState] = []
     var beStatePresenter = BeStatePresenter()
+    var rigorousAnswer: RigorousAnswer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("view Did Load " + String(self.day))
+        answerButton.layer.borderWidth = 1
+        answerButton.layer.borderColor = UIColor.blue.cgColor
         dayTableView.dataSource = self
         dayTableView.delegate = self
         self.dayLabel.text = "Jour " + String(self.day)
@@ -34,9 +37,9 @@ class SummaryDayViewController: UIViewController, UITableViewDataSource, UITable
         dateFormatter.dateFormat = "EEEE dd MMMM"
         dateFormatter.locale = Locale(identifier: "fr_FR")
         self.dateLabel.text = dateFormatter.string(from: date!)
+        let summaryDate = dateFormatter.string(from: date!)
         for beState in (summary.beStates?.allObjects)! as! [BeState]{
             let beStateDate = dateFormatter.string(from: beState.date!)
-            let summaryDate = dateFormatter.string(from: date!)
             if beStateDate == summaryDate{
                 beStates.append(beState)
             }
@@ -47,9 +50,28 @@ class SummaryDayViewController: UIViewController, UITableViewDataSource, UITable
         var found = false
         while i<(rigorousAnswers?.count)! && !found {
             let rigorousAnswer = rigorousAnswers![i] as! RigorousAnswer
-            if rigorousAnswer.date == date {
+            let rigorousAnswerDate = dateFormatter.string(from: rigorousAnswer.date!)
+            if rigorousAnswerDate == summaryDate {
                 found = true
-                answerLabel.text = rigorousAnswer.answer?.name
+                self.rigorousAnswer = rigorousAnswer
+                if let answer = rigorousAnswer.answer {
+                    if answer.name! == "J'ai oublié x prise(s)" {
+                        answerButton.setTitle("J'ai oublié " + String(describing: rigorousAnswer.nbOversight) + " prise(s)", for: .normal)
+                    }
+                    else{
+                        answerButton.setTitle(answer.name, for: .normal)
+                    }
+                }
+                else{
+                    if rigorousAnswer.date! <= Date() {
+                        answerButton.setTitle("A faire", for: .normal)
+                    }
+                    else{
+                        answerButton.setTitle("", for: .normal)
+                        answerButton.layer.borderWidth = 0
+                        answerButton.isEnabled = false
+                    }
+                }
             }
             i+=1
         }
@@ -59,6 +81,7 @@ class SummaryDayViewController: UIViewController, UITableViewDataSource, UITable
         self.day = day
     }
     
+    
     // MARK: - TableView Data Source protocol - 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,9 +89,9 @@ class SummaryDayViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = dayTableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as! SummaryDayTableViewCell
+        var cell: SummaryDayTableViewCell! = dayTableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as! SummaryDayTableViewCell
         let beState: BeState = beStates[indexPath.row]
-        beStatePresenter.configureCell(forCell: cell, beState: beState)
+        cell = beStatePresenter.configureCell(forCell: cell, beState: beState)
         return cell
     }
     
@@ -104,14 +127,16 @@ class SummaryDayViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBAction func unwindToSummaryDayViewController(segue: UIStoryboardSegue) {
         self.dayTableView.reloadData()
+        self.answerButton.titleLabel?.text = rigorousAnswer.answer?.name
     }
 
     // MARK: - Navigation -
+
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "addBeStateSegue"{
             let cell = sender as! SummaryDayTableViewCell
-            if let stateName = cell.beState.state?.name{
+            if let _ = cell.beState.state?.name{
                 return true
             }
             else{
@@ -124,7 +149,7 @@ class SummaryDayViewController: UIViewController, UITableViewDataSource, UITable
             }
         }
         else{
-            return false
+            return true
         }
     }
     
@@ -134,6 +159,10 @@ class SummaryDayViewController: UIViewController, UITableViewDataSource, UITable
                 let vc = segue.destination as! AddBeStateViewController
                 vc.beState = beStates[indexPath.row]
             }
+        }
+        else if segue.identifier == "addRigorousAnswerSegue" {
+            let vc = segue.destination as! AddRigorousAnswerViewController
+            vc.rigorousAnswer = self.rigorousAnswer
         }
     }
 }

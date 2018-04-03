@@ -48,8 +48,8 @@ class MyContactViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = myContactTableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as! ContactTableViewCell
-        contactPresenter.configureCell(forCell: cell, contact: contactFetched.object(at: indexPath))
+        var cell: ContactTableViewCell! = myContactTableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as! ContactTableViewCell
+        cell = contactPresenter.configureCell(forCell: cell, contact: contactFetched.object(at: indexPath))
         return cell
     }
     
@@ -97,14 +97,14 @@ class MyContactViewController: UIViewController, UITableViewDelegate, UITableVie
         self.myContactTableView.endUpdates()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // MARK: - Navigation -
+     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showContactSegue" {
+            if let indexPath = self.myContactTableView.indexPathForSelectedRow{
+                let vc = segue.destination as! ShowContactViewController
+                vc.contact = self.contactFetched.object(at: indexPath)
+            }
+        }
     }
-    */
-
 }

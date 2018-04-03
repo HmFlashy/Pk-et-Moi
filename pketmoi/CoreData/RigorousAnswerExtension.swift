@@ -19,7 +19,7 @@ extension RigorousAnswer{
     ///   - summary: the summary linked to this rigorous answer
     ///   - answer: the answer of the patient
     /// - Returns: an instance of the class RigorousAnswer with the given parameters
-    static func createRigorousAnswer(date: Date, nbOversight: String?, summary: Summary, answer: Answer) -> RigorousAnswer {
+    static func createRigorousAnswer(date: Date, nbOversight: String?, summary: Summary, answer: Answer?) -> RigorousAnswer {
         guard let newRigorousAnswer = NSEntityDescription.insertNewObject(forEntityName: "RigorousAnswer", into: CoreDataManager.context) as? RigorousAnswer else{
             print("RigorousAnswer does not exists in the database")
             fatalError()

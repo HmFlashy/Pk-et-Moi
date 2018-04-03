@@ -38,8 +38,41 @@ class AddDoctorAppointmentViewController: UIViewController {
     @IBAction func addAppointmentAction(_ sender: Any) {
         let appointment: Appointment = Appointment.CreateAppointment(date: self.appointmentDatePicker.date, doctor: self.doctor!)!
         NotificationManager.addTimeItemNotification(forDate: self.appointmentDatePicker.date, using: appointment)
-        print(appointment.date?.description ?? "")
+        if self.doctor?.profession?.title == "Neurologue" {
+            self.createSummary(appointment: appointment)
+        }
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func createSummary(appointment: Appointment){
+        let date = appointment.date!
+        var startDate = Calendar.current.date(byAdding: .day, value: -5, to: date)
+        let endDate = Calendar.current.date(byAdding: .day, value: -1, to: date)
+        let summary = Summary.createSummary(askingInterval: "1", endDate: endDate!, startDate: startDate!, appointment: appointment)
+        print(summary)
+        
+        // Creating BeStates for all the days and rigorousAnswers
+        for _ in 1...5 {
+            let gregorian = Calendar(identifier: .gregorian)
+            var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute], from: startDate!)
+            components.hour = 7
+            components.minute = 0
+            var startDateState = gregorian.date(from: components)!
+            var beState: BeState?
+            var notif: Bool = false
+            for _ in 1...14 {
+                beState = BeState.createBeState(date: startDateState, state: nil, summary: summary)
+                print(beState!)
+                startDateState = Calendar.current.date(byAdding: .hour, value: 1, to: startDateState)!
+                if !notif {
+                    NotificationManager.addSummaryNotifications(forBeState: beState!)
+                    notif = true
+                }
+            }
+            let rigorousAnswer = RigorousAnswer.createRigorousAnswer(date: startDate!, nbOversight: nil, summary: summary, answer: nil)
+            print(rigorousAnswer)
+            startDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate!)
+        }
     }
     /*
     // MARK: - Navigation

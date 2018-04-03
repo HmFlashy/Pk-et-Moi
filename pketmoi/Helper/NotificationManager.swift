@@ -13,20 +13,20 @@ import UIKit
 /// A class that helps to manage notification
 class NotificationManager {
     
-    /// <#Description#>
+    
     private static var notificationNumber = 0
     
-    /// <#Description#>
+    /// Reset the notification badge
     public static func resetBadge(){
         notificationNumber = 0
         UIApplication.shared.applicationIconBadgeNumber = notificationNumber
     }
     
-    /// <#Description#>
+    /// Add time item notifications
     ///
     /// - Parameters:
-    ///   - forDate: <#forDate description#>
-    ///   - using: <#using description#>
+    ///   - forDate: The date of the timeItem
+    ///   - using: The timeItem created
     public static func addTimeItemNotification(forDate: Date, using: TimeItem) {
         let content = UNMutableNotificationContent()
         var identifier = ""
@@ -80,7 +80,46 @@ class NotificationManager {
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
-    public static func removeNotification(){
+    public static func addSummaryNotifications(forBeState: BeState){
+        let content = UNMutableNotificationContent()
+        let date = forBeState.date!
+        content.title = "Pensez à renseigner vos états aujourd'hui"
+        var identifier = "beState1" + BeState.description()
+        let calendar = Calendar.current
+        var dateComponents = DateComponents()
+        dateComponents.month = calendar.component(.month, from: date)
+        dateComponents.day =  calendar.component(.day, from: date)
+        dateComponents.hour =  8
+        dateComponents.minute = 0
+        var notificationTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        var request = UNNotificationRequest(identifier: identifier, content: content, trigger: notificationTrigger)
+        print(request.description)
+        UNUserNotificationCenter.current().delegate = UIApplication.shared.delegate as! AppDelegate
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
+        identifier = "beState2" + BeState.description()
+        dateComponents.hour =  12
+        notificationTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        request = UNNotificationRequest(identifier: identifier, content: content, trigger: notificationTrigger)
+        print(request.description)
+        UNUserNotificationCenter.current().delegate = UIApplication.shared.delegate as! AppDelegate
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
+        identifier = "beState3" + BeState.description()
+        dateComponents.hour =  16
+        notificationTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        request = UNNotificationRequest(identifier: identifier, content: content, trigger: notificationTrigger)
+        print(request.description)
+        UNUserNotificationCenter.current().delegate = UIApplication.shared.delegate as! AppDelegate
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
+        content.title = "Pensez à renseigner vos états aujourd'hui et de répondre à la question"
+        identifier = "beState4" + BeState.description()
+        dateComponents.hour =  20
+        notificationTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        request = UNNotificationRequest(identifier: identifier, content: content, trigger: notificationTrigger)
+        print(request.description)
+        UNUserNotificationCenter.current().delegate = UIApplication.shared.delegate as! AppDelegate
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
 }

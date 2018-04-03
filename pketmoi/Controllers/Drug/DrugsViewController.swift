@@ -42,8 +42,8 @@ class DrugsViewController: UIViewController, NSFetchedResultsControllerDelegate,
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = typeDrugTableView.dequeueReusableCell(withIdentifier: "typeDrugCell", for: indexPath) as! TypeDrugTableViewCell
-        typeDrugPresenter.configureCell(forCell: cell, typeDrug: typeDrugFetched.object(at: indexPath), indexPath: indexPath)
+        var cell: TypeDrugTableViewCell! = typeDrugTableView.dequeueReusableCell(withIdentifier: "typeDrugCell", for: indexPath) as! TypeDrugTableViewCell
+        cell = typeDrugPresenter.configureCell(forCell: cell, typeDrug: typeDrugFetched.object(at: indexPath), indexPath: indexPath)
         return cell
     }
     

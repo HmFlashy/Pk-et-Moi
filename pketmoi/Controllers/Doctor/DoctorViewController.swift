@@ -47,10 +47,9 @@ class DoctorViewController: UIViewController, NSFetchedResultsControllerDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = doctorTableView.dequeueReusableCell(withIdentifier: "DoctorCell", for: indexPath) as! DoctorTableViewCell
+        var cell: DoctorTableViewCell! = doctorTableView.dequeueReusableCell(withIdentifier: "DoctorCell", for: indexPath) as! DoctorTableViewCell
         let doctor: Doctor = doctorFetched.object(at: indexPath)
-        cell.doctor = doctor
-        self.doctorPresenter.configureCell(forCell: cell, doctor: doctor)
+        cell = self.doctorPresenter.configureCell(forCell: cell, doctor: doctor)
         cell.appointmentButton.tag = indexPath.row
         return cell
     }

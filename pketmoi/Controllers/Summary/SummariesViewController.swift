@@ -13,7 +13,6 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
 
     @IBOutlet weak var summaryTableView: UITableView!
     let summaryPresenter = SummaryPresenter()
-    let summary: [String] = ["2018-03-15","2018-01-12"]
     
     fileprivate lazy var summaryFetched: NSFetchedResultsController<Summary> = {
         let request: NSFetchRequest<Summary> = Summary.fetchRequest()
@@ -22,7 +21,7 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         fetchedResultController.delegate = self
         return fetchedResultController
     }()
-    
+    /*
     // Adding a summary manually
     fileprivate lazy var stateFetched: NSFetchedResultsController<State> = {
         let request: NSFetchRequest<State> = State.fetchRequest()
@@ -44,29 +43,29 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
         let fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedResultController
     }()
-    
+    */
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        /*
         do{
             try stateFetched.performFetch()
             try appointmentFetched.performFetch()
             try answerFetched.performFetch()
         }catch {
             print("Unable to perform fetch")
-        }
+        }*/
         
-        let stateDyski = stateFetched.object(at: IndexPath(row: 0, section: 0))
+        //let stateDyski = stateFetched.object(at: IndexPath(row: 0, section: 0))
         //let stateOff = stateFetched.object(at: IndexPath(row: 1, section: 0))
-        let stateOn = stateFetched.object(at: IndexPath(row: 2, section: 0))
+        //let stateOn = stateFetched.object(at: IndexPath(row: 2, section: 0))
         
         do{
             try summaryFetched.performFetch()
         } catch {
             print("Unable to perfom Summary fetch")
         }
-
+        /*
         print("creating summary")
         // Creating summary
         let appointment = appointmentFetched.object(at: IndexPath(row: 0, section: 0))
@@ -143,7 +142,7 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
             print(beState!)
             startDateState = Calendar.current.date(byAdding: .hour, value: 1, to: startDateState)!
         }
-        
+        */
         summaryTableView.dataSource = self
         summaryTableView.delegate = self
     }
@@ -154,9 +153,9 @@ class SummariesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = summaryTableView.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath) as! SummaryTableViewCell
+        var cell: SummaryTableViewCell! = summaryTableView.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath) as! SummaryTableViewCell
         let summary: Summary = summaryFetched.object(at: indexPath)
-        self.summaryPresenter.configureCell(forCell: cell, summary: summary, row: indexPath.row)
+        cell = self.summaryPresenter.configureCell(forCell: cell, summary: summary, row: indexPath.row)
         return cell
     }
     

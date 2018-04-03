@@ -88,8 +88,8 @@ class AddDoctorStepTwoViewController: UIViewController {
         }
         _ = Doctor.createDoctor(lastname: lastnameTextField.text!, firstname: firstnameTextField.text!, phone: phoneTextField.text, email: mailTextField.text, address: streetNameTextField.text, city: cityTextField.text, zip: zipTextField.text, travelTime: 0, profession: self.profession)
         performSegue(withIdentifier: "unwindToDoctorsView", sender: sender)
-        
     }
+    
     /*
     // MARK: - Navigation
 

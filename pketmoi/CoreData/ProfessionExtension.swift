@@ -15,7 +15,7 @@ extension Profession {
     /// Get a profession
     ///
     /// - Parameter forTitle: the title of thes profession
-    /// - Returns: an instanec of the class Profession with the given title
+    /// - Returns: an instance of the class Profession with the given title
     static func getProfession(forTitle: String) -> Profession? {
         let professionFetched: NSFetchRequest<Profession> = Profession.fetchRequest()
         professionFetched.predicate = NSPredicate(format: "title == %@", forTitle)

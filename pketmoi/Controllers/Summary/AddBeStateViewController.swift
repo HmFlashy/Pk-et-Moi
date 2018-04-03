@@ -37,12 +37,8 @@ class AddBeStateViewController: UIViewController {
         }
         
         self.onLabel.text = stateFetched.object(at: IndexPath(row: 0, section: 0)).name
-        print(stateFetched.object(at: IndexPath(row: 0, section: 0)))
         self.offLabel.text = stateFetched.object(at: IndexPath(row: 1, section: 0)).name
-        print(stateFetched.object(at: IndexPath(row: 1, section: 0)))
         self.dyskinesiesLabel.text = stateFetched.object(at: IndexPath(row: 2, section: 0)).name
-        print(stateFetched.object(at: IndexPath(row: 2, section: 0)))
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,9 +69,7 @@ class AddBeStateViewController: UIViewController {
                 self.beState.state = stateFetched.object(at: IndexPath(row: 0, section: 0))
             }
             else if offButton.isSelected{
-                print(stateFetched.object(at: IndexPath(row: 1, section: 0)))
-                print(self.beState)
-                self.beState.setValue(stateFetched.object(at: IndexPath(row: 1, section: 0)), forKey: "state") 
+                self.beState.setValue(stateFetched.object(at: IndexPath(row: 1, section: 0)), forKey: "state")
             }
             else{
                 self.beState.state = stateFetched.object(at: IndexPath(row: 2, section: 0))

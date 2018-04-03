@@ -66,7 +66,7 @@
     <entity name="RigorousAnswer" representedClassName="RigorousAnswer" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="nbOversight" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="answer" maxCount="1" deletionRule="Nullify" destinationEntity="Answer" inverseName="rigorousAnswer" inverseEntity="Answer" syncable="YES"/>
+        <relationship name="answer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Answer" inverseName="rigorousAnswer" inverseEntity="Answer" syncable="YES"/>
         <relationship name="summary" maxCount="1" deletionRule="Nullify" destinationEntity="Summary" inverseName="rigorousAnswers" inverseEntity="Summary" syncable="YES"/>
     </entity>
     <entity name="State" representedClassName="State" syncable="YES" codeGenerationType="class">

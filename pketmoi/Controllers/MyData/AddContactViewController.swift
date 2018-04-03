@@ -28,7 +28,7 @@ class AddContactViewController: UIViewController {
             firstnameTextField.layer.borderColor = UIColor.red.cgColor
         }
         else{
-            firstnameTextField.layer.borderWidth = 1
+            firstnameTextField.layer.borderWidth = 0
         }
         
         if lastnameTextField.text!.isEmpty {
@@ -37,7 +37,7 @@ class AddContactViewController: UIViewController {
             lastnameTextField.layer.borderColor = UIColor.red.cgColor
         }
         else{
-            lastnameTextField.layer.borderWidth = 1
+            lastnameTextField.layer.borderWidth = 0
         }
         
         if statusTextField.text!.isEmpty {
@@ -46,21 +46,25 @@ class AddContactViewController: UIViewController {
             statusTextField.layer.borderColor = UIColor.red.cgColor
         }
         else{
-            statusTextField.layer.borderWidth = 1
+            statusTextField.layer.borderWidth = 0
         }
         
-        if phoneTextField.text!.isEmpty {
+        let phoneRegEx = "[0-9]{10}"
+        let phoneTest = NSPredicate(format:"SELF MATCHES %@", phoneRegEx)
+        if !phoneTextField.text!.isEmpty || !phoneTest.evaluate(with: phoneTextField.text!) {
             errors = true
             phoneTextField.layer.borderWidth = 1
             phoneTextField.layer.borderColor = UIColor.red.cgColor
+        } else {
+            phoneTextField.layer.borderWidth = 0
         }
-        else{
-            phoneTextField.layer.borderWidth = 1
+        
+        guard !errors else {
+            return
         }
-        if !errors{
-            _ = Contact.createContact(firstname: firstnameTextField.text!, lastname: lastnameTextField.text!, phone: phoneTextField.text!, status: statusTextField.text!, address: addressTextField.text!)
-            self.performSegue(withIdentifier: "myContactUnwindSegue", sender: self)
-        }
+        
+        _ = Contact.createContact(firstname: firstnameTextField.text!, lastname: lastnameTextField.text!, phone: phoneTextField.text!, status: statusTextField.text!, address: addressTextField.text!)
+        self.performSegue(withIdentifier: "myContactUnwindSegue", sender: self)
     }
     
     /*
