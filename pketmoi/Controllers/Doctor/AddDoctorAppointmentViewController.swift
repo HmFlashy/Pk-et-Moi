@@ -41,6 +41,7 @@ class AddDoctorAppointmentViewController: UIViewController {
         if self.doctor?.profession?.title == "Neurologue" {
             self.createSummary(appointment: appointment)
         }
+        print(appointment.date?.description ?? "")
         self.dismiss(animated: true, completion: nil)
     }
     
