@@ -56,7 +56,7 @@ class SummaryDayViewController: UIViewController, UITableViewDataSource, UITable
                 self.rigorousAnswer = rigorousAnswer
                 if let answer = rigorousAnswer.answer {
                     if answer.name! == "J'ai oublié x prise(s)" {
-                        answerButton.setTitle("J'ai oublié " + String(describing: rigorousAnswer.nbOversight) + " prise(s)", for: .normal)
+                        answerButton.setTitle("J'ai oublié " + String(describing: rigorousAnswer.nbOversight!) + " prise(s)", for: .normal)
                     }
                     else{
                         answerButton.setTitle(answer.name, for: .normal)
