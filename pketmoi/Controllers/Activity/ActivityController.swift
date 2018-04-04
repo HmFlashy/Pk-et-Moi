@@ -29,7 +29,7 @@ class ActivityController: UIViewController, UITableViewDelegate, UITableViewData
         do{
             try self.typeActivityFetched.performFetch()
         } catch {
-            print("Problem")
+            print("Unable to fetch the type activities")
         }
     }
     
