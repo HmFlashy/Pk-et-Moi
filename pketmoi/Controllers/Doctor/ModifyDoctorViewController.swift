@@ -32,7 +32,7 @@ class ModifyDoctorViewController: UIViewController {
             zipTextField.text = doctor?.zip
             phoneTextField.text = doctor?.phone
             travelTimeSlider.value = Float((doctor?.travelTime)!)
-            travelTimeLabel.text = String(travelTimeSlider.value) + " min"
+            travelTimeLabel.text = String(Int(travelTimeSlider.value)) + " min"
         }
         // Do any additional setup after loading the view.
     }
@@ -47,7 +47,7 @@ class ModifyDoctorViewController: UIViewController {
     }
 
     @IBAction func valueChanged(_ sender: Any) {
-        travelTimeLabel.text = String(travelTimeSlider.value) + " min"
+        travelTimeLabel.text = String(Int(travelTimeSlider.value)) + " min"
     }
     @IBAction func ModifyDoctorAction(_ sender: Any) {
         doctor?.lastname = lastnameTextField.text
