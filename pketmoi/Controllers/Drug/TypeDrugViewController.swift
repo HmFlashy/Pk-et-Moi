@@ -22,22 +22,15 @@ class TypeDrugViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        return checkData()
-    }
-    
-    func checkData() -> Bool{
-        guard name.hasText else{return false}
-        guard minimalDose.hasText else{return false}
-        guard maximalDose.hasText else{return false}
-        guard intervalDose.hasText else{return false}
-        guard maximalFrequency.hasText else{return false}
-        return true
-    }
-    
     @IBAction func addTypeDrug(_ sender: Any) {
-        if checkData(){
+        name.layer.borderWidth = 0
+        if (name.text?.isEmpty)! {
+            name.layer.borderWidth = 1
+            name.layer.borderColor = UIColor.red.cgColor
+        }
+        else{
             _ = TypeDrug.createTypeDrug(name: name.text!, minimalDose: minimalDose.text!, maximalDose: maximalDose.text!, minimalIntervalDose: intervalDose.text!, maximalFrequency: maximalFrequency.text!, url: url.text, drugDescription: drugDescription.text)
+            self.performSegue(withIdentifier: "drugUnwindSegue", sender: self)
         }
     }
 
