@@ -54,7 +54,7 @@ class DrugPresenter {
             return nil
         }
         cell.drugLabel.text = self.drugType
-        cell.doseLabel.text = self.dose + " doses"
+        cell.doseLabel.text = self.dose
         cell.timeLabel.text = self.time
         cell.backgroundColor = UIColor(red: 0.2, green: 0.1, blue: 0.5, alpha: 0.1)
         return cell
@@ -72,7 +72,7 @@ class DrugPresenter {
             return nil
         }
         cell.drugNameLabel.text = self.drugType
-        cell.doseLabel.text = self.dose + " doses"
+        cell.doseLabel.text = self.dose
         cell.drugHourLabel.text = self.time
         cell.backgroundColor = UIColor(red: 0.2, green: 0.1, blue: 0.5, alpha: 0.1)
         return cell

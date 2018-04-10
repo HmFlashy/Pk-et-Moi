@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class NeurologistQuestionViewController: UIViewController {
+class NeurologistQuestionViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var yesButton: CustomRadioButton!
     @IBOutlet weak var noButton: CustomRadioButton!
@@ -50,6 +50,7 @@ class NeurologistQuestionViewController: UIViewController {
         
         questionNumber.text = String(self.neurologistQuestion.number) + "/8"
         questionName.text = neurologistQuestion.name
+        comment.delegate = self
     }
     
     @IBAction func yesPressed(_ sender: Any) {
@@ -90,6 +91,35 @@ class NeurologistQuestionViewController: UIViewController {
         }
         let parentVC = self.parent as! NeurologistQuestionPageViewController
         parentVC.previousPage()
+    }
+    
+    
+    // MARK : - TextView Delegate protocol -
+    
+    
+    // Start Editing The Text Field
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        moveTextView(textView, moveDistance: -250, up: true)
+    }
+    
+    // Finish Editing The Text Field
+    func textViewDidEndEditing(_ textView: UITextView) {
+        moveTextView(textView, moveDistance: -250, up: false)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        comment.resignFirstResponder()
+    }
+    
+    private func moveTextView(_ textView: UITextView, moveDistance: Int, up: Bool) {
+        let moveDuration = 0.3
+        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
+        
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(moveDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
     }
     
     /*

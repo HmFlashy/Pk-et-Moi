@@ -46,11 +46,13 @@ class OnBoardViewController: UIViewController {
         State.fillDatabase()
         Profession.fillDatabase(typeProfessions: TypeProfession.fillDatabase())
         TypeDrug.fillDatabase()
-        TypeActivity.fillDatabase()
-        TypeEvent.fillDatabase()
+        Drug.fillDatabase()
+        Activity.fillDatabase(typesActivity: TypeActivity.fillDatabase())
+        Event.fillDatabase(typesEvent: TypeEvent.fillDatabase())
         NeurologistQuestion.fillDatabase()
         Answer.fillDatabase()
-        Doctor.fillDatabase()
+        Summary.fillDatabase(appointment: Appointment.fillDatabase(doctor: Doctor.fillDatabase()))
+        Contact.fillDatabase()
     }
     
     /*

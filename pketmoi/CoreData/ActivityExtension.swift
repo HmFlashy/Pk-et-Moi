@@ -32,4 +32,10 @@ extension Activity{
         CoreDataManager.save()
         return newActivity
     }
+    
+    static func fillDatabase(typesActivity: [TypeActivity]){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        _ = Activity.createActivity(itemDescription: "", date: dateFormatter.date(from: "2018-04-10 17:00")!, duration: "1:00", typeActivity: typesActivity[0])
+    }
 }

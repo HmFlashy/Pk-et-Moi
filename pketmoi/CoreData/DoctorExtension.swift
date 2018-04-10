@@ -52,8 +52,16 @@ extension Doctor {
         }
     }
     
-    static func fillDatabase(){
-        let profession = Profession.getProfession(forTitle: "Neurologue")
-        _ = Doctor.createDoctor(lastname: "Depaillat", firstname: "Marc", phone: nil, email: nil, address: nil, city: nil, zip: nil, travelTime: 0, profession: profession!)
+    static func fillDatabase() -> Doctor{
+        let profession1 = Profession.getProfession(forTitle: "Neurologue")
+        let profession2 = Profession.getProfession(forTitle: "Kinésithérapeute")
+        let profession3 = Profession.getProfession(forTitle: "Medecin Généraliste")
+        _ = Doctor.createDoctor(lastname: "Depaillat", firstname: "Marc", phone: nil, email: nil, address: nil, city: nil, zip: nil, travelTime: 0, profession: profession1!)
+        let doctor = Doctor.createDoctor(lastname: "Deleret", firstname: "Jerome", phone: nil, email: nil, address: nil, city: nil, zip: nil, travelTime: 0, profession: profession1!)
+        _ = Doctor.createDoctor(lastname: "Albert", firstname: "Jean", phone: nil, email: nil, address: nil, city: nil, zip: nil, travelTime: 0, profession: profession2!)
+        _ = Doctor.createDoctor(lastname: "Maitre", firstname: "Hugo", phone: nil, email: nil, address: nil, city: nil, zip: nil, travelTime: 0, profession: profession2!)
+        _ = Doctor.createDoctor(lastname: "Zirah", firstname: "Loris", phone: nil, email: nil, address: nil, city: nil, zip: nil, travelTime: 0, profession: profession2!)
+        _ = Doctor.createDoctor(lastname: "Foilet", firstname: "Paul", phone: nil, email: nil, address: nil, city: nil, zip: nil, travelTime: 0, profession: profession3!)
+        return doctor
     }
 }

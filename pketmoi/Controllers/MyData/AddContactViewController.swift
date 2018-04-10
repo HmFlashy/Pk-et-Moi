@@ -51,7 +51,7 @@ class AddContactViewController: UIViewController {
         
         let phoneRegEx = "[0-9]{10}"
         let phoneTest = NSPredicate(format:"SELF MATCHES %@", phoneRegEx)
-        if !phoneTextField.text!.isEmpty || !phoneTest.evaluate(with: phoneTextField.text!) {
+        if !phoneTextField.text!.isEmpty && !phoneTest.evaluate(with: phoneTextField.text!) {
             errors = true
             phoneTextField.layer.borderWidth = 1
             phoneTextField.layer.borderColor = UIColor.red.cgColor

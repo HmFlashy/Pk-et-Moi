@@ -41,4 +41,10 @@ extension Contact{
             return self.firstname! + " " + self.lastname!
         }
     }
+    
+    static func fillDatabase(){
+        _ = createContact(firstname: "Loris", lastname: "Zirah", phone: "0623565258", status: "ami", address: "8 avenue du pont juvenal")
+        _ = createContact(firstname: "Hugo", lastname: "Maitre", phone: "0652568596", status: "frère", address: "5 rue boussairolles")
+        _ = createContact(firstname: "Pharmacie", lastname: "du Triolet", phone: "0652458574", status: "pharmacie", address: "1 rue de Gascogne")
+    }
 }

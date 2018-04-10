@@ -33,10 +33,12 @@ extension TypeActivity{
     }
     
     /// Fill the database with some types of activity
-    static func fillDatabase(){
-        _ = TypeActivity.createTypeActivity(name: "Gymnastique", description: "")
+    static func fillDatabase() -> [TypeActivity]{
+        var typesActivity : [TypeActivity] = []
+        typesActivity.append(TypeActivity.createTypeActivity(name: "Gymnastique", description: ""))
         _ = TypeActivity.createTypeActivity(name: "Natation", description: "")
         _ = TypeActivity.createTypeActivity(name: "Course", description: "")
         _ = TypeActivity.createTypeActivity(name: "Marche", description: "")
+        return typesActivity
     }
 }

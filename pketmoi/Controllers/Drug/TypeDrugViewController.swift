@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TypeDrugViewController: UIViewController {
+class TypeDrugViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var minimalDose: UITextField!
@@ -20,6 +20,7 @@ class TypeDrugViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        drugDescription.delegate = self
     }
     
     @IBAction func addTypeDrug(_ sender: Any) {
@@ -34,6 +35,33 @@ class TypeDrugViewController: UIViewController {
         }
     }
 
+    // MARK : - TextView Delegate protocol -
+    
+    // Start Editing The Text Field
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        moveTextView(textView, moveDistance: -250, up: true)
+    }
+    
+    // Finish Editing The Text Field
+    func textViewDidEndEditing(_ textView: UITextView) {
+        moveTextView(textView, moveDistance: -250, up: false)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        drugDescription.resignFirstResponder()
+    }
+    
+    private func moveTextView(_ textView: UITextView, moveDistance: Int, up: Bool) {
+        let moveDuration = 0.3
+        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
+        
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(moveDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
+    }
+    
     /*
     // MARK: - Navigation
 

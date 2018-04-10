@@ -39,6 +39,23 @@ extension TypeDrug{
         return newTypeDrug
     }
     
+    /// Get a typeDrug
+    ///
+    /// - Parameter forName: the name of the type of drug
+    /// - Returns: an instance of the class TypeDrug with the given name
+    static func getTypeDrug(forName: String) -> TypeDrug? {
+        let typeDrugFetched: NSFetchRequest<TypeDrug> = TypeDrug.fetchRequest()
+        typeDrugFetched.predicate = NSPredicate(format: "name == %@", forName)
+        typeDrugFetched.sortDescriptors = [NSSortDescriptor(key:#keyPath(TypeDrug.name), ascending: true)]
+        let fetchedResultController = NSFetchedResultsController(fetchRequest: typeDrugFetched, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+        do {
+            try fetchedResultController.performFetch()
+        } catch {
+            return nil
+        }
+        return fetchedResultController.object(at: IndexPath(row: 0, section: 0))
+    }
+    
     /// Fill the database with some types of drug
     static func fillDatabase(){
         _ = TypeDrug.createTypeDrug(name: "Doliprane", minimalDose: "1", maximalDose: "1", minimalIntervalDose: "4", maximalFrequency: "2", url: "http://base-donnees-publique.medicaments.gouv.fr/affichageDoc.php?typedoc=N&specid=69309629", drugDescription: "Paracétamol")

@@ -33,4 +33,16 @@ extension Event{
         }
         return newEvent
     }
+    
+    static func fillDatabase(typesEvent: [TypeEvent]){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        _ = createEvent(itemDescription: "Très grande fatigue", date: Date(), typeEvent: typesEvent[0])
+        _ = createEvent(itemDescription: "Apparition dans la journée", date: Date(), typeEvent: typesEvent[0])
+        _ = createEvent(itemDescription: "Chute de l'escalier de mon immeuble", date: Date(), typeEvent: typesEvent[1])
+        _ = createEvent(itemDescription: "", date: dateFormatter.date(from: "2018-04-08 11:00")!, typeEvent: typesEvent[2])
+        _ = createEvent(itemDescription: "", date: dateFormatter.date(from: "2018-02-12 15:00")!, typeEvent: typesEvent[3])
+        _ = createEvent(itemDescription: "", date: dateFormatter.date(from: "2018-03-08 21:30")!, typeEvent: typesEvent[3])
+        _ = createEvent(itemDescription: "", date: dateFormatter.date(from: "2018-01-21 09:00")!, typeEvent: typesEvent[4])
+    }
 }

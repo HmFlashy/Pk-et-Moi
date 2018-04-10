@@ -32,4 +32,15 @@ extension Drug{
         CoreDataManager.save()
         return newDrug
     }
+    
+    static func fillDatabase(){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let typeDrug1 = TypeDrug.getTypeDrug(forName: "Levodopa")
+        let typeDrug2 = TypeDrug.getTypeDrug(forName: "Doliprane")
+        _ = createDrug(itemDescription: "", date: dateFormatter.date(from: "2018-04-10 15:00")!, dose: "30g", typeDrug: typeDrug1!)
+        let drug = createDrug(itemDescription: "", date: dateFormatter.date(from: "2018-04-10 16:00")!, dose: "2 comprimés", typeDrug: typeDrug2!)
+        print(drug)
+        
+    }
 }

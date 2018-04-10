@@ -27,11 +27,13 @@ extension TypeEvent{
     }
     
     /// Fill the database with some types of event
-    static func fillDatabase(){
-        _ = TypeEvent.createTypeEvent(name: "Somnolence")
-        _ = TypeEvent.createTypeEvent(name: "Chute")
-        _ = TypeEvent.createTypeEvent(name: "Hallucination")
-        _ = TypeEvent.createTypeEvent(name: "Prise de dispersible")
-        _ = TypeEvent.createTypeEvent(name: "Clic / bolus d'Apokinon")
+    static func fillDatabase() -> [TypeEvent]{
+        var typeEvents: [TypeEvent] = []
+        typeEvents.append(TypeEvent.createTypeEvent(name: "Somnolence"))
+        typeEvents.append(TypeEvent.createTypeEvent(name: "Chute"))
+        typeEvents.append(TypeEvent.createTypeEvent(name: "Hallucination"))
+        typeEvents.append(TypeEvent.createTypeEvent(name: "Prise de dispersible"))
+        typeEvents.append(TypeEvent.createTypeEvent(name: "Clic / bolus d'Apokinon"))
+        return typeEvents
     }
 }

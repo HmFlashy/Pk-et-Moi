@@ -70,7 +70,7 @@ class NotificationManager {
             dateFormatter.dateFormat = "HH:mm"
             let hours = dateFormatter.string(from: drug.date!)
             content.title = hours + ": Médicament " + (drug.typeDrug?.name)!
-            content.body = "Prenez vos " + drug.dose! + " doses"
+            content.body = "Dose : " + drug.dose!
             identifier = "drug" + (drug.date?.description)!
             date = drug.date!
         }
@@ -96,7 +96,7 @@ class NotificationManager {
         let content = UNMutableNotificationContent()
         let date = forBeState.date!
         content.title = "Pensez à renseigner vos états aujourd'hui"
-        var identifier = "beState1" + BeState.description()
+        var identifier = "beState1" + forBeState.description
         let calendar = Calendar.current
         var dateComponents = DateComponents()
         dateComponents.month = calendar.component(.month, from: date)
@@ -109,7 +109,7 @@ class NotificationManager {
         UNUserNotificationCenter.current().delegate = UIApplication.shared.delegate as! AppDelegate
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
-        identifier = "beState2" + BeState.description()
+        identifier = "beState2" + forBeState.description
         dateComponents.hour =  12
         notificationTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         request = UNNotificationRequest(identifier: identifier, content: content, trigger: notificationTrigger)
@@ -117,7 +117,7 @@ class NotificationManager {
         UNUserNotificationCenter.current().delegate = UIApplication.shared.delegate as! AppDelegate
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
-        identifier = "beState3" + BeState.description()
+        identifier = "beState3" + forBeState.description
         dateComponents.hour =  16
         notificationTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         request = UNNotificationRequest(identifier: identifier, content: content, trigger: notificationTrigger)
@@ -126,7 +126,7 @@ class NotificationManager {
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
         content.title = "Pensez à renseigner vos états aujourd'hui et de répondre à la question"
-        identifier = "beState4" + BeState.description()
+        identifier = "beState4" + forBeState.description
         dateComponents.hour =  20
         notificationTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         request = UNNotificationRequest(identifier: identifier, content: content, trigger: notificationTrigger)

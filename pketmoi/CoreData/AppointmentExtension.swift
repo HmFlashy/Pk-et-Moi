@@ -28,4 +28,10 @@ extension Appointment {
         CoreDataManager.save()
         return newAppointment
     }
+    
+    static func fillDatabase(doctor: Doctor) -> Appointment{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        return Appointment.CreateAppointment(date: dateFormatter.date(from: "2018-04-10 18:00")!, doctor: doctor)!
+    }
 }
